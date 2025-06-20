@@ -17,8 +17,10 @@ features:
     details: Run Python math directly in your browser without any setup
   - title: Interactive Examples
     details: Adjust parameters and see immediate results
+   
 ---
 
-![Snake Math](#file:dont-know-snake-math-small.gif)
+
+![Snake Math](https://y.yarn.co/7941ba3a-1abf-423e-aa6f-2292ebd327eb_text.gif)
 
 **But you can!**
