@@ -35,11 +35,11 @@ features:
 <br>
 
 # What's on this site?
- The goal upon creation was to combine the power of Python with fundamental mathematical concepts.
+ The inital goal with this site was a perosnal cheatsheet, on how to combine Python with mathematical concepts.
 
  ![Snake Math](https://y.yarn.co/7941ba3a-1abf-423e-aa6f-2292ebd327eb_text.gif)
 
-### ..But wait, there's more
+### ..But wait, you can!
  Whether you're a programmer looking to strengthen your math skills or a math enthusiast wanting to see practical applications, this site tries to bridge the gap between theory and practice.
 
 
@@ -59,4 +59,4 @@ features:
 
 ## Getting Started
 
-Ready to dive in? Start with our [Python Basics](/basics/variables-expressions) section to learn how to express mathematical concepts in code.
+Ready to dive in? Start with [Python Basics](/basics/variables-expressions) section to learn how to express mathematical concepts in code.

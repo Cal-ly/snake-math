@@ -344,4 +344,9 @@ plt.plot(ts, ys); plt.show()
 - [ ] Basic navigation and styling
 - [ ] Mobile responsiveness
 
+## Quick To Do
+- Add input control to components, so they don't fail because of calculation error
+- Ensure all interactive components 
+- Review Mathematical Concepts in all files and expand the where needed. Add programmer-minded explanations, like explaning that multidimensions is just arrays of arrays.
+
 ---
