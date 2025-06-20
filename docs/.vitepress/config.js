@@ -61,7 +61,8 @@ export default {
         {
           text: 'Algebra',
           items: [
-            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' }
+            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' },
+            { text: 'Product Notation (Π)', link: '/algebra/product-notation' }
           ]
         }
       ]

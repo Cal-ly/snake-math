@@ -2,22 +2,24 @@
 
 ## Mathematical Concept
 
-**Summation notation** uses the Greek letter Σ (sigma) to represent the sum of a sequence of terms. The general form is:
+ **Summation notation** uses the Greek letter Σ (sigma) to represent the sum of a sequence of terms. The general form is:
 
-$$\sum_{i=1}^{n} i = 1 + 2 + 3 + \ldots + n$$
+ $$\sum_{i=1}^{n} i = 1 + 2 + 3 + \ldots + n$$
 
-This means: **add up all values of i from 1 to n**
+ This means: **add up all values of i from 1 to n**
 
-While it can look a bit odd, it is basically just a for loop. Now let us say $n = 10$ it would look like this
+ While it can look complex, it is basically just a for-loop, with the $i$ being the start number and the $n$ being the end. Now let us say $i = 1 \land n = 10$ it would look like this:
 
-```python
-sum = 0
-for i in range(1, 11):
-    sum += i
+ ```python
+ sum = 0
+ for i in range(1, 11):
+     sum += i
+ 
+ print(f"The sum of 0 to 10 is {sum}")
+ # Output: The sum of 0 to 10 is 55
+ ```
 
-print(f"The sum of 0 to 10 is {sum}")
-# Output: The sum of 0 to 10 is 55
-```
+ Now that seems a bit more simple - those irritating mathematicians and their overcomplicated syntax, they might just have been React developers :smile:
 
 ## Interactive Exploration
 
