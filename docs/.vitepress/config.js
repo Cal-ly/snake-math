@@ -34,10 +34,14 @@ export default {
     `]
   ],
   base: '/snake-math/',
+  markdown: {
+    math: true
+  },
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Basics', link: '/basics/' }
+      { text: 'Basics', link: '/basics/variables-expressions' },
+      { text: 'Algebra', link: '/algebra/summation-notation' }
     ],
     sidebar: {
       '/': [
@@ -46,6 +50,18 @@ export default {
           items: [
             { text: 'Introduction', link: '/' },
             { text: 'Mathematical Foundations', link: '/basics/' }
+          ]
+        },
+        {
+          text: 'Basics',
+          items: [
+            { text: 'Variables & Expressions', link: '/basics/variables-expressions' }
+          ]
+        },
+        {
+          text: 'Algebra',
+          items: [
+            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' }
           ]
         }
       ]

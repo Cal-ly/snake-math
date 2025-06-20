@@ -200,7 +200,7 @@ const waitForPyScript = async () => {
   const maxAttempts = 50 // 5 seconds max
   
   while (!window.pyscript && attempts < maxAttempts) {
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 500))
     attempts++
   }
   
@@ -210,7 +210,7 @@ const waitForPyScript = async () => {
     setTimeout(() => {
       calculateLinear()
       updateCalculation()
-    }, 500)
+    }, 3000)
   } else {
     console.log('PyScript failed to load')
     if (outputDiv.value) {
