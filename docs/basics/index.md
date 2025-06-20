@@ -2,7 +2,7 @@
 
 ## Variables and Expressions
 
-In mathematics, we write: \(y = 2x + 1\)
+In mathematics, we write: *y = 2x + 1*
 
 In Python, this becomes:
 
