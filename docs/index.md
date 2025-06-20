@@ -1,31 +1,50 @@
-# Snake Math
+---
+layout: home
+hero:
+  name: "Snake Math"
+  text: "Interactive Python Mathematics"
+  tagline: "Mathematical concepts powered by Python in your browser"
+  actions:
+    - theme: brand
+      text: Mathematical Foundations
+      link: /basics/
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/cally/snake-math
 
-Interactive mathematical concepts powered by Python in your browser.
+features:
+  - title: Zero Installation
+    details: Run Python math directly in your browser without any setup
+  - title: Interactive Examples
+    details: Adjust parameters and see immediate results
+  - title: Progressive Learning
+    details: From basic concepts to advanced mathematics
+---
 
-<script type="text/javascript" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+## Quick Example
 
-## Try It Now
-
-<py-config>
-packages = ["numpy", "matplotlib"]
-</py-config>
-
-<div>
+<div id="demo-container">
   <label>Enter a value: </label>
   <input type="range" id="slider" min="0" max="10" value="5" />
-  <span id="output">5</span>
+  <span id="output">5² = 25</span>
 </div>
 
-<py-script>
-from pyscript import document
-import numpy as np
+<script setup>
+import { onMounted } from 'vue'
 
-def update_output(event=None):
-    value = document.querySelector("#slider").value
-    result = int(value) ** 2
-    document.querySelector("#output").innerText = f"{value}² = {result}"
-
-# Bind event
-document.querySelector("#slider").addEventListener("input", update_output)
-update_output()
-</py-script>
+onMounted(() => {
+  const slider = document.getElementById('slider');
+  const output = document.getElementById('output');
+  
+  function updateOutput() {
+    const value = slider.value;
+    const result = value * value;
+    output.textContent = value + '² = ' + result;
+  }
+  
+  if (slider && output) {
+    slider.addEventListener('input', updateOutput);
+    updateOutput();
+  }
+});
+</script>
