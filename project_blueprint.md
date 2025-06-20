@@ -1,50 +1,68 @@
 # Project Overview
 
-A **zero-maintenance**, **purely in-browser** Python math playground hosted on GitHub Pages, powered by **VitePress**. This setup eliminates server infrastructure—there are no backend servers to provision, no runtime environments to update, and no hosting costs, ensuring sustainable, long-term operation at **zero cost**.
+**Overall Intent**:
+ This project is a aiming to make math accesible for programmers and made as a look-up, rather than a end-to-end course. I have tried to keep the tone informal.
 
-By leveraging **PyScript**, users run Python code directly in the browser. This approach bridges math notation and executable code in real-time, allowing learners to tweak variables and immediately visualize results without installing Python or waiting for remote computation. It lowers the barrier to entry and fosters an interactive, exploratory learning experience.
+ It is made with **VitePress**, **Vue** and **PyScript** with the goal to eliminate server infrastructure and runtime environments.
 
-**Why GitHub Pages?** Free, reliable, and globally distributed static hosting. Integration with GitHub Actions automates deployments on every push, giving you **continuous delivery** with minimal configuration.
+**Why PyScript?**:
+ The intent on leveraging **PyScript**, is that users can run Python code directly in the browser. This approach bridges math notation and executable code in real-time, allowing learners to tweak variables and immediately visualize results without installing Python or waiting for remote computation. It lowers the barrier to entry and fosters an interactive, exploratory learning experience.
 
 **Why VitePress?**
+Quick start-up and updates in real-time, and is **markdown** based with the addition of **Vue components**, it is the natural succesor to VuePress. Have in mind, that it is mainly for docs, so thing like complex navigation or custom themes take a bit more effort.
 
-- **Blazing-fast development**: Instant server start and Hot Module Replacement (<100 ms) accelerate content iteration.
-- **Zero-config**: Out-of-the-box support for Markdown, Vue components, and static site features means you focus solely on math content, not build tooling.
-- **Official Vue support**: As the Vue core team’s strategic successor to VuePress, VitePress ensures ongoing improvements and compatibility.
+**Why GitHub Pages?**: 
+ Free, reliable, and globally distributed static hosting. Integration with GitHub Actions automates deployments on every push, giving **continuous integration** and **continuous delivery** with minimal configuration.
 
-**Limitations to acknowledge**:
-
-- A **lean plugin ecosystem** means fewer off-the-shelf extensions; custom functionality may require manual coding.
-- Designed for **documentation sites**; features like complex pagination or advanced theming involve extra work.
-
+**Architecture**:
+ Is it set up with the standard VitePress setup for file and folder structure. Most of the interactive components are made JavaScript, but where it makes sense, the more complex are made with PyScript. This is simply to ensure a fast load-time and not add unneccesary complexity, where the user wouldn't know the difference anyway.
 
 ## 1. Repository Structure
 
 ```
 /<repo-root>
 │
-├─ /content
-│   ├─ /basics
-│   ├─ /high-school
-│   ├─ /advanced
-│   └─ sidebar.js           # VuePress/VitePress nav config
-│
-├─ /notebooks             # (optional) for static HTML exports
+├─ docs/                  # VitePress source directory
+│   ├─ .vitepress/
+│   │   ├─ dist/          # Build output (GitHub Pages source)
+│   │   ├─ cache/
+│   │   ├─ theme/         # Custom theme (optional)
+│   │   │   └─ components
+│   │   │       └─ MathDisplay.vue
+│   │   │
+│   │   └─ config.js      # VitePress configuration
+│   │
+│   ├─ basics/
+│   │   ├─ variables-expressions.md
+│   │   └─ functions.md
+│   │
+│   ├─ algebra/
+│   │   ├─ summation-notation.md
+│   │   ├─ linear-equations.md
+│   │   └─ quadratics.md
+│   │
+│   ├─ calculus/
+│   │   ├─ index.md
+│   │   ├─ limits.md
+│   │   └─ derivatives.md
+│   │
+│   ├─ public/            # Static assets (images, etc.)
+│   │
+│   └─ index.md           # Homepage with PyScript setup
 │
 ├─ .github/
 │   └─ workflows/
-│       └─ deploy.yml     # GitHub Actions: build & push to gh-pages
+│       └─ deploy.yml     # GitHub Actions: build & deploy
 │
-├─ docs/                  # Output folder for GitHub Pages
-│
-├─ index.html             # Main template including PyScript CDN
-└─ package.json           # VuePress/VitePress + dependencies
+├─ package.json           # VitePress + dependencies
+├─ package-lock.json
+└─ .gitignore             # Ignore node_modules, dist, etc.
 ```
 
 
 ## 2. Content Format
 
-- **Markdown** with embedded LaTeX for formulas.
+- **Markdown** with embedded LaTeX for formulas (using VitePress built-in math support).
 - **Accordion panels** via native HTML:
   ```html
   <details>
@@ -52,37 +70,59 @@ By leveraging **PyScript**, users run Python code directly in the browser. This 
     <p>…explanation…</p>
   </details>
   ```
-- **Interactive code** in `<py-script>` blocks.
-- **Sliders/inputs** reading via JS bridge:
+- **Interactive code** in `<py-script>` blocks with styled output:
   ```html
-  <input id="a" type="range" min="-5" max="5" value="1"/>
   <py-script>
-    from js import document
-    a = float(document.getElementById("a").value)
-    …
+  n = 10
+  total = sum(range(1, n+1))
+  print(f"Sum 1..{n} = {total}")
   </py-script>
   ```
-
+- **Sliders/inputs** with real-time Python interaction:
+  ```html
+  <label for="coefficient">Coefficient a: <span id="a-value">1</span></label>
+  <input id="a" type="range" min="-5" max="5" value="1" 
+         oninput="document.getElementById('a-value').textContent = this.value"/>
+  
+  <py-script>
+  from js import document
+  
+  def update_calculation():
+      a = float(document.getElementById("a").value)
+      result = a * 2 + 1
+      print(f"When a = {a}, result = {result}")
+  
+  # Auto-update on slider change
+  document.getElementById("a").addEventListener("input", lambda e: update_calculation())
+  update_calculation()  # Initial calculation
+  </py-script>
+  ```
+- **Vue components** for complex interactions (when PyScript isn't suitable):
+  ```vue
+  <MathDisplay :equation="'x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}'" />
+  ```
 
 ## 3. Deployment Steps
 
-1. **Framework setup**
-
-   - Install & configure VuePress 2 or VitePress.
-   - Point `docs/` as output dir.
+1. **VitePress Setup**
+   - Install VitePress: `npm install -D vitepress`
+   - Configure `docs/.vitepress/config.js` with site metadata and navigation
+   - Set build output to `docs/.vitepress/dist/`
 
 2. **GitHub Actions** (`.github/workflows/deploy.yml`)
-
-   - Checkout, install deps, build, deploy `docs/` branch to `gh-pages`.
+   - Checkout repository
+   - Setup Node.js and install dependencies
+   - Run `npm run docs:build` to generate static files
+   - Deploy `docs/.vitepress/dist/` to `gh-pages` branch
 
 3. **Enable GitHub Pages**
+   - Settings → Pages → Source: `gh-pages` branch, `/ (root)` folder
+   - Custom domain setup (optional)
 
-   - Settings → Pages → Source: `gh-pages` branch, `/ (root)` folder.
-
-4. **Workflow**
-
-   - Author in `/content` → `git push` → CI builds → live site.
-
+4. **Development Workflow**
+   - Local development: `npm run docs:dev`
+   - Content authoring in `/docs` → `git push` → CI builds → live site
+   - Hot reload for instant preview during development
 
 ## 4. Ideas Section
 
@@ -219,19 +259,89 @@ plt.plot(ts, ys); plt.show()
 ```
 
 
-## 5. Next Steps
+## 5. To Do List
 
-1. **MVP Page**
+### 🚀 Phase 1: Foundation
+- [x] **Project Setup**
+  - [x] Initialize npm project with VitePress
+  - [x] Create basic folder structure
+  - [x] Set up GitHub repository
+  - [ ] Configure GitHub Actions for deployment
 
-   - Pick one concept (e.g. Σ-notation).
-   - Build content + code + deploy.
+- [ ] **Core Configuration**
+  - [ ] Configure `docs/.vitepress/config.js` with navigation structure
+  - [ ] Set up PyScript integration in default layout
+  - [ ] Enable VitePress math support (markdown-it-mathjax3)
+  - [ ] Create custom CSS for PyScript output styling
+  - [ ] Add favicon and basic branding
 
-2. **Expand**
+### 📝 Phase 2: Content Creation
+- [ ] **Homepage (`docs/index.md`)**
+  - [ ] Create hero section with project tagline
+  - [ ] Add "Try it now" interactive demo
+  - [ ] Include navigation to main sections
+  - [ ] Add getting started guide
 
-   - Fill `/basics`, then `/high-school`, then `/advanced`.
+- [ ] **Basics Section**
+  - [ ] `variables-expressions.md` - Python variables ↔ algebra
+  - [ ] `functions.md` - Function definition and plotting
+  - [ ] Add interactive number line component
+  - [ ] Include "Python vs Math notation" comparison tables
 
-3. **Polish**
+- [ ] **Algebra Section**
+  - [ ] `summation-notation.md` - Σ notation with for-loops
+  - [ ] `linear-equations.md` - Solving ax + b = 0 interactively
+  - [ ] `quadratics.md` - Real-time quadratic graphing
+  - [ ] Add equation solver components
 
-   - Nav sidebar, custom CSS for code blocks, add logos.
+### 🎨 Phase 3: Enhancement
+- [ ] **Interactive Components**
+  - [ ] `MathDisplay.vue` - LaTeX renderer with copy button
+  - [ ] `CodeRunner.vue` - PyScript wrapper with error handling
+  - [ ] `SliderInput.vue` - Labeled range input with live updates
+  - [ ] `GraphPlotter.vue` - Matplotlib integration component
+
+- [ ] **User Experience**
+  - [ ] Configure VitePress search (local search)
+  - [ ] Implement custom dark theme for code blocks
+  - [ ] Add mobile-responsive navigation
+  - [ ] Create loading spinners for PyScript initialization
+  - [ ] Add "Edit on GitHub" links to pages
+
+### 🚀 Phase 4: Advanced Features
+- [ ] **Content Expansion**
+  - [ ] `calculus/limits.md` - Numerical limit approximation
+  - [ ] `calculus/derivatives.md` - Symbolic and numerical derivatives
+  - [ ] `statistics/` section with probability distributions
+  - [ ] `linear-algebra/` section with matrix operations
+
+- [ ] **Performance & Polish**
+  - [ ] Lazy-load PyScript on first interaction
+  - [ ] Add service worker for offline functionality
+  - [ ] Implement client-side analytics (privacy-focused)
+  - [ ] Create contribution guidelines and templates
+  - [ ] Add automated testing for code examples
+
+### 🔧 Phase 5: Maintenance
+- [ ] **Documentation**
+  - [ ] `CONTRIBUTING.md` with content guidelines
+  - [ ] Component documentation in `/docs/.vitepress/theme/`
+  - [ ] Deployment troubleshooting guide
+  - [ ] Performance optimization checklist
+
+- [ ] **Quality Assurance**
+  - [ ] GitHub Actions for link checking
+  - [ ] Cross-browser testing automation
+  - [ ] Mathematical accuracy review process
+  - [ ] Lighthouse performance auditing
+  - [ ] Accessibility compliance (WCAG 2.1)
+
+### 🎯 MVP Milestone
+**Target: First deployable version**
+- [ ] Homepage with working PyScript demo
+- [ ] One complete section (Summation Notation)
+- [ ] GitHub Pages deployment
+- [ ] Basic navigation and styling
+- [ ] Mobile responsiveness
 
 ---

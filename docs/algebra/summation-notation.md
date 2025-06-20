@@ -8,6 +8,17 @@ $$\sum_{i=1}^{n} i = 1 + 2 + 3 + \ldots + n$$
 
 This means: **add up all values of i from 1 to n**
 
+While it can look a bit odd, it is basically just a for loop. Now let us say $n = 10$ it would look like this
+
+```python
+sum = 0
+for i in range(1, 11):
+    sum += i
+
+print(f"The sum of 0 to 10 is {sum}")
+# Output: The sum of 0 to 10 is 55
+```
+
 ## Interactive Exploration
 
 <SummationDemo />
