@@ -404,3 +404,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Since this build on Node.js, ignore Node.js related files
+# Node.js modules
+node_modules/
+.vitepress/dist/
+.vitepress/cache/
+.DS_Store
