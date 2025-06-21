@@ -34,22 +34,38 @@ npm run docs:serve
 - `docs/.vitepress/dist/` - Build output (auto-generated)
 
 ### Interactive Components
-- **PyScriptDemo.vue** - Main component for Python code execution with interactive calculators
+- **ExponentialCalculator.vue** - Interactive exponential and logarithmic function explorer
+- **FunctionPlotter.vue** - General-purpose function plotting component with customizable parameters
 - **InteractiveSlider.vue** - Reusable slider component for real-time parameter manipulation
+- **LimitsExplorer.vue** - Interactive limits calculation and visualization
+- **LinearSystemSolver.vue** - Matrix-based linear equation system solver
 - **MathDisplay.vue** - LaTeX math expression renderer integrated with calculations
-- **SummationDemo.vue** & **ProductDemo.vue** - Subject-specific interactive demonstrations
+- **MatrixTransformations.vue** - Visual matrix operations and transformations
+- **ProbabilitySimulator.vue** - Statistical probability distribution simulator
+- **ProductDemo.vue** - Product notation (Π) interactive demonstrations
+- **QuadraticExplorer.vue** - Quadratic function graphing and root finding
+- **StatisticsCalculator.vue** - Descriptive statistics calculation tool
+- **SummationDemo.vue** - Summation notation (Σ) interactive demonstrations  
+- **UnitCircleExplorer.vue** - Trigonometric unit circle visualization
+- **VariablesDemo.vue** - Variable manipulation and expression evaluation
+- **VectorOperations.vue** - Vector arithmetic and geometric operations
 
 ## Content Structure
 
 Content follows a progressive learning path:
-- `docs/basics/` - Variables, expressions, fundamental concepts
-- `docs/algebra/` - Summation notation, product notation, algebraic concepts
-- `docs/calculus/` - Planned advanced topics
+- `docs/basics/` - Variables, expressions, functions, number theory, order of operations
+- `docs/algebra/` - Summation notation, product notation, linear equations, quadratics, exponentials & logarithms
+- `docs/statistics/` - Descriptive statistics, probability distributions
+- `docs/trigonometry/` - Unit circle, trigonometric functions
+- `docs/linear-algebra/` - Vectors, matrices, transformations
+- `docs/calculus/` - Limits, continuity, derivatives (planned)
 
 Each content file combines:
-1. Mathematical theory with LaTeX notation
-2. Executable Python code examples
+1. Mathematical theory with LaTeX notation. 
+    - This should be in-depth, informal and relate to programming, e.g. "Summation is just a for-loop"
+2. Executable Python code examples (only if applicable and it adds understanding)
 3. Interactive components for hands-on learning
+4. Python Code examples with explanation
 
 ## Development Patterns
 
