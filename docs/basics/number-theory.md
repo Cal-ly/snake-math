@@ -1,0 +1,2 @@
+# Basic Number Theory
+ This is about how number can either be real, natural number, integers etc. This should relate to how a one declares a datatype, ensures how the variable is in a certain range etc.

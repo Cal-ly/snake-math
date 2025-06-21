@@ -1,6 +1,6 @@
 <!-- docs/.vitepress/theme/components/MathDisplay.vue -->
 <template>
-  <div class="math-display-container">
+  <div class="result-highlight">
     <!-- Summation notation display -->
     <div v-if="isSummation" class="math-notation">
       <span class="sigma">Σ</span>
@@ -12,7 +12,7 @@
       <span class="equals">=</span>
       <span class="expansion">{{ expansionText }}</span>
       <span class="equals">=</span>
-      <span class="result">{{ result }}</span>
+      <span class="result-value">{{ result }}</span>
     </div>
     
     <!-- General mathematical expression display -->
@@ -83,101 +83,5 @@ const renderedMath = computed(() => {
 </script>
 
 <style scoped>
-.math-display-container {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  border-left: 4px solid #007bff;
-}
-
-.math-notation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.sigma {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-right: 0.2rem;
-}
-
-.limits {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
-  line-height: 1;
-}
-
-.upper, .lower {
-  text-align: center;
-}
-
-.expression {
-  font-style: italic;
-  margin-right: 0.5rem;
-  color: #333;
-}
-
-.equals {
-  margin: 0 0.5rem;
-  font-weight: bold;
-  color: #666;
-}
-
-.expansion {
-  color: #28a745;
-  font-family: monospace;
-  font-size: 0.9em;
-}
-
-.result {
-  color: #dc3545;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.math-expression {
-  text-align: center;
-  font-size: 1.2rem;
-  font-family: 'Times New Roman', serif;
-  padding: 1rem;
-}
-
-.fraction {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.numerator {
-  display: block;
-  border-bottom: 1px solid #333;
-  padding-bottom: 2px;
-}
-
-.denominator {
-  display: block;
-  padding-top: 2px;
-}
-
-.summation {
-  font-size: 1.5em;
-}
-
-@media (max-width: 768px) {
-  .math-notation {
-    font-size: 1.2rem;
-  }
-  
-  .sigma {
-    font-size: 2.5rem;
-  }
-}
+@import '../styles/components.css';
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="vector-operations">
-    <div class="controls">
-      <h3>Interactive Vector Operations</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Vector Operations</h3>
       
-      <div class="vector-inputs">
-        <div class="vector-input-group">
-          <h4>Vector A:</h4>
+      <div class="component-section">
+        <div class="input-group">
+          <h4 class="input-group-title">Vector A:</h4>
           <div class="component-inputs">
             <label>x:</label>
             <input type="number" v-model="vectorA.x" @input="updateCalculations" step="0.1">
@@ -16,8 +16,8 @@
           </div>
         </div>
         
-        <div class="vector-input-group">
-          <h4>Vector B:</h4>
+        <div class="input-group">
+          <h4 class="input-group-title">Vector B:</h4>
           <div class="component-inputs">
             <label>x:</label>
             <input type="number" v-model="vectorB.x" @input="updateCalculations" step="0.1">
@@ -28,7 +28,7 @@
           </div>
         </div>
         
-        <div class="preset-vectors">
+        <div class="btn-group">
           <button @click="loadPreset('unit')" class="preset-btn">Unit Vectors</button>
           <button @click="loadPreset('orthogonal')" class="preset-btn">Orthogonal</button>
           <button @click="loadPreset('parallel')" class="preset-btn">Parallel</button>
@@ -36,72 +36,72 @@
       </div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="vectorCanvas" width="500" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="vectorCanvas" width="500" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="operations-results">
+    <div class="component-section">
       <div class="results-grid">
         <div class="result-card">
-          <h4>Vector Addition</h4>
-          <div class="result">A + B = ({{ operations.addition.x }}, {{ operations.addition.y }}, {{ operations.addition.z }})</div>
-          <div class="magnitude">|A + B| = {{ operations.addition.magnitude }}</div>
+          <h4 class="input-group-title">Vector Addition</h4>
+          <div class="result-value">A + B = ({{ operations.addition.x }}, {{ operations.addition.y }}, {{ operations.addition.z }})</div>
+          <div class="result-label">|A + B| = {{ operations.addition.magnitude }}</div>
         </div>
         
         <div class="result-card">
-          <h4>Vector Subtraction</h4>
-          <div class="result">A - B = ({{ operations.subtraction.x }}, {{ operations.subtraction.y }}, {{ operations.subtraction.z }})</div>
-          <div class="magnitude">|A - B| = {{ operations.subtraction.magnitude }}</div>
+          <h4 class="input-group-title">Vector Subtraction</h4>
+          <div class="result-value">A - B = ({{ operations.subtraction.x }}, {{ operations.subtraction.y }}, {{ operations.subtraction.z }})</div>
+          <div class="result-label">|A - B| = {{ operations.subtraction.magnitude }}</div>
         </div>
         
         <div class="result-card">
-          <h4>Dot Product</h4>
-          <div class="result">A · B = {{ operations.dotProduct }}</div>
-          <div class="angle">Angle = {{ operations.angle }}°</div>
+          <h4 class="input-group-title">Dot Product</h4>
+          <div class="result-value">A · B = {{ operations.dotProduct }}</div>
+          <div class="result-label">Angle = {{ operations.angle }}°</div>
         </div>
         
         <div class="result-card">
-          <h4>Cross Product</h4>
-          <div class="result">A × B = ({{ operations.crossProduct.x }}, {{ operations.crossProduct.y }}, {{ operations.crossProduct.z }})</div>
-          <div class="magnitude">|A × B| = {{ operations.crossProduct.magnitude }}</div>
+          <h4 class="input-group-title">Cross Product</h4>
+          <div class="result-value">A × B = ({{ operations.crossProduct.x }}, {{ operations.crossProduct.y }}, {{ operations.crossProduct.z }})</div>
+          <div class="result-label">|A × B| = {{ operations.crossProduct.magnitude }}</div>
         </div>
         
         <div class="result-card">
-          <h4>Vector A Properties</h4>
-          <div class="result">Magnitude: {{ vectorProperties.A.magnitude }}</div>
-          <div class="result">Unit vector: ({{ vectorProperties.A.unit.x }}, {{ vectorProperties.A.unit.y }}, {{ vectorProperties.A.unit.z }})</div>
+          <h4 class="input-group-title">Vector A Properties</h4>
+          <div class="result-value">Magnitude: {{ vectorProperties.A.magnitude }}</div>
+          <div class="result-value">Unit vector: ({{ vectorProperties.A.unit.x }}, {{ vectorProperties.A.unit.y }}, {{ vectorProperties.A.unit.z }})</div>
         </div>
         
         <div class="result-card">
-          <h4>Vector B Properties</h4>
-          <div class="result">Magnitude: {{ vectorProperties.B.magnitude }}</div>
-          <div class="result">Unit vector: ({{ vectorProperties.B.unit.x }}, {{ vectorProperties.B.unit.y }}, {{ vectorProperties.B.unit.z }})</div>
+          <h4 class="input-group-title">Vector B Properties</h4>
+          <div class="result-value">Magnitude: {{ vectorProperties.B.magnitude }}</div>
+          <div class="result-value">Unit vector: ({{ vectorProperties.B.unit.x }}, {{ vectorProperties.B.unit.y }}, {{ vectorProperties.B.unit.z }})</div>
         </div>
       </div>
     </div>
     
     <div class="applications">
-      <h4>Vector Applications</h4>
-      <div class="app-examples">
-        <div class="app-card" @click="loadApplication('physics')" :class="{ active: currentApp === 'physics' }">
-          <h5>Physics: Forces</h5>
-          <p>Calculate resultant force from multiple force vectors</p>
+      <h4 class="input-group-title">Vector Applications</h4>
+      <div class="controls-grid">
+        <div class="interactive-card" @click="loadApplication('physics')" :class="{ active: currentApp === 'physics' }">
+          <h5 class="app-title">Physics: Forces</h5>
+          <p class="app-description">Calculate resultant force from multiple force vectors</p>
         </div>
         
-        <div class="app-card" @click="loadApplication('navigation')" :class="{ active: currentApp === 'navigation' }">
-          <h5>Navigation</h5>
-          <p>Find displacement and bearing from position vectors</p>
+        <div class="interactive-card" @click="loadApplication('navigation')" :class="{ active: currentApp === 'navigation' }">
+          <h5 class="app-title">Navigation</h5>
+          <p class="app-description">Find displacement and bearing from position vectors</p>
         </div>
         
-        <div class="app-card" @click="loadApplication('graphics')" :class="{ active: currentApp === 'graphics' }">
-          <h5>Computer Graphics</h5>
-          <p>Normal vectors for lighting calculations</p>
+        <div class="interactive-card" @click="loadApplication('graphics')" :class="{ active: currentApp === 'graphics' }">
+          <h5 class="app-title">Computer Graphics</h5>
+          <p class="app-description">Normal vectors for lighting calculations</p>
         </div>
       </div>
       
-      <div v-if="applicationData" class="app-details">
-        <h5>{{ applicationData.title }}</h5>
-        <p>{{ applicationData.description }}</p>
+      <div v-if="applicationData" class="app-details fade-in">
+        <h5 class="app-title">{{ applicationData.title }}</h5>
+        <p class="app-description">{{ applicationData.description }}</p>
         <div class="app-result">{{ applicationData.result }}</div>
       </div>
     </div>
@@ -365,165 +365,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.vector-operations {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
+@import '../styles/components.css';
 
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.vector-inputs {
-  margin: 1.5rem 0;
-}
-
-.vector-input-group {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-
-.vector-input-group h4 {
-  margin: 0 0 1rem 0;
-  color: #333;
-}
-
-.component-inputs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.component-inputs input {
-  width: 60px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.preset-vectors {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.preset-btn {
-  padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.preset-btn:hover {
-  background: #45a049;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.result-card {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-}
-
-.result-card h4 {
-  margin: 0 0 1rem 0;
-  color: #333;
-}
-
-.result {
-  margin: 0.5rem 0;
-  font-family: monospace;
-  color: #2196F3;
-  font-weight: bold;
-}
-
-.magnitude, .angle {
-  margin: 0.5rem 0;
-  font-size: 0.9em;
-  color: #666;
-}
-
+/* Component-specific styles only */
 .applications {
   margin: 1.5rem 0;
-}
-
-.app-examples {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.app-card {
-  padding: 1rem;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.app-card:hover {
-  border-color: #2196F3;
-}
-
-.app-card.active {
-  border-color: #4CAF50;
-  background: #e8f5e8;
-}
-
-.app-card h5 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.app-card p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #666;
-}
-
-.app-details {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.app-result {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  background: white;
-  border-radius: 4px;
-  font-weight: bold;
-  color: #2196F3;
 }
 </style>

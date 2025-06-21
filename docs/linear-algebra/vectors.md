@@ -2,7 +2,7 @@
 
 ## Mathematical Concept
 
-A **vector** is a quantity with both magnitude and direction, represented as an ordered list of numbers. In Python, vectors are typically represented as lists or NumPy arrays.
+A **vector** is a quantity with both magnitude and direction, represented as an ordered list of numbers. In Python, vectors are typically represented as lists or NumPy arrays. So when you hear vector, think of a vertical array of numbers.
 
 Key operations:
 - **Addition**: $\vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, \ldots)$

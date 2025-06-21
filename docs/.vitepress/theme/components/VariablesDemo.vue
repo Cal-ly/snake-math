@@ -1,6 +1,6 @@
 <!-- docs/.vitepress/theme/components/VariablesDemo.vue -->
 <template>
-  <div class="variables-demo">
+  <div class="interactive-component">
     <InteractiveSlider 
       label="Adjust x value" 
       :min="0" 
@@ -28,8 +28,6 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.variables-demo {
-  margin: 2rem 0;
-}
+<style>
+@import '../styles/components.css';
 </style>

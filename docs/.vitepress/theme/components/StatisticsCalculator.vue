@@ -1,32 +1,30 @@
 <template>
-  <div class="statistics-calculator">
-    <div class="controls">
-      <h3>Interactive Statistics Calculator</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Statistics Calculator</h3>
       
-      <div class="data-input">
-        <h4>Enter Data:</h4>
-        <div class="input-methods">
-          <div class="input-group">
-            <label>Manual Input:</label>
-            <input 
-              type="text" 
-              v-model="dataInput" 
-              @input="parseData" 
-              placeholder="Enter numbers separated by commas (e.g., 1,2,3,4,5)"
-              class="data-input-field"
-            >
-          </div>
-          <div class="preset-buttons">
-            <button @click="loadPreset('grades')" class="preset-btn">Test Scores</button>
-            <button @click="loadPreset('heights')" class="preset-btn">Heights (cm)</button>
-            <button @click="loadPreset('salaries')" class="preset-btn">Salaries ($k)</button>
-            <button @click="generateRandom" class="preset-btn">Random Data</button>
-          </div>
+      <div class="interactive-card">
+        <h4 class="input-group-title">Enter Data:</h4>
+        <div class="input-group">
+          <label>Manual Input:</label>
+          <input 
+            type="text" 
+            v-model="dataInput" 
+            @input="parseData" 
+            placeholder="Enter numbers separated by commas (e.g., 1,2,3,4,5)"
+            class="data-input-field"
+          >
+        </div>
+        <div class="controls-grid">
+          <button @click="loadPreset('grades')" class="preset-btn">Test Scores</button>
+          <button @click="loadPreset('heights')" class="preset-btn">Heights (cm)</button>
+          <button @click="loadPreset('salaries')" class="preset-btn">Salaries ($k)</button>
+          <button @click="generateRandom" class="preset-btn">Random Data</button>
         </div>
       </div>
       
-      <div v-if="dataset.length > 0" class="dataset-display">
-        <h4>Current Dataset ({{ dataset.length }} values):</h4>
+      <div v-if="dataset.length > 0" class="interactive-card">
+        <h4 class="input-group-title">Current Dataset ({{ dataset.length }} values):</h4>
         <div class="data-values">{{ dataset.slice(0, 20).join(', ') }}{{ dataset.length > 20 ? '...' : '' }}</div>
       </div>
     </div>

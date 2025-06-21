@@ -2,7 +2,7 @@
 
 ## Mathematical Concept
 
-**Trigonometric functions** relate angles to the ratios of sides in a right triangle and points on the **unit circle**. The unit circle has radius 1 centered at the origin.
+**Trigonometric functions** relate angles to the ratios of sides in a right triangle and points on the **unit circle**. The unit circle has radius 1 centered at the origin. The unit circle often is used in the mathematical proofs, that demonstrates a certain theorems or statements truth. However, it is also a good way to visualize the relation between e.g. angles. Trigonometric functions are often used in vector calculus.  
 
 Key relationships:
 - $\sin(\theta) = \frac{\text{opposite}}{\text{hypotenuse}} = y\text{-coordinate on unit circle}$

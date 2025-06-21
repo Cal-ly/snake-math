@@ -1,11 +1,11 @@
 <template>
-  <div class="limits-explorer">
-    <div class="controls">
-      <h3>Interactive Limits Explorer</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Limits Explorer</h3>
       
-      <div class="function-selector">
-        <label>Function Type:</label>
-        <select v-model="functionType" @change="updateVisualization">
+      <div class="input-group">
+        <label class="input-group-title">Function Type:</label>
+        <select v-model="functionType" @change="updateVisualization" class="function-select">
           <option value="polynomial">Polynomial: f(x) = x² + 1</option>
           <option value="rational">Rational: f(x) = (x² - 4)/(x - 2)</option>
           <option value="trigonometric">Trigonometric: f(x) = sin(x)/x</option>
@@ -14,7 +14,7 @@
         </select>
       </div>
       
-      <div class="limit-controls">
+      <div class="interactive-card">
         <div class="input-group">
           <label>Approach point (a):</label>
           <input type="number" v-model="approachPoint" @input="updateVisualization" step="0.1">
@@ -22,33 +22,33 @@
         
         <div class="input-group">
           <label>Zoom level:</label>
-          <input type="range" v-model="zoomLevel" min="1" max="10" step="1" @input="updateVisualization">
-          <span>{{ zoomLevel }}</span>
+          <input type="range" v-model="zoomLevel" min="1" max="10" step="1" @input="updateVisualization" class="range-input">
+          <span class="result-value">{{ zoomLevel }}</span>
         </div>
       </div>
       
-      <div class="epsilon-delta">
-        <h4>ε-δ Definition:</h4>
+      <div class="interactive-card">
+        <h4 class="input-group-title">ε-δ Definition:</h4>
         <div class="input-group">
           <label>Epsilon (ε):</label>
-          <input type="range" v-model="epsilon" min="0.1" max="2" step="0.1" @input="updateVisualization">
-          <span>{{ epsilon }}</span>
+          <input type="range" v-model="epsilon" min="0.1" max="2" step="0.1" @input="updateVisualization" class="range-input">
+          <span class="result-value">{{ epsilon }}</span>
         </div>
         
         <div class="input-group">
           <label>Delta (δ):</label>
-          <input type="range" v-model="delta" min="0.1" max="2" step="0.1" @input="updateVisualization">
-          <span>{{ delta }}</span>
+          <input type="range" v-model="delta" min="0.1" max="2" step="0.1" @input="updateVisualization" class="range-input">
+          <span class="result-value">{{ delta }}</span>
         </div>
       </div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="limitsCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="limitsCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="numerical-approach">
-      <h4>Numerical Approach to Limit:</h4>
+    <div class="component-section">
+      <h4 class="input-group-title">Numerical Approach to Limit:</h4>
       <div class="approach-table">
         <div class="table-header">
           <div>x → {{ approachPoint }}</div>
@@ -63,43 +63,43 @@
       </div>
     </div>
     
-    <div class="limit-analysis">
-      <h4>Limit Analysis:</h4>
-      <div class="analysis-grid">
-        <div class="analysis-card">
-          <div class="analysis-label">Left-hand limit</div>
-          <div class="analysis-value">{{ leftLimit }}</div>
+    <div class="component-section">
+      <h4 class="input-group-title">Limit Analysis:</h4>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Left-hand limit</div>
+          <div class="result-value">{{ leftLimit }}</div>
         </div>
         
-        <div class="analysis-card">
-          <div class="analysis-label">Right-hand limit</div>
-          <div class="analysis-value">{{ rightLimit }}</div>
+        <div class="result-card">
+          <div class="result-label">Right-hand limit</div>
+          <div class="result-value">{{ rightLimit }}</div>
         </div>
         
-        <div class="analysis-card">
-          <div class="analysis-label">Two-sided limit</div>
-          <div class="analysis-value">{{ twoSidedLimit }}</div>
+        <div class="result-card">
+          <div class="result-label">Two-sided limit</div>
+          <div class="result-value">{{ twoSidedLimit }}</div>
         </div>
         
-        <div class="analysis-card">
-          <div class="analysis-label">Function value at x = {{ approachPoint }}</div>
-          <div class="analysis-value">{{ functionValue }}</div>
+        <div class="result-card">
+          <div class="result-label">Function value at x = {{ approachPoint }}</div>
+          <div class="result-value">{{ functionValue }}</div>
         </div>
         
-        <div class="analysis-card">
-          <div class="analysis-label">Continuity</div>
-          <div class="analysis-value">{{ continuityStatus }}</div>
+        <div class="result-card">
+          <div class="result-label">Continuity</div>
+          <div class="result-value">{{ continuityStatus }}</div>
         </div>
         
-        <div class="analysis-card">
-          <div class="analysis-label">Type of discontinuity</div>
-          <div class="analysis-value">{{ discontinuityType }}</div>
+        <div class="result-card">
+          <div class="result-label">Type of discontinuity</div>
+          <div class="result-value">{{ discontinuityType }}</div>
         </div>
       </div>
     </div>
     
-    <div class="limit-laws">
-      <h4>Limit Laws Applied:</h4>
+    <div class="component-section">
+      <h4 class="input-group-title">Limit Laws Applied:</h4>
       <div class="laws-explanation">
         <div v-if="functionType === 'polynomial'" class="law">
           <strong>Polynomial Continuity:</strong> For polynomial functions, lim[x→a] f(x) = f(a)
@@ -401,159 +401,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.limits-explorer {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.function-selector {
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.function-selector select {
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  flex: 1;
-  max-width: 300px;
-}
-
-.limit-controls, .epsilon-delta {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 4px;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-}
-
-.input-group label {
-  min-width: 120px;
-}
-
-.input-group input[type="range"] {
-  width: 150px;
-}
-
-.input-group span {
-  font-weight: bold;
-  color: #2196F3;
-  min-width: 40px;
-}
-
-.input-group input[type="number"] {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.numerical-approach {
-  margin: 1.5rem 0;
-}
-
-.approach-table {
-  margin: 1rem 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.table-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  background: #f0f0f0;
-  font-weight: bold;
-  padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0.5rem;
-  border-bottom: 1px solid #eee;
-  font-family: monospace;
-}
-
-.table-row:nth-child(even) {
-  background: #f9f9f9;
-}
-
-.limit-analysis {
-  margin: 1.5rem 0;
-}
-
-.analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.analysis-card {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  text-align: center;
-}
-
-.analysis-label {
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.analysis-value {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #2196F3;
-}
-
-.limit-laws {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.laws-explanation {
-  margin: 1rem 0;
-}
-
-.law {
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  background: white;
-  border-radius: 4px;
-  border-left: 4px solid #4CAF50;
-}
+@import '../styles/components.css';
 </style>

@@ -1,56 +1,59 @@
 <template>
-  <div class="exponential-calculator">
-    <div class="controls">
-      <h3>Exponential & Logarithmic Functions</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Exponential & Logarithmic Functions</h3>
       
-      <div class="function-type">
+      <div class="input-group">
         <label>Function Type:</label>
-        <select v-model="functionType" @change="updatePlot">
+        <select v-model="functionType" @change="updatePlot" class="function-select">
           <option value="exponential">Exponential: f(x) = a·e^(bx)</option>
           <option value="logarithmic">Logarithmic: f(x) = a·ln(bx)</option>
           <option value="compound">Compound Interest</option>
         </select>
       </div>
       
-      <div v-if="functionType === 'exponential'" class="parameters">
-        <div class="slider-group">
+      <div v-if="functionType === 'exponential'" class="input-group">
+        <h4 class="input-group-title">Exponential Parameters</h4>
+        <div class="component-inputs">
           <label>Amplitude (a):</label>
-          <input type="range" v-model="expA" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span class="value">{{ expA }}</span>
+          <input type="range" v-model="expA" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ expA }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Growth rate (b):</label>
-          <input type="range" v-model="expB" min="-2" max="2" step="0.1" @input="updatePlot">
-          <span class="value">{{ expB }}</span>
-          <span class="description">{{ expB > 0 ? '(growth)' : '(decay)' }}</span>
+          <input type="range" v-model="expB" min="-2" max="2" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ expB }}</span>
+          <span class="result-label">{{ expB > 0 ? '(growth)' : '(decay)' }}</span>
         </div>
       </div>
       
-      <div v-if="functionType === 'logarithmic'" class="parameters">
-        <div class="slider-group">
+      <div v-if="functionType === 'logarithmic'" class="input-group">
+        <h4 class="input-group-title">Logarithmic Parameters</h4>
+        <div class="component-inputs">
           <label>Amplitude (a):</label>
-          <input type="range" v-model="logA" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span class="value">{{ logA }}</span>
+          <input type="range" v-model="logA" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ logA }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Scale (b):</label>
-          <input type="range" v-model="logB" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span class="value">{{ logB }}</span>
+          <input type="range" v-model="logB" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ logB }}</span>
         </div>
       </div>
       
-      <div v-if="functionType === 'compound'" class="compound-inputs">
-        <div class="input-group">
+      <div v-if="functionType === 'compound'" class="input-group">
+        <h4 class="input-group-title">Compound Interest Parameters</h4>
+        <div class="component-inputs">
           <label>Principal (P):</label>
           <input type="number" v-model="principal" min="1" step="100" @input="updateCompound">
           <span>$</span>
         </div>
-        <div class="input-group">
+        <div class="component-inputs">
           <label>Interest Rate (r):</label>
           <input type="number" v-model="interestRate" min="0" max="0.2" step="0.001" @input="updateCompound">
           <span>{{ (interestRate * 100).toFixed(1) }}%</span>
         </div>
-        <div class="input-group">
+        <div class="component-inputs">
           <label>Compounds per year (n):</label>
           <select v-model="compoundFreq" @change="updateCompound">
             <option value="1">Annually</option>
@@ -60,24 +63,24 @@
             <option value="365">Daily</option>
           </select>
         </div>
-        <div class="input-group">
+        <div class="component-inputs">
           <label>Time (years):</label>
-          <input type="range" v-model="timeYears" min="1" max="30" step="1" @input="updateCompound">
-          <span class="value">{{ timeYears }} years</span>
+          <input type="range" v-model="timeYears" min="1" max="30" step="1" @input="updateCompound" class="range-input">
+          <span class="result-value">{{ timeYears }} years</span>
         </div>
       </div>
     </div>
     
     <div class="equation-display">
-      <div class="current-equation">{{ currentEquation }}</div>
+      <div class="result-highlight">{{ currentEquation }}</div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="plotCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="plotCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div v-if="functionType === 'compound'" class="compound-results">
-      <h4>Compound Interest Results</h4>
+    <div v-if="functionType === 'compound'" class="component-section">
+      <h4 class="input-group-title">Compound Interest Results</h4>
       <div class="results-grid">
         <div class="result-card">
           <div class="result-label">Final Amount</div>
@@ -98,16 +101,16 @@
       </div>
     </div>
     
-    <div class="calculator-section">
-      <h4>Function Calculator</h4>
-      <div class="calc-input">
+    <div class="component-section">
+      <h4 class="input-group-title">Function Calculator</h4>
+      <div class="component-inputs">
         <label>Evaluate at x =</label>
         <input type="number" v-model="evalX" @input="evaluateFunction" step="0.1" class="eval-input">
-        <span class="calc-result">f({{ evalX }}) = {{ evalResult }}</span>
+        <span class="result-value">f({{ evalX }}) = {{ evalResult }}</span>
       </div>
       
-      <div v-if="functionType === 'exponential'" class="exponential-properties">
-        <h4>Properties</h4>
+      <div v-if="functionType === 'exponential'" class="function-properties">
+        <h4 class="input-group-title">Properties</h4>
         <ul>
           <li>Domain: (-∞, ∞)</li>
           <li>Range: {{ expB > 0 ? '(0, ∞)' : '(0, ∞)' }}</li>
@@ -117,8 +120,8 @@
         </ul>
       </div>
       
-      <div v-if="functionType === 'logarithmic'" class="logarithmic-properties">
-        <h4>Properties</h4>
+      <div v-if="functionType === 'logarithmic'" class="function-properties">
+        <h4 class="input-group-title">Properties</h4>
         <ul>
           <li>Domain: (0, ∞)</li>
           <li>Range: (-∞, ∞)</li>
@@ -130,25 +133,25 @@
     </div>
     
     <div class="applications">
-      <h4>Real-World Applications</h4>
-      <div class="app-grid">
-        <div class="app-card" @click="loadApplication('population')" :class="{ active: currentApp === 'population' }">
-          <h5>Population Growth</h5>
-          <p>Exponential model: P(t) = P₀·e^(rt)</p>
+      <h4 class="input-group-title">Real-World Applications</h4>
+      <div class="controls-grid">
+        <div class="interactive-card" @click="loadApplication('population')" :class="{ active: currentApp === 'population' }">
+          <h5 class="app-title">Population Growth</h5>
+          <p class="app-description">Exponential model: P(t) = P₀·e^(rt)</p>
         </div>
-        <div class="app-card" @click="loadApplication('radioactive')" :class="{ active: currentApp === 'radioactive' }">
-          <h5>Radioactive Decay</h5>
-          <p>Decay model: N(t) = N₀·e^(-λt)</p>
+        <div class="interactive-card" @click="loadApplication('radioactive')" :class="{ active: currentApp === 'radioactive' }">
+          <h5 class="app-title">Radioactive Decay</h5>
+          <p class="app-description">Decay model: N(t) = N₀·e^(-λt)</p>
         </div>
-        <div class="app-card" @click="loadApplication('investment')" :class="{ active: currentApp === 'investment' }">
-          <h5>Investment Growth</h5>
-          <p>Compound interest: A = P(1 + r/n)^(nt)</p>
+        <div class="interactive-card" @click="loadApplication('investment')" :class="{ active: currentApp === 'investment' }">
+          <h5 class="app-title">Investment Growth</h5>
+          <p class="app-description">Compound interest: A = P(1 + r/n)^(nt)</p>
         </div>
       </div>
       
-      <div v-if="currentApp" class="app-details">
-        <h5>{{ applicationDetails.title }}</h5>
-        <p>{{ applicationDetails.description }}</p>
+      <div v-if="currentApp" class="app-details fade-in">
+        <h5 class="app-title">{{ applicationDetails.title }}</h5>
+        <p class="app-description">{{ applicationDetails.description }}</p>
         <div class="app-parameters">
           <div v-for="param in applicationDetails.parameters" :key="param.name" class="app-param">
             <strong>{{ param.name }}:</strong> {{ param.value }}
@@ -444,211 +447,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.exponential-calculator {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
+@import '../styles/components.css';
 
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.function-type {
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.function-type select {
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.parameters, .compound-inputs {
+/* Component-specific styles only */
+.applications {
   margin: 1.5rem 0;
-}
-
-.slider-group, .input-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.slider-group label, .input-group label {
-  font-weight: 500;
-  min-width: 120px;
-}
-
-.slider-group input[type="range"] {
-  width: 200px;
-}
-
-.value {
-  font-weight: bold;
-  color: #2196F3;
-  min-width: 40px;
-}
-
-.description {
-  font-style: italic;
-  color: #666;
-}
-
-.input-group input {
-  width: 100px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .equation-display {
   margin: 1.5rem 0;
   text-align: center;
   padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.current-equation {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #2196F3;
-  font-family: 'Times New Roman', serif;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.compound-results {
-  margin: 1.5rem 0;
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.result-card {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  text-align: center;
-}
-
-.result-label {
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.result-value {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #4CAF50;
-}
-
-.calculator-section {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-}
-
-.calc-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.eval-input {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.calc-result {
-  font-weight: bold;
-  color: #FF5722;
-}
-
-.exponential-properties ul, .logarithmic-properties ul {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
-}
-
-.applications {
-  margin: 1.5rem 0;
-}
-
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.app-card {
-  padding: 1rem;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.app-card:hover {
-  border-color: #2196F3;
   background: #f8f9fa;
-}
-
-.app-card.active {
-  border-color: #4CAF50;
-  background: #e8f5e8;
-}
-
-.app-card h5 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.app-card p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #666;
-}
-
-.app-details {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
   border-radius: 4px;
-}
-
-.app-parameters {
-  margin: 1rem 0;
-}
-
-.app-param {
-  margin: 0.5rem 0;
-  font-size: 0.9em;
+  border: 1px solid #e9ecef;
 }
 </style>

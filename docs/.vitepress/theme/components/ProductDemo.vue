@@ -1,8 +1,8 @@
 <!-- filepath: /home/cally/Code/GitHub/snake-math/docs/.vitepress/theme/components/ProductDemo.vue -->
 <template>
-  <div class="product-demo">
-    <div class="controls">
-      <div class="control-group">
+  <div class="interactive-component">
+    <div class="component-section">
+      <div class="input-group">
         <label for="n-input">Calculate product up to n:</label>
         <input 
           id="n-input"
@@ -10,14 +10,14 @@
           type="range" 
           min="1" 
           max="10" 
-          class="slider"
+          class="range-input"
         />
-        <span class="value">{{ n }}</span>
+        <span class="result-value">{{ n }}</span>
       </div>
       
-      <div class="control-group">
+      <div class="input-group">
         <label for="product-type">Product type:</label>
-        <select id="product-type" v-model="productType" class="select">
+        <select id="product-type" v-model="productType" class="function-select">
           <option value="factorial">Factorial (1 × 2 × 3 × ... × n)</option>
           <option value="double">Double factorial (n × (n-2) × (n-4) × ...)</option>
           <option value="evens">Even numbers (2 × 4 × 6 × ... × 2n)</option>
@@ -26,14 +26,14 @@
       </div>
     </div>
 
-    <div class="results">
-      <div class="calculation">
-        <h4>Calculation:</h4>
-        <div class="math-expression">{{ mathExpression }}</div>
+    <div class="results-grid">
+      <div class="result-card">
+        <h4 class="input-group-title">Calculation:</h4>
+        <div class="result-highlight">{{ mathExpression }}</div>
       </div>
       
-      <div class="result">
-        <h4>Result:</h4>
+      <div class="result-card">
+        <h4 class="input-group-title">Result:</h4>
         <div class="result-value" :class="{ 'large-number': result > 1000000 }">
           {{ formattedResult }}
         </div>
@@ -43,8 +43,8 @@
       </div>
     </div>
 
-    <div class="visualization">
-      <h4>Growth Comparison:</h4>
+    <div class="component-section">
+      <h4 class="input-group-title">Growth Comparison:</h4>
       <div class="growth-chart">
         <div class="chart-labels">
           <span>Sum (Σ)</span>
@@ -64,8 +64,8 @@
       </p>
     </div>
 
-    <div class="code-example">
-      <h4>Python Code:</h4>
+    <div class="interactive-card">
+      <h4 class="input-group-title">Python Code:</h4>
       <pre><code>{{ pythonCode }}</code></pre>
     </div>
   </div>
@@ -257,200 +257,20 @@ print(f"Product of first {n} odds = {result}")  # ${this.result}`
 </script>
 
 <style scoped>
-.product-demo {
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-  background: var(--vp-c-bg-soft);
-}
+@import '../styles/components.css';
 
-.controls {
-  display: grid;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.control-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.control-group label {
-  font-weight: 500;
-  min-width: 180px;
-}
-
-.slider {
-  flex: 1;
-  min-width: 150px;
-}
-
-.select {
-  flex: 1;
-  padding: 5px;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 4px;
-  background: var(--vp-c-bg);
-  min-width: 200px;
-}
-
-.value {
-  font-weight: bold;
-  color: var(--vp-c-brand);
-  min-width: 30px;
-}
-
-.results {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.calculation h4,
-.result h4 {
-  margin: 0 0 10px 0;
-  color: var(--vp-c-text-1);
-}
-
-.math-expression {
-  font-family: 'Courier New', monospace;
-  font-size: 16px;
-  padding: 10px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 4px;
-  word-break: break-all;
-}
-
-.result-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--vp-c-brand);
-  padding: 10px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 4px;
-  text-align: center;
-}
-
-.result-value.large-number {
-  color: var(--vp-c-warning);
-  animation: pulse 2s infinite;
-}
-
-.result-info {
-  margin-top: 5px;
-  text-align: center;
-}
-
-.visualization {
-  margin-bottom: 20px;
-}
-
-.visualization h4 {
-  margin: 0 0 15px 0;
-}
-
-.growth-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-}
-
-.chart-labels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.bars {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  height: 100px;
-  align-items: end;
-}
-
-.bar {
-  position: relative;
-  border-radius: 4px 4px 0 0;
-  transition: height 0.3s ease;
-  min-height: 10px;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-}
-
-.sum-bar {
-  background: linear-gradient(to top, #3b82f6, #60a5fa);
-}
-
-.product-bar {
-  background: linear-gradient(to top, #ef4444, #f87171);
-}
-
-.bar-value {
-  position: absolute;
-  top: -25px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.growth-note {
-  margin-top: 10px;
-  font-style: italic;
-  text-align: center;
-}
-
-.code-example {
-  border-top: 1px solid var(--vp-c-border);
-  padding-top: 20px;
-}
-
-.code-example h4 {
-  margin: 0 0 10px 0;
-}
-
-.code-example pre {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
+/* Code block styling for ProductDemo */
+pre {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px;
   overflow-x: auto;
   margin: 0;
 }
 
-.code-example code {
+code {
   font-family: 'Courier New', monospace;
   font-size: 14px;
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  .results {
-    grid-template-columns: 1fr;
-  }
-  
-  .control-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .control-group label {
-    min-width: auto;
-  }
 }
 </style>

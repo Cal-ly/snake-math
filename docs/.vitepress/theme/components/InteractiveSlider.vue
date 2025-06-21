@@ -1,7 +1,7 @@
 <!-- docs/.vitepress/theme/components/InteractiveSlider.vue -->
 <template>
-  <div class="interactive-slider">
-    <div class="slider-controls">
+  <div class="interactive-component">
+    <div class="component-inputs">
       <label>{{ label }}:</label>
       <input 
         type="range" 
@@ -10,12 +10,12 @@
         :step="step"
         v-model="currentValue"
         @input="handleInput"
-        class="slider"
+        class="range-input"
       />
-      <span class="value-display">{{ label.split(' ')[0] }} = {{ currentValue }}</span>
+      <span class="result-value">{{ label.split(' ')[0] }} = {{ currentValue }}</span>
     </div>
     
-    <div v-if="showCalculation" class="calculation-display" ref="calculationOutput">
+    <div v-if="showCalculation" class="result-highlight" ref="calculationOutput">
       {{ calculationText }}
     </div>
   </div>
@@ -76,54 +76,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.interactive-slider {
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #f9f9f9;
-}
+@import '../styles/components.css';
 
-.slider-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.slider-controls label {
-  font-weight: 500;
-  min-width: 120px;
-}
-
-.slider {
-  flex: 1;
-  min-width: 150px;
-  max-width: 300px;
-}
-
-.value-display {
-  font-weight: bold;
-  color: #007bff;
-  min-width: 80px;
-}
-
-.calculation-display {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  background: #e8f4f8;
-  border-radius: 4px;
-  font-family: monospace;
-  color: #0066cc;
-}
-
+/* Component-specific styles only */
 @media (max-width: 768px) {
-  .slider-controls {
+  .component-inputs {
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .slider {
+  .range-input {
     width: 100%;
     max-width: none;
   }

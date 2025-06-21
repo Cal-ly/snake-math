@@ -2,7 +2,7 @@
 
 ## Mathematical Concept
 
-A **matrix** is a rectangular array of numbers organized in rows and columns. Matrices represent linear transformations and systems of equations.
+A **matrix** is a rectangular array of numbers organized in rows and columns. Matrices represent linear transformations and systems of equations. In programmer terms, it is bascially an array of arrays. That means every position of the parent array has an array in it. However, there are some mathematical operation related to matrices. 
 
 Key operations:
 - **Addition**: $(A + B)_{ij} = A_{ij} + B_{ij}$

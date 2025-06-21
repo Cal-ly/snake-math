@@ -1,10 +1,10 @@
 <template>
-  <div class="function-plotter">
-    <div class="controls">
-      <h3>Interactive Function Plotter</h3>
+   <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Function Plotter</h3>
       <div class="input-group">
         <label>Function Type:</label>
-        <select v-model="functionType" @change="updatePlot">
+        <select v-model="functionType" @change="updatePlot" class="function-select">
           <option value="linear">Linear: f(x) = mx + b</option>
           <option value="quadratic">Quadratic: f(x) = ax² + bx + c</option>
           <option value="exponential">Exponential: f(x) = a·e^(bx)</option>
@@ -12,84 +12,90 @@
         </select>
       </div>
       
-      <div v-if="functionType === 'linear'" class="parameter-group">
-        <div class="slider-group">
+      <div v-if="functionType === 'linear'" class="input-group">
+        <h4 class="input-group-title">Linear Parameters</h4>
+        <div class="component-inputs">
           <label>Slope (m):</label>
-          <input type="range" v-model="slope" min="-5" max="5" step="0.1" @input="updatePlot">
-          <span>{{ slope }}</span>
+          <input type="range" v-model="slope" min="-5" max="5" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ slope }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Y-intercept (b):</label>
-          <input type="range" v-model="yIntercept" min="-10" max="10" step="0.1" @input="updatePlot">
-          <span>{{ yIntercept }}</span>
+          <input type="range" v-model="yIntercept" min="-10" max="10" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ yIntercept }}</span>
         </div>
       </div>
       
-      <div v-if="functionType === 'quadratic'" class="parameter-group">
-        <div class="slider-group">
+      <div v-if="functionType === 'quadratic'" class="input-group">
+        <h4 class="input-group-title">Quadratic Parameters</h4>
+        <div class="component-inputs">
           <label>a coefficient:</label>
-          <input type="range" v-model="quadA" min="-3" max="3" step="0.1" @input="updatePlot">
-          <span>{{ quadA }}</span>
+          <input type="range" v-model="quadA" min="-3" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ quadA }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>b coefficient:</label>
-          <input type="range" v-model="quadB" min="-5" max="5" step="0.1" @input="updatePlot">
-          <span>{{ quadB }}</span>
+          <input type="range" v-model="quadB" min="-5" max="5" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ quadB }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>c coefficient:</label>
-          <input type="range" v-model="quadC" min="-10" max="10" step="0.1" @input="updatePlot">
-          <span>{{ quadC }}</span>
+          <input type="range" v-model="quadC" min="-10" max="10" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ quadC }}</span>
         </div>
       </div>
       
-      <div v-if="functionType === 'exponential'" class="parameter-group">
-        <div class="slider-group">
+      <div v-if="functionType === 'exponential'" class="input-group">
+        <h4 class="input-group-title">Exponential Parameters</h4>
+        <div class="component-inputs">
           <label>Amplitude (a):</label>
-          <input type="range" v-model="expA" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span>{{ expA }}</span>
+          <input type="range" v-model="expA" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ expA }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Growth rate (b):</label>
-          <input type="range" v-model="expB" min="-2" max="2" step="0.1" @input="updatePlot">
-          <span>{{ expB }}</span>
+          <input type="range" v-model="expB" min="-2" max="2" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ expB }}</span>
         </div>
       </div>
       
-      <div v-if="functionType === 'trigonometric'" class="parameter-group">
-        <div class="slider-group">
+      <div v-if="functionType === 'trigonometric'" class="input-group">
+        <h4 class="input-group-title">Trigonometric Parameters</h4>
+        <div class="component-inputs">
           <label>Amplitude (a):</label>
-          <input type="range" v-model="trigA" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span>{{ trigA }}</span>
+          <input type="range" v-model="trigA" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ trigA }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Frequency (b):</label>
-          <input type="range" v-model="trigB" min="0.1" max="3" step="0.1" @input="updatePlot">
-          <span>{{ trigB }}</span>
+          <input type="range" v-model="trigB" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ trigB }}</span>
         </div>
-        <div class="slider-group">
+        <div class="component-inputs">
           <label>Phase shift (c):</label>
-          <input type="range" v-model="trigC" min="-3.14" max="3.14" step="0.1" @input="updatePlot">
-          <span>{{ trigC }}</span>
+          <input type="range" v-model="trigC" min="-3.14" max="3.14" step="0.1" @input="updatePlot" class="range-input">
+          <span class="result-value">{{ trigC }}</span>
         </div>
       </div>
       
-      <div class="point-input">
-        <label>Evaluate at x:</label>
-        <input type="number" v-model="evalX" step="0.1" @input="evaluateFunction" class="number-input">
-        <span class="result">f({{ evalX }}) = {{ evaluatedY }}</span>
+      <div class="point-evaluation">
+        <div class="component-inputs">
+          <label>Evaluate at x:</label>
+          <input type="number" v-model="evalX" step="0.1" @input="evaluateFunction" class="eval-input">
+          <span class="result-value">f({{ evalX }}) = {{ evaluatedY }}</span>
+        </div>
       </div>
     </div>
     
-    <div class="plot-container">
-      <canvas ref="plotCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="plotCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="function-info">
-      <h4>Current Function:</h4>
-      <div class="equation">{{ currentEquation }}</div>
-      <div class="properties">
-        <strong>Properties:</strong>
+    <div class="component-section">
+      <h4 class="input-group-title">Current Function:</h4>
+      <div class="result-highlight">{{ currentEquation }}</div>
+      <div class="function-properties">
+        <h4 class="input-group-title">Properties</h4>
         <ul>
           <li v-for="prop in currentProperties" :key="prop">{{ prop }}</li>
         </ul>
@@ -301,109 +307,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.function-plotter {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
+@import '../styles/components.css';
 
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.input-group, .slider-group {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.input-group label, .slider-group label {
-  font-weight: 500;
-  min-width: 120px;
-}
-
-.parameter-group {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.slider-group input[type="range"] {
-  width: 200px;
-}
-
-.slider-group span {
-  min-width: 40px;
-  font-weight: bold;
-  color: #2196F3;
-}
-
-.point-input {
+/* Component-specific styles only */
+.point-evaluation {
   margin-top: 1rem;
   padding: 1rem;
   background: #e8f4fd;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.number-input {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.result {
-  font-weight: bold;
-  color: #FF5722;
-}
-
-.plot-container {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.plot-container canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.function-info {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-}
-
-.equation {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #2196F3;
-  margin: 0.5rem 0;
-  font-family: 'Times New Roman', serif;
-}
-
-.properties ul {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
-}
-
-.properties li {
-  margin: 0.25rem 0;
-}
-
-select {
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: white;
+  border: 1px solid #bee5eb;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <div class="matrix-transformations">
-    <div class="controls">
-      <h3>Interactive Matrix Transformations</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Matrix Transformations</h3>
       
-      <div class="transformation-selector">
-        <label>Transformation Type:</label>
-        <select v-model="transformationType" @change="updateMatrix">
+      <div class="input-group">
+        <label class="input-group-title">Transformation Type:</label>
+        <select v-model="transformationType" @change="updateMatrix" class="function-select">
           <option value="identity">Identity</option>
           <option value="scale">Scale</option>
           <option value="rotation">Rotation</option>
@@ -15,42 +15,42 @@
         </select>
       </div>
       
-      <div v-if="transformationType === 'scale'" class="parameters">
+      <div v-if="transformationType === 'scale'" class="interactive-card">
         <div class="input-group">
           <label>Scale X:</label>
-          <input type="range" v-model="scaleX" min="0.1" max="3" step="0.1" @input="updateMatrix">
-          <span>{{ scaleX }}</span>
+          <input type="range" v-model="scaleX" min="0.1" max="3" step="0.1" @input="updateMatrix" class="range-input">
+          <span class="result-value">{{ scaleX }}</span>
         </div>
         <div class="input-group">
           <label>Scale Y:</label>
-          <input type="range" v-model="scaleY" min="0.1" max="3" step="0.1" @input="updateMatrix">
-          <span>{{ scaleY }}</span>
+          <input type="range" v-model="scaleY" min="0.1" max="3" step="0.1" @input="updateMatrix" class="range-input">
+          <span class="result-value">{{ scaleY }}</span>
         </div>
       </div>
       
-      <div v-if="transformationType === 'rotation'" class="parameters">
+      <div v-if="transformationType === 'rotation'" class="interactive-card">
         <div class="input-group">
           <label>Angle (degrees):</label>
-          <input type="range" v-model="rotationAngle" min="0" max="360" step="1" @input="updateMatrix">
-          <span>{{ rotationAngle }}°</span>
+          <input type="range" v-model="rotationAngle" min="0" max="360" step="1" @input="updateMatrix" class="range-input">
+          <span class="result-value">{{ rotationAngle }}°</span>
         </div>
       </div>
       
-      <div v-if="transformationType === 'shear'" class="parameters">
+      <div v-if="transformationType === 'shear'" class="interactive-card">
         <div class="input-group">
           <label>Shear X:</label>
-          <input type="range" v-model="shearX" min="-2" max="2" step="0.1" @input="updateMatrix">
-          <span>{{ shearX }}</span>
+          <input type="range" v-model="shearX" min="-2" max="2" step="0.1" @input="updateMatrix" class="range-input">
+          <span class="result-value">{{ shearX }}</span>
         </div>
         <div class="input-group">
           <label>Shear Y:</label>
-          <input type="range" v-model="shearY" min="-2" max="2" step="0.1" @input="updateMatrix">
-          <span>{{ shearY }}</span>
+          <input type="range" v-model="shearY" min="-2" max="2" step="0.1" @input="updateMatrix" class="range-input">
+          <span class="result-value">{{ shearY }}</span>
         </div>
       </div>
       
-      <div v-if="transformationType === 'custom'" class="matrix-input">
-        <h4>Custom 2×2 Matrix:</h4>
+      <div v-if="transformationType === 'custom'" class="interactive-card">
+        <h4 class="input-group-title">Custom 2×2 Matrix:</h4>
         <div class="matrix-grid">
           <input type="number" v-model="customMatrix.a" @input="updateTransformation" step="0.1">
           <input type="number" v-model="customMatrix.b" @input="updateTransformation" step="0.1">
@@ -60,34 +60,36 @@
       </div>
     </div>
     
-    <div class="matrix-display">
-      <h4>Transformation Matrix:</h4>
-      <div class="matrix">
-        <div class="matrix-bracket">[</div>
-        <div class="matrix-content">
-          <div class="matrix-row">{{ matrix.a }} {{ matrix.b }}</div>
-          <div class="matrix-row">{{ matrix.c }} {{ matrix.d }}</div>
+    <div class="component-section">
+      <h4 class="input-group-title">Transformation Matrix:</h4>
+      <div class="matrix-display">
+        <div class="matrix">
+          <div class="matrix-bracket">[</div>
+          <div class="matrix-content">
+            <div class="matrix-row">{{ matrix.a }} {{ matrix.b }}</div>
+            <div class="matrix-row">{{ matrix.c }} {{ matrix.d }}</div>
+          </div>
+          <div class="matrix-bracket">]</div>
         </div>
-        <div class="matrix-bracket">]</div>
-      </div>
-      
-      <div class="matrix-properties">
-        <div class="property">
-          <strong>Determinant:</strong> {{ determinant }}
-        </div>
-        <div class="property">
-          <strong>Effect:</strong> {{ matrixEffect }}
+        
+        <div class="matrix-properties">
+          <div class="property">
+            <strong>Determinant:</strong> {{ determinant }}
+          </div>
+          <div class="property">
+            <strong>Effect:</strong> {{ matrixEffect }}
+          </div>
         </div>
       </div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="transformCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="transformCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="transformation-info">
-      <h4>How it works:</h4>
-      <div class="explanation">
+    <div class="component-section">
+      <h4 class="input-group-title">How it works:</h4>
+      <div class="result-highlight">
         Matrix multiplication transforms each point (x, y) to (x', y') where:<br>
         x' = {{ matrix.a }}x + {{ matrix.b }}y<br>
         y' = {{ matrix.c }}x + {{ matrix.d }}y
@@ -295,136 +297,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.matrix-transformations {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.transformation-selector {
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.transformation-selector select {
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.parameters {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 4px;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-}
-
-.input-group label {
-  min-width: 100px;
-}
-
-.input-group input[type="range"] {
-  width: 150px;
-}
-
-.matrix-input {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 4px;
-}
-
-.matrix-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  width: 150px;
-  margin: 1rem 0;
-}
-
-.matrix-grid input {
-  width: 60px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.matrix-display {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.matrix {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  font-family: 'Times New Roman', serif;
-  font-size: 1.2em;
-}
-
-.matrix-bracket {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.matrix-content {
-  text-align: center;
-}
-
-.matrix-row {
-  margin: 0.25rem 0;
-}
-
-.matrix-properties {
-  margin: 1rem 0;
-}
-
-.property {
-  margin: 0.5rem 0;
-  font-size: 0.9em;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.transformation-info {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.explanation {
-  font-family: 'Times New Roman', serif;
-  font-size: 1.1em;
-  color: #333;
-  line-height: 1.5;
-}
+@import '../styles/components.css';
 </style>

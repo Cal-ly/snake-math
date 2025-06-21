@@ -1,16 +1,16 @@
 <template>
-  <div class="linear-system-solver">
-    <div class="controls">
-      <h3>Linear System Solver</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Linear System Solver</h3>
       <p>Solve systems of linear equations in the form:</p>
-      <div class="system-display">
+      <div class="result-highlight">
         <div class="equation">{{ coefficients.a11 }}x + {{ coefficients.a12 }}y = {{ coefficients.b1 }}</div>
         <div class="equation">{{ coefficients.a21 }}x + {{ coefficients.a22 }}y = {{ coefficients.b2 }}</div>
       </div>
       
-      <div class="input-section">
-        <h4>First Equation: a₁₁x + a₁₂y = b₁</h4>
-        <div class="coefficient-inputs">
+      <div class="interactive-card">
+        <h4 class="input-group-title">First Equation: a₁₁x + a₁₂y = b₁</h4>
+        <div class="component-inputs">
           <div class="input-group">
             <label>a₁₁:</label>
             <input type="number" v-model="coefficients.a11" @input="solveSystem" step="0.1">
@@ -25,8 +25,8 @@
           </div>
         </div>
         
-        <h4>Second Equation: a₂₁x + a₂₂y = b₂</h4>
-        <div class="coefficient-inputs">
+        <h4 class="input-group-title">Second Equation: a₂₁x + a₂₂y = b₂</h4>
+        <div class="component-inputs">
           <div class="input-group">
             <label>a₂₁:</label>
             <input type="number" v-model="coefficients.a21" @input="solveSystem" step="0.1">
@@ -42,8 +42,8 @@
         </div>
       </div>
       
-      <div class="presets">
-        <h4>Example Systems:</h4>
+      <div class="controls-grid">
+        <h4 class="input-group-title">Example Systems:</h4>
         <button @click="loadExample(1)" class="preset-btn">Example 1</button>
         <button @click="loadExample(2)" class="preset-btn">Example 2</button>
         <button @click="loadExample(3)" class="preset-btn">No Solution</button>
@@ -51,12 +51,12 @@
       </div>
     </div>
     
-    <div class="solution-section">
-      <h4>Solution:</h4>
+    <div class="component-section">
+      <h4 class="input-group-title">Solution:</h4>
       <div class="solution-box" :class="solutionType">
         <div v-if="solutionType === 'unique'" class="unique-solution">
-          <div class="result">x = {{ solution.x }}</div>
-          <div class="result">y = {{ solution.y }}</div>
+          <div class="result-value">x = {{ solution.x }}</div>
+          <div class="result-value">y = {{ solution.y }}</div>
           <div class="verification">
             <strong>Verification:</strong><br>
             Equation 1: {{ coefficients.a11 }} × {{ solution.x }} + {{ coefficients.a12 }} × {{ solution.y }} = {{ verification.eq1 }}<br>
@@ -74,8 +74,8 @@
         </div>
       </div>
       
-      <div class="matrix-form">
-        <h4>Matrix Form: Ax = b</h4>
+      <div class="interactive-card">
+        <h4 class="input-group-title">Matrix Form: Ax = b</h4>
         <div class="matrix-display">
           <div class="matrix">
             <div class="matrix-bracket">[</div>
@@ -113,9 +113,9 @@
       </div>
     </div>
     
-    <div class="visualization">
-      <h4>Graphical Representation:</h4>
-      <canvas ref="plotCanvas" width="400" height="400"></canvas>
+    <div class="visualization-container">
+      <h4 class="input-group-title">Graphical Representation:</h4>
+      <canvas ref="plotCanvas" width="400" height="400" class="visualization-canvas"></canvas>
       <div class="plot-legend">
         <div class="legend-item">
           <div class="line-sample blue"></div>
@@ -329,217 +329,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.linear-system-solver {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.system-display {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-  font-family: 'Times New Roman', serif;
-  font-size: 1.1em;
-}
-
-.equation {
-  margin: 0.5rem 0;
-  color: #2196F3;
-  font-weight: bold;
-}
-
-.input-section h4 {
-  margin: 1rem 0 0.5rem 0;
-  color: #555;
-}
-
-.coefficient-inputs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.input-group label {
-  font-weight: bold;
-  min-width: 30px;
-}
-
-.input-group input {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.presets {
-  margin: 1.5rem 0;
-}
-
-.preset-btn {
-  margin-right: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.preset-btn:hover {
-  background: #45a049;
-}
-
-.solution-section {
-  margin: 1.5rem 0;
-}
-
-.solution-box {
-  padding: 1rem;
-  border-radius: 4px;
-  margin: 1rem 0;
-}
-
-.solution-box.unique {
-  background: #e8f5e8;
-  border: 1px solid #4CAF50;
-}
-
-.solution-box.no-solution {
-  background: #fdeaea;
-  border: 1px solid #f44336;
-}
-
-.solution-box.infinite {
-  background: #fff3e0;
-  border: 1px solid #ff9800;
-}
-
-.solution-box.calculating {
-  background: #f5f5f5;
-  border: 1px solid #ccc;
-}
-
-.result {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #2196F3;
-  margin: 0.5rem 0;
-}
-
-.verification {
-  margin-top: 1rem;
-  font-size: 0.9em;
-  color: #666;
-}
-
-.matrix-form {
-  margin: 1.5rem 0;
-}
-
-.matrix-display {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-  font-family: 'Times New Roman', serif;
-  font-size: 1.1em;
-}
-
-.matrix {
-  display: flex;
-  align-items: center;
-}
-
-.matrix-bracket {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.matrix-content {
-  margin: 0 0.5rem;
-}
-
-.matrix-row {
-  text-align: center;
-  padding: 0.25rem 0;
-}
-
-.equals {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-.determinant-info {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.det-meaning {
-  font-style: italic;
-  color: #666;
-  margin-top: 0.5rem;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-  display: block;
-  margin: 1rem auto;
-}
-
-.plot-legend {
-  margin-top: 1rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
-}
-
-.line-sample {
-  width: 30px;
-  height: 3px;
-  border-radius: 2px;
-}
-
-.line-sample.blue {
-  background: #2196F3;
-}
-
-.line-sample.red {
-  background: #F44336;
-}
-
-.point-sample {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #FF9800;
-  border: 2px solid #000;
-}
+@import '../styles/components.css';
 </style>

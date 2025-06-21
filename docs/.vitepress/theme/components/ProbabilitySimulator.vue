@@ -1,11 +1,11 @@
 <template>
-  <div class="probability-simulator">
-    <div class="controls">
-      <h3>Probability Distribution Simulator</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Probability Distribution Simulator</h3>
       
-      <div class="distribution-selector">
-        <label>Distribution Type:</label>
-        <select v-model="distributionType" @change="updateSimulation">
+      <div class="input-group">
+        <label class="input-group-title">Distribution Type:</label>
+        <select v-model="distributionType" @change="updateSimulation" class="function-select">
           <option value="normal">Normal Distribution</option>
           <option value="binomial">Binomial Distribution</option>
           <option value="uniform">Uniform Distribution</option>
@@ -13,70 +13,70 @@
         </select>
       </div>
       
-      <div v-if="distributionType === 'normal'" class="parameters">
+      <div v-if="distributionType === 'normal'" class="interactive-card">
         <div class="input-group">
           <label>Mean (μ):</label>
-          <input type="range" v-model="normalMean" min="-5" max="5" step="0.1" @input="updateSimulation">
-          <span>{{ normalMean }}</span>
+          <input type="range" v-model="normalMean" min="-5" max="5" step="0.1" @input="updateSimulation" class="range-input">
+          <span class="result-value">{{ normalMean }}</span>
         </div>
         <div class="input-group">
           <label>Standard Deviation (σ):</label>
-          <input type="range" v-model="normalStd" min="0.1" max="3" step="0.1" @input="updateSimulation">
-          <span>{{ normalStd }}</span>
+          <input type="range" v-model="normalStd" min="0.1" max="3" step="0.1" @input="updateSimulation" class="range-input">
+          <span class="result-value">{{ normalStd }}</span>
         </div>
       </div>
       
-      <div v-if="distributionType === 'binomial'" class="parameters">
+      <div v-if="distributionType === 'binomial'" class="interactive-card">
         <div class="input-group">
           <label>Number of trials (n):</label>
-          <input type="range" v-model="binomialN" min="1" max="50" step="1" @input="updateSimulation">
-          <span>{{ binomialN }}</span>
+          <input type="range" v-model="binomialN" min="1" max="50" step="1" @input="updateSimulation" class="range-input">
+          <span class="result-value">{{ binomialN }}</span>
         </div>
         <div class="input-group">
           <label>Probability of success (p):</label>
-          <input type="range" v-model="binomialP" min="0" max="1" step="0.01" @input="updateSimulation">
-          <span>{{ binomialP }}</span>
+          <input type="range" v-model="binomialP" min="0" max="1" step="0.01" @input="updateSimulation" class="range-input">
+          <span class="result-value">{{ binomialP }}</span>
         </div>
       </div>
       
-      <div class="simulation-controls">
+      <div class="interactive-card">
         <div class="input-group">
           <label>Sample Size:</label>
-          <input type="range" v-model="sampleSize" min="100" max="10000" step="100" @input="updateSimulation">
-          <span>{{ sampleSize }}</span>
+          <input type="range" v-model="sampleSize" min="100" max="10000" step="100" @input="updateSimulation" class="range-input">
+          <span class="result-value">{{ sampleSize }}</span>
         </div>
         
-        <button @click="runSimulation" class="simulate-btn">Generate New Sample</button>
+        <button @click="runSimulation" class="btn-primary">Generate New Sample</button>
       </div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="histogramCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="histogramCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="statistics">
-      <h4>Sample Statistics:</h4>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-label">Sample Mean</div>
-          <div class="stat-value">{{ sampleStats.mean }}</div>
+    <div class="component-section">
+      <h4 class="input-group-title">Sample Statistics:</h4>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Sample Mean</div>
+          <div class="result-value">{{ sampleStats.mean }}</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-label">Sample Std Dev</div>
-          <div class="stat-value">{{ sampleStats.std }}</div>
+        <div class="result-card">
+          <div class="result-label">Sample Std Dev</div>
+          <div class="result-value">{{ sampleStats.std }}</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-label">Sample Min</div>
-          <div class="stat-value">{{ sampleStats.min }}</div>
+        <div class="result-card">
+          <div class="result-label">Sample Min</div>
+          <div class="result-value">{{ sampleStats.min }}</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-label">Sample Max</div>
-          <div class="stat-value">{{ sampleStats.max }}</div>
+        <div class="result-card">
+          <div class="result-label">Sample Max</div>
+          <div class="result-value">{{ sampleStats.max }}</div>
         </div>
       </div>
       
       <div class="theoretical-comparison">
-        <h4>Theoretical vs Sample:</h4>
+        <h4 class="input-group-title">Theoretical vs Sample:</h4>
         <div class="comparison-grid">
           <div class="comparison-item">
             <div class="comparison-label">Mean</div>
@@ -96,9 +96,9 @@
       </div>
     </div>
     
-    <div class="probability-calculator">
-      <h4>Probability Calculator:</h4>
-      <div class="calc-controls">
+    <div class="component-section">
+      <h4 class="input-group-title">Probability Calculator:</h4>
+      <div class="interactive-card">
         <div class="input-group">
           <label>P(X ≤ value):</label>
           <input type="number" v-model="probValue" @input="calculateProbability" step="0.1">
@@ -336,173 +336,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.probability-simulator {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.distribution-selector {
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.distribution-selector select {
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.parameters {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 4px;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0;
-}
-
-.input-group label {
-  min-width: 150px;
-}
-
-.input-group input[type="range"] {
-  width: 150px;
-}
-
-.input-group span {
-  font-weight: bold;
-  color: #2196F3;
-  min-width: 60px;
-}
-
-.simulation-controls {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.simulate-btn {
-  padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-left: 1rem;
-}
-
-.simulate-btn:hover {
-  background: #45a049;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.statistics {
-  margin: 1.5rem 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.stat-item {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-  text-align: center;
-}
-
-.stat-label {
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.stat-value {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #2196F3;
-}
-
-.theoretical-comparison {
-  margin: 1.5rem 0;
-}
-
-.comparison-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.comparison-item {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-}
-
-.comparison-label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.comparison-values div {
-  margin: 0.25rem 0;
-  font-size: 0.9em;
-}
-
-.probability-calculator {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-}
-
-.calc-controls {
-  margin: 1rem 0;
-}
-
-.calc-controls input[type="number"] {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.prob-result {
-  font-weight: bold;
-  color: #FF5722;
-  margin-left: 1rem;
-}
+@import '../styles/components.css';
 </style>

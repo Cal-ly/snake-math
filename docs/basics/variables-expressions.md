@@ -6,6 +6,8 @@ In mathematics, we use **variables** to represent unknown or changing values, an
 
 For example: $y = 2x + 1$
 
+Variables is bascially the same conpect, we use in programming. For those who use a statically-typed language like _C#_, we know that we have to declare the datatype, as a way to control that strings don't go into a variable meant for a integer. The same could be said for mathematical variables, see more on 
+
 ## Interactive Example
 
 <VariablesDemo />

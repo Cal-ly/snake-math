@@ -1,6 +1,6 @@
 <!-- docs/.vitepress/theme/components/SummationDemo.vue -->
 <template>
-  <div class="summation-demo">
+  <div class="interactive-component">
     <MathDisplay 
       :upper-limit="currentN" 
       :lower-limit="1" 
@@ -44,8 +44,6 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-.summation-demo {
-  margin: 2rem 0;
-}
+<style>
+@import '../styles/components.css';
 </style>

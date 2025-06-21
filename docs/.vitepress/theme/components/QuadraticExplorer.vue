@@ -1,33 +1,33 @@
 <template>
-  <div class="quadratic-explorer">
-    <div class="controls">
-      <h3>Interactive Quadratic Function Explorer</h3>
+  <div class="interactive-component">
+    <div class="component-section">
+      <h3 class="section-title">Interactive Quadratic Function Explorer</h3>
       <p>Explore quadratic functions of the form: <strong>f(x) = ax² + bx + c</strong></p>
       
-      <div class="parameters">
-        <div class="slider-group">
+      <div class="interactive-card">
+        <div class="input-group">
           <label>a coefficient:</label>
-          <input type="range" v-model="a" min="-3" max="3" step="0.1" @input="updateQuadratic">
-          <span class="value">{{ a }}</span>
+          <input type="range" v-model="a" min="-3" max="3" step="0.1" @input="updateQuadratic" class="range-input">
+          <span class="result-value">{{ a }}</span>
           <span class="description">({{ a > 0 ? 'opens upward' : a < 0 ? 'opens downward' : 'degenerate' }})</span>
         </div>
         
-        <div class="slider-group">
+        <div class="input-group">
           <label>b coefficient:</label>
-          <input type="range" v-model="b" min="-5" max="5" step="0.1" @input="updateQuadratic">
-          <span class="value">{{ b }}</span>
+          <input type="range" v-model="b" min="-5" max="5" step="0.1" @input="updateQuadratic" class="range-input">
+          <span class="result-value">{{ b }}</span>
         </div>
         
-        <div class="slider-group">
+        <div class="input-group">
           <label>c coefficient:</label>
-          <input type="range" v-model="c" min="-10" max="10" step="0.1" @input="updateQuadratic">
-          <span class="value">{{ c }}</span>
+          <input type="range" v-model="c" min="-10" max="10" step="0.1" @input="updateQuadratic" class="range-input">
+          <span class="result-value">{{ c }}</span>
           <span class="description">(y-intercept)</span>
         </div>
       </div>
       
-      <div class="presets">
-        <h4>Example Functions:</h4>
+      <div class="controls-grid">
+        <h4 class="input-group-title">Example Functions:</h4>
         <button @click="loadPreset('standard')" class="preset-btn">Standard Parabola</button>
         <button @click="loadPreset('wide')" class="preset-btn">Wide Parabola</button>
         <button @click="loadPreset('narrow')" class="preset-btn">Narrow Parabola</button>
@@ -35,20 +35,20 @@
       </div>
     </div>
     
-    <div class="equation-display">
+    <div class="result-highlight">
       <div class="current-equation">
         f(x) = {{ formatCoefficient(a, 'x²') }}{{ formatCoefficient(b, 'x', true) }}{{ formatConstant(c) }}
       </div>
     </div>
     
-    <div class="visualization">
-      <canvas ref="plotCanvas" width="600" height="400"></canvas>
+    <div class="visualization-container">
+      <canvas ref="plotCanvas" width="600" height="400" class="visualization-canvas"></canvas>
     </div>
     
-    <div class="analysis">
-      <div class="analysis-grid">
-        <div class="analysis-card">
-          <h4>Vertex</h4>
+    <div class="component-section">
+      <div class="results-grid">
+        <div class="result-card">
+          <h4 class="result-label">Vertex</h4>
           <div class="vertex-info">
             <div>x = {{ vertex.x }}</div>
             <div>y = {{ vertex.y }}</div>
@@ -57,32 +57,32 @@
           </div>
         </div>
         
-        <div class="analysis-card">
-          <h4>Axis of Symmetry</h4>
+        <div class="result-card">
+          <h4 class="result-label">Axis of Symmetry</h4>
           <div class="axis-info">
             <div>x = {{ vertex.x }}</div>
             <div class="description">Vertical line through vertex</div>
           </div>
         </div>
         
-        <div class="analysis-card">
-          <h4>Y-Intercept</h4>
+        <div class="result-card">
+          <h4 class="result-label">Y-Intercept</h4>
           <div class="intercept-info">
             <div>(0, {{ c }})</div>
             <div class="description">Point where parabola crosses y-axis</div>
           </div>
         </div>
         
-        <div class="analysis-card">
-          <h4>Discriminant</h4>
+        <div class="result-card">
+          <h4 class="result-label">Discriminant</h4>
           <div class="discriminant-info">
             <div>Δ = b² - 4ac = {{ discriminant }}</div>
             <div class="roots-info">{{ rootsDescription }}</div>
           </div>
         </div>
         
-        <div v-if="hasRealRoots" class="analysis-card">
-          <h4>X-Intercepts (Roots)</h4>
+        <div v-if="hasRealRoots" class="result-card">
+          <h4 class="result-label">X-Intercepts (Roots)</h4>
           <div class="roots-info">
             <div v-if="roots.length === 1">
               x = {{ roots[0] }} (repeated root)
@@ -94,8 +94,8 @@
           </div>
         </div>
         
-        <div class="analysis-card">
-          <h4>Domain & Range</h4>
+        <div class="result-card">
+          <h4 class="result-label">Domain & Range</h4>
           <div class="domain-range">
             <div><strong>Domain:</strong> (-∞, ∞)</div>
             <div><strong>Range:</strong> {{ rangeDescription }}</div>
@@ -104,19 +104,19 @@
       </div>
     </div>
     
-    <div class="function-calculator">
-      <h4>Function Calculator</h4>
-      <div class="calculator-input">
+    <div class="interactive-card">
+      <h4 class="input-group-title">Function Calculator</h4>
+      <div class="component-inputs">
         <label>Evaluate f(x) at x =</label>
         <input type="number" v-model="evalX" @input="evaluateFunction" step="0.1" class="eval-input">
-        <span class="calc-result">f({{ evalX }}) = {{ evalResult }}</span>
+        <span class="result-value">f({{ evalX }}) = {{ evalResult }}</span>
       </div>
       
       <div class="solver">
-        <h4>Equation Solver</h4>
-        <div class="solver-input">
+        <h4 class="input-group-title">Equation Solver</h4>
+        <div class="component-inputs">
           <label>Solve f(x) =</label>
-          <input type="number" v-model="solveY" @input="solveEquation" step="0.1" class="solve-input">
+          <input type="number" v-model="solveY" @input="solveEquation" step="0.1" class="eval-input">
           <div class="solve-result">{{ solveResult }}</div>
         </div>
       </div>
@@ -405,162 +405,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.quadratic-explorer {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.controls h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.parameters {
-  margin: 1.5rem 0;
-}
-
-.slider-group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.slider-group label {
-  font-weight: 500;
-  min-width: 100px;
-}
-
-.slider-group input[type="range"] {
-  width: 200px;
-}
-
-.value {
-  font-weight: bold;
-  color: #2196F3;
-  min-width: 40px;
-}
-
-.description {
-  font-style: italic;
-  color: #666;
-}
-
-.presets {
-  margin: 1.5rem 0;
-}
-
-.preset-btn {
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.preset-btn:hover {
-  background: #45a049;
-}
-
-.equation-display {
-  margin: 1.5rem 0;
-  text-align: center;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.current-equation {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #2196F3;
-  font-family: 'Times New Roman', serif;
-}
-
-.visualization {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.visualization canvas {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: white;
-}
-
-.analysis {
-  margin: 1.5rem 0;
-}
-
-.analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.analysis-card {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-}
-
-.analysis-card h4 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.vertex-info, .axis-info, .intercept-info, .discriminant-info, .roots-info, .domain-range {
-  font-size: 0.9em;
-}
-
-.point {
-  font-weight: bold;
-  color: #FF5722;
-}
-
-.vertex-type {
-  font-style: italic;
-  color: #666;
-  margin-top: 0.5rem;
-}
-
-.function-calculator {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 4px;
-}
-
-.calculator-input, .solver-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.eval-input, .solve-input {
-  width: 80px;
-  padding: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.calc-result {
-  font-weight: bold;
-  color: #E91E63;
-}
-
-.solve-result {
-  font-weight: bold;
-  color: #9C27B0;
-  margin-left: 0.5rem;
-}
+@import '../styles/components.css';
 </style>
