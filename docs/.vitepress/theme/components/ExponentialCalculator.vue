@@ -81,7 +81,13 @@
     </div>
     
     <div class="visualization-container">
-      <canvas ref="plotCanvas" width="600" height="400" class="visualization-canvas"></canvas>
+      <canvas
+      ref="plotCanvas"
+      :width="canvasWidth"
+      :height="canvasHeight"
+      class="visualization-canvas"
+      style="width: 100%; height: auto; max-width: 700px; display: block;"
+      ></canvas>
     </div>
     
     <div v-if="functionType === 'compound'" class="component-section">
