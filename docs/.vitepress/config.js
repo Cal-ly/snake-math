@@ -51,7 +51,7 @@ export default {
           text: 'Getting Started',
           items: [
             { text: 'Introduction', link: '/' },
-            { text: 'Mathematical Foundations', link: '/basics/' }
+            { text: 'Mathematical Foundations', link: '/basics/foundations' }
           ]
         },
         {
