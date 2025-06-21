@@ -4,7 +4,7 @@
       <h3 class="section-title">Exponential & Logarithmic Functions</h3>
       
       <div class="input-group">
-        <label>Function Type:</label>
+        <label>Function Type: </label>
         <select v-model="functionType" @change="updatePlot" class="function-select">
           <option value="exponential">Exponential: f(x) = a·e^(bx)</option>
           <option value="logarithmic">Logarithmic: f(x) = a·ln(bx)</option>
@@ -25,6 +25,9 @@
           <span class="result-value">{{ expB }}</span>
           <span class="result-label">{{ expB > 0 ? '(growth)' : '(decay)' }}</span>
         </div>
+        <div class="equation-display">
+          <span class="equation-text">{{ currentEquation }}</span>
+        </div>
       </div>
       
       <div v-if="functionType === 'logarithmic'" class="input-group">
@@ -38,6 +41,9 @@
           <label>Scale (b):</label>
           <input type="range" v-model="logB" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
           <span class="result-value">{{ logB }}</span>
+        </div>
+        <div class="equation-display">
+          <span class="equation-text">{{ currentEquation }}</span>
         </div>
       </div>
       
@@ -68,11 +74,10 @@
           <input type="range" v-model="timeYears" min="1" max="30" step="1" @input="updateCompound" class="range-input">
           <span class="result-value">{{ timeYears }} years</span>
         </div>
+        <div class="equation-display">
+          <span class="equation-text">{{ currentEquation }}</span>
+        </div>
       </div>
-    </div>
-    
-    <div class="equation-display">
-      <div class="result-highlight">{{ currentEquation }}</div>
     </div>
     
     <div class="visualization-container">
@@ -455,11 +460,11 @@ onMounted(() => {
 }
 
 .equation-display {
-  margin: 1.5rem 0;
+  margin: 0.2rem;
   text-align: center;
-  padding: 1rem;
+  padding: 0.2rem;
   background: #f8f9fa;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid #e9ecef;
 }
 </style>
