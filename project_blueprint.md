@@ -1,21 +1,23 @@
 # Project Overview
 
-**Overall Intent**:
- This project is a aiming to make math accesible for programmers and made as a look-up, rather than a end-to-end course. I have tried to keep the tone informal.
+## Overall structure and intent
+**Intent**:
+ This project is a aiming to make math accesible for programmers and made as a look-up, rather than a end-to-end course. In each section I aim to bridge mathematical concepts with something relatable in programming, e.g. that summation is basically just a for-loop, or how number types relates to data types (e.g. an integer). I wanted the tone to be informal and jesting - math need not being dry.
+ I have sought to incorporate both simple examples and real-world applications in copy-pastable Python snippets.
 
  It is made with **VitePress**, **Vue** and **PyScript** with the goal to eliminate server infrastructure and runtime environments.
 
+**Why VitePress?**
+ Quick start-up and updates in real-time, and is **markdown** based with the addition of **Vue components**, it is the natural succesor to VuePress. Have in mind, that it is mainly for docs, so thing like complex navigation or custom themes take a bit more effort. I have write most of the interactive, eplorative parts as Vue components and only leverage **PyScript** where it was neccesary.
+
 **Why PyScript?**:
  The intent on leveraging **PyScript**, is that users can run Python code directly in the browser. This approach bridges math notation and executable code in real-time, allowing learners to tweak variables and immediately visualize results without installing Python or waiting for remote computation. It lowers the barrier to entry and fosters an interactive, exploratory learning experience.
-
-**Why VitePress?**
-Quick start-up and updates in real-time, and is **markdown** based with the addition of **Vue components**, it is the natural succesor to VuePress. Have in mind, that it is mainly for docs, so thing like complex navigation or custom themes take a bit more effort.
 
 **Why GitHub Pages?**: 
  Free, reliable, and globally distributed static hosting. Integration with GitHub Actions automates deployments on every push, giving **continuous integration** and **continuous delivery** with minimal configuration.
 
 **Architecture**:
- Is it set up with the standard VitePress setup for file and folder structure. Most of the interactive components are made JavaScript, but where it makes sense, the more complex are made with PyScript. This is simply to ensure a fast load-time and not add unneccesary complexity, where the user wouldn't know the difference anyway.
+ Is it set up with the standard VitePress setup for file and folder structure. Most of the interactive components - where the goal is just to illustrate the math - are made with JavaScript. However,where it makes sense to illustrate it in Python code, they are made with PyScript. This division is to ensure both simplicity and a fast load-time, where the point is to illustrate and the user wouldn't know the difference anyway.
 
 ## 1. Repository Structure
 
