@@ -1,46 +1,98 @@
-# Functions and Plotting
+---
+title: "Functions" 
+description: "How functions map inputs to outputs and why they are essential in programming and math" 
+tags: ["mathematics", "programming", "algorithms", "data-science"] 
+difficulty: "beginner" 
+category: "concept" 
+symbol: "f(x) = y" 
+prerequisites: [] 
+related\_concepts: ["quadratic functions", "inverse functions", "function composition"] 
+applications: ["programming", "data-analysis", "algorithms"] 
+interactive: true 
+code\_examples: true 
+complexity\_analysis: true 
+real\_world\_examples: true 
+layout: "concept-page" 
+date\_created: "2025-06-21" 
+last\_updated: "2025-06-21" 
+author: "" 
+reviewers: [] 
+version: "1.0"
+---
 
-## Mathematical Concept
+# Functions (\$f(x) = y\$)
 
-A **function** maps input values to output values using a specific rule. In mathematical notation, we write $f(x) = y$ where $x$ is the input and $y$ is the output.
+What is the concept overall?
 
-Common function types:
-- Linear: $f(x) = mx + b$
-- Quadratic: $f(x) = ax^2 + bx + c$
-- Exponential: $f(x) = a \cdot b^x$
+A **function** is a rule that assigns each input exactly one output. Mathematically:
 
-## Interactive Function Plotter
+$$
+f(x) = y
+$$
 
-<FunctionPlotter />
+Think of it like a vending machine: put in an input (\$x\$), get a predictable output (\$y\$). The machine always responds the same way for the same input.
 
-## Python Implementation
+## Understanding Functions
 
-### Defining Functions
+A function describes how one quantity depends on another. It defines a relationship between variables.
+
+$$
+f(x) = \text{rule applied to } x
+$$
+
+Example of a simple linear function:
 
 ```python
+# Simple function: f(x) = 2x + 1
 def f(x):
-    """Simple function definition"""
     return 2 * x + 1
 
-# Call the function
-result = f(5)
-print(f"f(5) = {result}")  # Output: f(5) = 11
+print(f"f(5) = {f(5)}")
 ```
 
-### Functions with Multiple Parameters
+## Why Functions Matter for Programmers
+
+Functions are foundational in both math and code. They:
+
+- Model behaviors and relationships
+- Break problems into reusable parts
+- Help visualize complex systems
+
+Every algorithm or program uses functions—understanding them helps you write clear, efficient code.
+
+## Interactive Exploration
+
+```plaintext
+Component conceptualization in a comment block:
+An interactive plotter where users can:
+- Select function type (linear, quadratic, exponential)
+- Adjust parameters (sliders for m, b, a, c, etc.)
+- Visualize live plot with domain and range indicators
+- See key features: roots, vertex, intercepts
+- Compare multiple functions overlayed on the same graph
+- Export or copy function definitions
+```
+
+The user can learn how changing parameters affects the function's shape and behavior, observe domain/range visually, and experiment with composition and inverse.
+
+## Function Techniques and Efficiency
+
+### Method 1: Define a Simple Function
+
+**Pros**: Easy to write and reuse\
+**Complexity**: O(1)
 
 ```python
-def linear_function(x, slope=1, intercept=0):
-    """Linear function: f(x) = mx + b"""
-    return slope * x + intercept
+def linear(x, m=1, b=0):
+    return m * x + b
 
-# Different ways to call
-print(linear_function(3))           # f(3) = 3 (default slope=1, intercept=0)
-print(linear_function(3, 2))        # f(3) = 6 (slope=2, intercept=0)
-print(linear_function(3, 2, 5))     # f(3) = 11 (slope=2, intercept=5)
+print(linear(3, 2, 5))
 ```
 
-### Function Composition
+### Method 2: Function Composition
+
+**Pros**: Combine behaviors for complex outputs\
+**Complexity**: O(1)
 
 ```python
 def f(x):
@@ -49,168 +101,101 @@ def f(x):
 def g(x):
     return x**2
 
-# Composition: (f ∘ g)(x) = f(g(x))
-def f_of_g(x):
-    return f(g(x))
-
-# Composition: (g ∘ f)(x) = g(f(x))
-def g_of_f(x):
-    return g(f(x))
-
-x = 3
-print(f"f(g({x})) = {f_of_g(x)}")  # f(g(3)) = f(9) = 19
-print(f"g(f({x})) = {g_of_f(x)}")  # g(f(3)) = g(7) = 49
+# Compose
+print(f(g(3)))  # f(g(x))
+print(g(f(3)))  # g(f(x))
 ```
 
-## Domain and Range
+### Method 3: Inverse Functions
 
-### Finding Domain Restrictions
-
-```python
-import math
-
-def safe_sqrt(x):
-    """Square root function with domain checking"""
-    if x < 0:
-        return None  # Undefined for negative numbers
-    return math.sqrt(x)
-
-def safe_divide(x, a=1):
-    """Division function: f(x) = a/x"""
-    if x == 0:
-        return float('inf')  # Undefined at x=0
-    return a / x
-
-# Test domain restrictions
-print(safe_sqrt(4))    # 2.0
-print(safe_sqrt(-1))   # None (outside domain)
-print(safe_divide(2))  # 0.5
-print(safe_divide(0))  # inf (asymptote)
-```
-
-### Analyzing Range
-
-```python
-def analyze_quadratic(a, b, c):
-    """Analyze quadratic function properties"""
-    def quadratic(x):
-        return a * x**2 + b * x + c
-    
-    # Vertex (gives min/max value)
-    vertex_x = -b / (2 * a)
-    vertex_y = quadratic(vertex_x)
-    
-    if a > 0:
-        print(f"Parabola opens upward")
-        print(f"Minimum value: {vertex_y} at x = {vertex_x}")
-        print(f"Range: [{vertex_y}, ∞)")
-    else:
-        print(f"Parabola opens downward")
-        print(f"Maximum value: {vertex_y} at x = {vertex_x}")
-        print(f"Range: (-∞, {vertex_y}]")
-    
-    return quadratic
-
-# Example: f(x) = x² - 4x + 3
-f = analyze_quadratic(1, -4, 3)
-```
-
-## Inverse Functions
-
-### Finding Inverse Functions
+**Pros**: Solve for input when given an output\
+**Complexity**: O(1)
 
 ```python
 def find_linear_inverse(m, b):
-    """Find inverse of f(x) = mx + b"""
     if m == 0:
-        return None  # No inverse if slope is 0
-    
-    def f(x):
-        return m * x + b
-    
-    def f_inverse(y):
-        # Solve y = mx + b for x
-        # x = (y - b) / m
-        return (y - b) / m
-    
-    return f, f_inverse
+        return None
+    return lambda y: (y - b) / m
 
-# Example
-f, f_inv = find_linear_inverse(2, 3)
-x = 5
-y = f(x)        # f(5) = 2(5) + 3 = 13
-x_back = f_inv(y)  # f⁻¹(13) = (13-3)/2 = 5
-
-print(f"f({x}) = {y}")
-print(f"f⁻¹({y}) = {x_back}")
-print(f"Verification: x = {x} matches f⁻¹(f(x)) = {x_back}")
+inverse = find_linear_inverse(2, 3)
+print(inverse(13))
 ```
 
-## Real-World Function Applications
+## Why the Inverse Function Works
 
-### Physics: Motion Functions
+An inverse function "undoes" the original. For:
+
+$$
+f(x) = mx + b
+$$
+
+The inverse solves for \$x\$:
+
+$$
+x = \frac{y - b}{m}
+$$
 
 ```python
-def position_function(t, initial_pos=0, initial_vel=0, acceleration=0):
-    """Position as function of time: s(t) = s₀ + v₀t + ½at²"""
-    return initial_pos + initial_vel * t + 0.5 * acceleration * t**2
+def verify_inverse(f, f_inv, x):
+    y = f(x)
+    x_back = f_inv(y)
+    print(f"x = {x}, y = {y}, inverse gives x_back = {x_back}")
 
-def velocity_function(t, initial_vel=0, acceleration=0):
-    """Velocity as function of time: v(t) = v₀ + at"""
-    return initial_vel + acceleration * t
-
-# Example: Free fall (acceleration = -9.8 m/s²)
-def free_fall_height(t, initial_height=100):
-    return position_function(t, initial_height, 0, -9.8)
-
-# When does object hit ground?
-import numpy as np
-times = np.linspace(0, 5, 100)
-heights = [free_fall_height(t) for t in times]
-
-for i, h in enumerate(heights):
-    if h <= 0:
-        print(f"Object hits ground at t ≈ {times[i]:.2f} seconds")
-        break
+verify_inverse(lambda x: 2 * x + 3, lambda y: (y - 3) / 2, 5)
 ```
 
-### Economics: Cost Functions
+## Common Function Patterns
+
+- **Linear**: \(f(x) = mx + b\)
+- **Quadratic**: \(f(x) = ax^2 + bx + c\)
+- **Exponential**: \(f(x) = a \cdot b^x\)
+- **Inverse Linear**: \(f^{-1}(y) = \frac{y - b}{m}\)
 
 ```python
-def linear_cost(quantity, fixed_cost=1000, variable_cost=5):
-    """Linear cost function: C(q) = FC + VC·q"""
-    return fixed_cost + variable_cost * quantity
-
-def average_cost(quantity, fixed_cost=1000, variable_cost=5):
-    """Average cost per unit: AC(q) = C(q)/q"""
-    if quantity == 0:
-        return float('inf')
-    return linear_cost(quantity, fixed_cost, variable_cost) / quantity
-
-# Break-even analysis
-def break_even_point(fixed_cost, variable_cost, price_per_unit):
-    """Find break-even quantity"""
-    if price_per_unit <= variable_cost:
-        return None  # No profit possible
-    return fixed_cost / (price_per_unit - variable_cost)
-
-# Example
-be_point = break_even_point(1000, 5, 15)
-print(f"Break-even point: {be_point} units")
+def linear(x, m, b): return m*x + b
+def quadratic(x, a, b, c): return a*x**2 + b*x + c
+def exponential(x, a, b): return a * (b ** x)
 ```
+
+## Practical Real-world Applications
+
+### Application 1: Physics - Motion Functions
+
+```python
+def position(t, s0=0, v0=0, a=0):
+    return s0 + v0*t + 0.5*a*t**2
+
+def velocity(t, v0=0, a=0):
+    return v0 + a*t
+```
+
+### Application 2: Economics - Cost Functions
+
+```python
+def total_cost(q, fixed=1000, variable=5):
+    return fixed + variable * q
+
+def break_even(fixed, variable, price):
+    return fixed / (price - variable)
+```
+
+## Try it Yourself
+
+- **Explore functions**: Define your own and visualize them.
+- **Compose functions**: Create multi-step operations.
+- **Inverse functions**: Implement inverses and test.
 
 ## Key Takeaways
 
-1. **Functions** are mathematical mappings from inputs to outputs
-2. **Python functions** directly implement mathematical functions
-3. **Domain** and **range** define where functions are valid
-4. **Composition** combines functions to create new relationships
-5. **Inverse functions** "undo" the original function
-6. **Visualization** helps understand function behavior
+- Functions map **inputs to outputs**.
+- Python functions match math functions closely.
+- **Composition** and **inverse** expand possibilities.
+- Real-world modeling uses functions everywhere.
 
-## Next Steps
+## Next Steps & Further Exploration
 
-- Explore **linear equations** and their solutions
-- Study **quadratic functions** and parabolas  
-- Learn about **exponential growth** and decay
-- Apply functions to **data modeling**
+- Investigate **quadratics** and higher polynomials.
+- Explore **exponentials** and **logarithms**.
+- Study **domain/range** transformations.
+- Apply functions in **interactive apps and simulations**.
+

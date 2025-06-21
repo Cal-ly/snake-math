@@ -1,6 +1,33 @@
+---
+title: "[Concept Name]"
+description: "Brief description of the mathematical concept and its applications"
+tags: ["mathematics", "programming", "algorithms", "data-science"]
+difficulty: "beginner" # beginner, intermediate, advanced
+category: "concept" # concept, tutorial, reference
+symbol: "[Symbol/Notation]"
+prerequisites: []
+related_concepts: []
+applications: ["programming", "data-analysis", "algorithms"]
+interactive: true
+code_examples: true
+complexity_analysis: true
+real_world_examples: true
+layout: "concept-page"
+date_created: ""
+last_updated: ""
+author: ""
+reviewers: []
+version: "1.0"
+
+#Notes on Concept Page Template for handoff
+#- Don't use the --- dividers other than to denominate the yaml, at the start of the document.
+#- Update and edit the relevant frontmatter, based on the content
+#- Use a light and witty tone where it is natural, but keep the emojis to a minimal
+---
+
 # [Concept Name] ([Symbol/Notation])
 
-What is the concept
+What is the concept overall?
 
 ## Understanding [Concept]
 
@@ -30,11 +57,14 @@ Briefly summarize the value or benefit of understanding this concept clearly.
 
 Include a placeholder for an interactive component (e.g., Vue component, PyScript snippet, slider, interactive plot):
 
-```
 <InteractiveComponent />
+
+```plaintext
+Component conceptualization in a comment block:
+Give ideas and possible descriptions to the functionality, design and intent of the component, preferably in a form, that can be handed to another LLM. 
 ```
 
-Briefly describe what the user will learn or explore through this interactive element.
+Briefly describe what the user can learn or explore through this interactive element.
 
 
 ## [Concept] Techniques and Efficiency
