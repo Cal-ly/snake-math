@@ -1,3 +1,13 @@
+<!--
+Component conceptualization in a comment block:
+An interactive plotter where users can:
+- Select function type (linear, quadratic, exponential)
+- Adjust parameters (sliders for m, b, a, c, etc.)
+- Visualize live plot with domain and range indicators
+- See key features: roots, vertex, intercepts
+- Compare multiple functions overlayed on the same graph
+- Export or copy function definitions
+-->
 <template>
    <div class="interactive-component">
     <div class="component-section">

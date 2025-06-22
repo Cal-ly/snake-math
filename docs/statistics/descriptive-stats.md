@@ -71,21 +71,6 @@ Understanding these concepts helps you write better data analysis pipelines, imp
 
 <StatisticsCalculator />
 
-```plaintext
-Component conceptualization:
-Create an interactive descriptive statistics explorer where users can:
-- Input datasets directly or load sample datasets from different domains
-- Calculate and display all major statistics with real-time updates
-- Visualize distributions with histograms, box plots, and violin plots
-- Compare multiple datasets side-by-side with comparative statistics
-- Demonstrate the effect of outliers on different measures interactively
-- Show various distribution shapes (normal, skewed, bimodal) and their characteristics
-- Interactive quartile and percentile exploration with visual indicators
-- Step-by-step calculation breakdowns for educational purposes
-- Export statistical summaries and visualizations for further analysis
-The component should provide both numerical results and rich visualizations with interpretive guidance.
-```
-
 Experiment with different datasets to see how various factors affect statistical measures and learn to interpret data distributions effectively.
 
 

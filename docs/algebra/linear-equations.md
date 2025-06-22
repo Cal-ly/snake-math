@@ -123,21 +123,6 @@ Understanding linear systems unlocks powerful methods for regression analysis, s
 
 <LinearSystemSolver />
 
-```plaintext
-Component conceptualization:
-Create an interactive linear equation system solver where users can:
-- Input coefficients for single equations and 2x2/3x3 systems with real-time solving
-- Visualize graphical solutions showing line intersections on coordinate planes
-- Switch between different solution methods (matrix operations, substitution, elimination)
-- Interactive coefficient sliders to see how changes affect solutions and graphs
-- Real-world problem templates (age problems, mixture problems, economics)
-- Step-by-step solution walkthrough with algebraic manipulation display
-- System classification helper showing unique, infinite, or no solution cases
-- Performance comparison between different solving algorithms
-- Matrix operations visualizer showing determinants and inverse calculations
-The component should make the connection between algebraic manipulation and geometric interpretation clear and intuitive.
-```
-
 Visually explore how changes to coefficients affect solutions and see the geometric interpretation of algebraic solutions.
 
 

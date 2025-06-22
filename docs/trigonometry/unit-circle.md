@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Trigonometric Functions and the Unit Circle"
 description: "Understanding trigonometric functions through the unit circle and their applications in waves, rotations, and periodic phenomena"
 tags: ["mathematics", "trigonometry", "geometry", "programming", "physics"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Trigonometric Functions and the Unit Circle (sin, cos, tan, θ)
 
@@ -75,22 +75,6 @@ Understanding these functions enables you to work with 2D/3D transformations, im
 ## Interactive Exploration
 
 <UnitCircleExplorer />
-
-```plaintext
-Component conceptualization:
-Create an interactive unit circle and trigonometric functions explorer where users can:
-- Visualize the unit circle with draggable point to explore angle relationships
-- Display real-time sin, cos, and tan values as the angle changes
-- Show animated graphs of sine, cosine, and tangent functions
-- Demonstrate phase relationships between different trigonometric functions
-- Interactive transformation controls (amplitude, frequency, phase shift)
-- Special angle calculator with exact values (30°, 45°, 60°, etc.)
-- Triangle overlay showing right triangle relationships
-- Wave visualization showing how circular motion creates sinusoidal waves
-- Angle conversion between radians and degrees with visual feedback
-- Trigonometric identity verification with dynamic calculations
-The component should provide both geometric intuition and analytical understanding.
-```
 
 Experiment with different angles to see how trigonometric functions behave and understand their periodic nature and geometric relationships.
 

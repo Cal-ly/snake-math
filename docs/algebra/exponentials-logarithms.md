@@ -211,21 +211,6 @@ Understanding these functions enables you to analyze algorithm performance, desi
 
 <ExponentialCalculator />
 
-```plaintext
-Component conceptualization:
-Create an interactive exponential and logarithm explorer where users can:
-- Adjust sliders for base (b), coefficient (a), and input values with real-time function updates
-- Toggle between exponential f(x) = a·b^x and logarithmic f(x) = log_b(x) functions
-- Switch between different bases (2, e, 10, custom) to see how behavior changes
-- Interactive graphing with zoom and pan capabilities showing both functions simultaneously
-- Algorithm complexity visualizer comparing O(1), O(log n), O(n), O(n log n), O(2^n)
-- Real-world scenario templates (compound interest, population growth, radioactive decay)
-- Side-by-side comparison of linear vs exponential vs logarithmic growth patterns
-- Parameter sensitivity analysis showing how small changes affect function behavior
-- Practical calculation tools for doubling time, half-life, and binary search steps
-The component should clearly demonstrate the inverse relationship between exponentials and logarithms while highlighting their practical applications in programming and data science.
-```
-
 Visualize how exponential and logarithmic functions behave as you change their parameters and see their inverse relationship in action!
 
 ## Exponentials and Logarithms Techniques and Efficiency

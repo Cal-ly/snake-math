@@ -70,21 +70,6 @@ Understanding summation helps you recognize patterns in code, optimize calculati
 
 <SummationDemo />
 
-```plaintext
-Component conceptualization:
-Create an interactive summation notation explorer where users can:
-- Input different summation expressions with start/end values and formulas
-- Visualize step-by-step calculation process with running totals
-- Compare different methods (loops, built-in functions, closed formulas)
-- Performance benchmarking tools showing execution time differences
-- Pattern recognition helper highlighting common summation formulas
-- Real-time formula builder with drag-and-drop mathematical components
-- Graph visualization showing summation results for different parameters
-- Interactive examples from statistics, physics, and computer science
-- Challenge mode with summation puzzles and optimization problems
-The component should make the connection between mathematical notation and programming loops clear and intuitive.
-```
-
 Experiment with different summation expressions to see how mathematical notation translates to computational algorithms and discover optimization opportunities.
 
 
@@ -365,7 +350,7 @@ closed_form_summation()
 
 ## Why the Mathematical Formula Works
 
-The formula **n(n+1)/2** for summing integers comes from a brilliant insight that you can visualize geometrically:
+The formula $ \frac{n(n+1)}{2} $ for summing integers comes from a brilliant insight that you can visualize geometrically:
 
 ```python
 def explain_summation_formula():
@@ -477,16 +462,16 @@ explain_summation_formula()
 Standard summation formulas and patterns that appear frequently in mathematics and programming:
 
 - **Sum of Integers:**\
-  \(\sum_{i=1}^{n} i = \frac{n(n+1)}{2}\)
+  $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$
 
 - **Sum of Squares:**\
-  \(\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}\)
+  $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$
 
 - **Sum of Cubes:**\
-  \(\sum_{i=1}^{n} i^3 = \left[\frac{n(n+1)}{2}\right]^2\)
+  $\sum_{i=1}^{n} i^3 = \left[\frac{n(n+1)}{2}\right]^2$
 
 - **Geometric Series:**\
-  \(\sum_{i=0}^{n-1} ar^i = a\frac{1-r^n}{1-r}\) for r ≠ 1
+  $\sum_{i=0}^{n-1} ar^i = a\frac{1-r^n}{1-r}$ for r ≠ 1
 
 Python implementations demonstrating these patterns:
 
@@ -573,7 +558,6 @@ def summation_patterns_library():
 
 summation_patterns_library()
 ```
-
 
 ## Practical Real-world Applications
 
@@ -787,149 +771,9 @@ def algorithm_performance_analysis():
 algorithm_performance_analysis()
 ```
 
-### Application 3: Financial Calculations and Compound Interest
-
-```python
-def financial_summations():
-    """Apply summation to financial calculations"""
-    
-    print("\nFinancial Applications of Summation")
-    print("=" * 40)
-    
-    def future_value_annuity():
-        """Calculate future value of ordinary annuity"""
-        # FV = PMT × [(1 + r)ⁿ - 1] / r
-        # This is a geometric series summation!
-        
-        pmt = 1000  # Monthly payment
-        annual_rate = 0.06  # 6% annual interest
-        monthly_rate = annual_rate / 12
-        years = 10
-        n_payments = years * 12
-        
-        print(f"Annuity Calculation:")
-        print(f"Monthly Payment: ${pmt}")
-        print(f"Annual Interest Rate: {annual_rate:.1%}")
-        print(f"Years: {years}")
-        print(f"Total Payments: {n_payments}")
-        
-        # Using geometric series formula
-        if monthly_rate != 0:
-            future_value = pmt * ((1 + monthly_rate)**n_payments - 1) / monthly_rate
-        else:
-            future_value = pmt * n_payments
-        
-        # Manual calculation using summation
-        manual_fv = 0
-        for month in range(n_payments):
-            # Each payment compounds for (n_payments - month - 1) periods
-            periods_remaining = n_payments - month - 1
-            payment_future_value = pmt * (1 + monthly_rate)**periods_remaining
-            manual_fv += payment_future_value
-        
-        total_paid = pmt * n_payments
-        interest_earned = future_value - total_paid
-        
-        print(f"\nResults:")
-        print(f"Future Value (formula): ${future_value:,.2f}")
-        print(f"Future Value (manual): ${manual_fv:,.2f}")
-        print(f"Total Paid: ${total_paid:,.2f}")
-        print(f"Interest Earned: ${interest_earned:,.2f}")
-        print(f"Effective Return: {interest_earned/total_paid:.1%}")
-        
-        return future_value, total_paid, interest_earned
-    
-    def present_value_calculator():
-        """Calculate present value of future cash flows"""
-        # PV = Σ(CFₜ / (1 + r)ᵗ) for t = 1 to n
-        
-        cash_flows = [1000, 1500, 2000, 2500, 3000]  # Future cash flows
-        discount_rate = 0.08  # 8% discount rate
-        
-        print(f"\nPresent Value Calculation:")
-        print(f"Future Cash Flows: {cash_flows}")
-        print(f"Discount Rate: {discount_rate:.1%}")
-        
-        present_values = []
-        for t, cf in enumerate(cash_flows, 1):
-            pv = cf / (1 + discount_rate)**t
-            present_values.append(pv)
-            print(f"Year {t}: ${cf} → PV = ${pv:.2f}")
-        
-        total_pv = sum(present_values)
-        total_future_cf = sum(cash_flows)
-        
-        print(f"\nSummary:")
-        print(f"Total Future Cash Flows: ${total_future_cf:,.2f}")
-        print(f"Total Present Value: ${total_pv:,.2f}")
-        print(f"Discount Applied: ${total_future_cf - total_pv:,.2f}")
-        
-        return present_values, total_pv
-    
-    def loan_payment_schedule():
-        """Calculate loan payment schedule using summation"""
-        
-        principal = 100000  # Loan amount
-        annual_rate = 0.05  # 5% annual rate
-        monthly_rate = annual_rate / 12
-        years = 15
-        n_payments = years * 12
-        
-        # Monthly payment formula (derived from summation)
-        monthly_payment = principal * (monthly_rate * (1 + monthly_rate)**n_payments) / ((1 + monthly_rate)**n_payments - 1)
-        
-        print(f"\nLoan Payment Schedule:")
-        print(f"Principal: ${principal:,.2f}")
-        print(f"Annual Rate: {annual_rate:.1%}")
-        print(f"Term: {years} years")
-        print(f"Monthly Payment: ${monthly_payment:.2f}")
-        
-        # Calculate first few payments
-        balance = principal
-        total_interest = 0
-        
-        print(f"\n{'Payment':>7} {'Interest':>10} {'Principal':>10} {'Balance':>12}")
-        print("-" * 45)
-        
-        for payment_num in range(1, min(13, n_payments + 1)):  # Show first year
-            interest_payment = balance * monthly_rate
-            principal_payment = monthly_payment - interest_payment
-            balance -= principal_payment
-            total_interest += interest_payment
-            
-            print(f"{payment_num:>7} ${interest_payment:>9.2f} ${principal_payment:>9.2f} ${balance:>11.2f}")
-        
-        # Calculate total cost using summation
-        total_payments = monthly_payment * n_payments
-        total_interest_full = total_payments - principal
-        
-        print(f"\nLoan Summary:")
-        print(f"Total Payments: ${total_payments:,.2f}")
-        print(f"Total Interest: ${total_interest_full:,.2f}")
-        print(f"Interest as % of Principal: {total_interest_full/principal:.1%}")
-        
-        return monthly_payment, total_payments, total_interest_full
-    
-    # Run all financial calculations
-    fv, total_paid, interest = future_value_annuity()
-    pv_list, total_pv = present_value_calculator()
-    monthly_pmt, total_pmts, total_int = loan_payment_schedule()
-    
-    print(f"\nFinancial Summation Applications:")
-    print(f"• Annuities use geometric series for future value calculations")
-    print(f"• Present value sums discounted future cash flows")
-    print(f"• Loan amortization applies summation to payment schedules")
-    print(f"• All compound interest calculations rely on summation formulas")
-    
-    return fv, total_pv, monthly_pmt
-
-financial_summations()
-```
-
-
 ## Try it Yourself
 
-Ready to master summation notation? Here are some hands-on challenges:
+There are many ways to use summation notation. Here are some small projects with summation at it's core
 
 - **Summation Calculator:** Build an interactive tool that evaluates summation expressions with custom formulas and ranges.
 - **Performance Benchmarker:** Create a system that compares loop-based vs formula-based summation approaches for different problem sizes.

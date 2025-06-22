@@ -1,3 +1,17 @@
+<!-- MatrixTransformations.vue 
+Component conceptualization:
+Create an interactive matrix operations explorer where users can:
+- Build matrices by entering values and see real-time calculations
+- Visualize matrix operations through animated transformations
+- Compare different matrix multiplication orders and see non-commutativity
+- Explore geometric transformations (rotation, scaling, reflection) as matrices
+- See how matrix operations affect 2D/3D coordinate systems visually
+- Interactive eigenvalue/eigenvector visualization with adjustable matrices
+- Step-by-step matrix multiplication with highlighted calculation paths
+- Linear system solving with matrix elimination visualization
+- PCA demonstration with scatter plots and principal component overlays
+The component should provide both numerical results and geometric intuition. 
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">

@@ -57,18 +57,6 @@ Programming languages implement mathematical order of operations, but they also 
 
 <OperatorPrecedenceExplorer />
 
-```plaintext
-Component conceptualization:
-Create an interactive operator precedence explorer where users can:
-- Input mathematical expressions and see step-by-step evaluation
-- Compare expressions with and without parentheses
-- Explore different programming language precedence rules side-by-side
-- Build complex expressions with visual precedence highlighting
-- Test edge cases and operator combinations
-- See how expressions are parsed into abstract syntax trees
-The component should provide real-time feedback showing which operations are evaluated first and why.
-```
-
 Experiment with different expressions to see how operator precedence affects the final result and learn to predict evaluation order.
 
 

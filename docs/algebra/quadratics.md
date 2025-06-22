@@ -89,22 +89,7 @@ Mastering quadratics enables you to build realistic physics engines, optimize bu
 
 ## Interactive Exploration
 
-<QuadraticExplorer />
-
-```plaintext
-Component conceptualization:
-Create an interactive quadratic functions explorer where users can:
-- Adjust coefficients a, b, c with sliders to see real-time parabola changes
-- Visualize vertex, axis of symmetry, and roots with labeled markers
-- Switch between different forms (standard, vertex, factored) with dynamic conversion
-- Interactive discrimination analysis showing root types and calculations
-- Real-world scenario selector (projectile motion, profit optimization, parabolic dishes)
-- Transformation animation showing how each coefficient affects the graph shape
-- Problem-solving mode with step-by-step quadratic formula derivation
-- Graphing calculator functionality with multiple quadratic overlay
-- Coefficient comparison tool showing how changing values affects key features
-The component should make the connection between algebraic manipulation and geometric visualization clear and intuitive.
-```
+<!-- <QuadraticExplorer /> -->
 
 Explore how changing coefficients a, b, and c affects the graph, vertex, and roots of the quadratic function.
 

@@ -40,12 +40,18 @@ The project follows a standard VitePress structure, clearly separating interacti
 │   │   ├─ dist/          # Build output (GitHub Pages source)
 │   │   ├─ theme/
 │   │   │   ├─ components/
-│   │   │   │   ├─ ExponentialCalculator.vue
+│   │   │   │   ├─ ExponentialCalculator.vue    # Enhanced with base types, complexity comparison
 │   │   │   │   ├─ FunctionPlotter.vue
 │   │   │   │   ├─ InteractiveSlider.vue
+│   │   │   │   ├─ LinearSystemSolver.vue       # Enhanced with multiple solution methods
+│   │   │   │   ├─ StatisticsCalculator.vue     # Full descriptive statistics suite
+│   │   │   │   ├─ ProbabilitySimulator.vue     # Distribution visualization tools
+│   │   │   │   ├─ UnitCircleExplorer.vue       # Interactive trigonometry explorer
 │   │   │   │   └─ ...other interactive components...
+│   │   │   ├─ styles/
+│   │   │   │   └─ components.css               # Centralized responsive component styles
 │   │   │   └─ index.js   # Component registration
-│   │   └─ config.js      # VitePress configuration
+│   │   └─ config.js      # VitePress config with build optimizations
 │   ├─ basics/
 │   ├─ algebra/
 │   ├─ statistics/
@@ -105,8 +111,11 @@ update_calculation()
 ## User Experience Considerations
 
 - **Accessibility:** ARIA labels, keyboard navigation, clear focus states.
-- **Performance:** Lazy loading PyScript components, caching, and service worker integration.
-- **Responsiveness:** Mobile-friendly design and intuitive navigation.
+- **Performance:** 
+  - Build optimization with manual chunk splitting for Vue components
+  - Lazy loading PyScript components, caching, and service worker integration
+  - Grouped component bundles (components, math-viz, utils) to reduce initial load
+- **Responsiveness:** Mobile-friendly design with centralized CSS grid system and breakpoints.
 - **Error Handling:** Robust validation and error states, loading indicators for PyScript components.
 
 
@@ -122,12 +131,24 @@ update_calculation()
 | Calculus       | Limits, Continuity                  |
 
 
+## Recent Improvements (January 2025)
+
+### Component Enhancements
+- **ExponentialCalculator.vue**: Added multiple base types (e, 2, 10, custom), algorithm complexity comparison, doubling time/half-life calculations
+- **LinearSystemSolver.vue**: Implemented multiple solution methods (matrix, substitution, elimination), step-by-step walkthroughs, real-world problem templates
+- **Centralized Styling**: Created `docs/.vitepress/theme/styles/components.css` with responsive grid systems and consistent component styling
+- **Build Optimization**: Implemented manual chunk splitting in VitePress config to address bundle size warnings
+
+### Performance Optimizations
+- Manual chunking strategy grouping components by functionality (components, math-viz, utils)
+- Increased chunk size warning limit to 600KB
+- Responsive canvas elements with proper scaling
+
 ## Immediate Action Items
 
+- Complete component alignment project for remaining components (ProductNotationVisualizer, QuadraticExplorer, SummationDemo, etc.)
 - Add comprehensive input validation to prevent calculation errors
 - Add error boundaries for component failures
-- Ensure overall responsiveness of the page, especially, that the `canvas` are responsive
-- Refactor inline `<style>`, centralising CSS for a homogenous design
 - Add Dark theme styling for Vue components
 - Implement loading states for PyScript initialization
 - Expanding on the **Mathematical Concepts** sections in the `.md` files, elaborating further and adding math-to-programming analogs 
@@ -147,13 +168,27 @@ update_calculation()
 
 **Completed:**
 
-- Fully operational VitePress-based platform
-- Interactive PyScript demos and Vue components
+- Fully operational VitePress-based platform with build optimizations
+- Enhanced interactive Vue components with advanced functionality:
+  - ExponentialCalculator with multiple bases and algorithm complexity analysis
+  - LinearSystemSolver with multiple solution methods and educational walkthroughs
+  - StatisticsCalculator with comprehensive descriptive statistics
+  - ProbabilitySimulator with distribution visualization
+  - UnitCircleExplorer with interactive trigonometry
+- Centralized responsive CSS architecture
 - Robust deployment pipeline via GitHub Pages
 - Comprehensive mathematical content across multiple domains
+- Performance optimization through manual chunk splitting
+
+**In Progress:**
+
+- Component alignment project: Updating remaining components to match their conceptual specifications
+- Responsive design improvements across all interactive elements
 
 **Next Steps:**
 
-- Further enhancement of UX and accessibility
-- Expansion of advanced mathematical topics
-- Optimization of performance and scalability
+- Complete component enhancement initiative
+- Add comprehensive error handling and input validation
+- Implement dark theme support
+- Further expansion of advanced mathematical topics
+- Additional performance and accessibility optimizations

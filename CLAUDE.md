@@ -91,6 +91,12 @@ Each content file combines:
 - Deploys to GitHub Pages at `/snake-math/` base path
 - Build artifacts are generated in `docs/.vitepress/dist/`
 
+## Claude Code Permissions
+
+The following permissions have been configured for Claude Code:
+- **Bash** - Full filesystem access (ls commands and all operations)
+- **WebFetch** - Web content retrieval for documentation and research
+
 ## Project Blueprint
 
 Refer to `project_blueprint.md` for comprehensive project documentation including:

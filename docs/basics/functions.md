@@ -20,7 +20,7 @@ reviewers: []
 version: "1.0"
 --- -->
 
-# Functions (\$f(x) = y\$)
+# Functions $f(x) = y$
 
 What is the concept overall?
 
@@ -62,16 +62,7 @@ Every algorithm or program uses functions—understanding them helps you write c
 
 ## Interactive Exploration
 
-```plaintext
-Component conceptualization in a comment block:
-An interactive plotter where users can:
-- Select function type (linear, quadratic, exponential)
-- Adjust parameters (sliders for m, b, a, c, etc.)
-- Visualize live plot with domain and range indicators
-- See key features: roots, vertex, intercepts
-- Compare multiple functions overlayed on the same graph
-- Export or copy function definitions
-```
+<FunctionPlotter />
 
 The user can learn how changing parameters affects the function's shape and behavior, observe domain/range visually, and experiment with composition and inverse.
 

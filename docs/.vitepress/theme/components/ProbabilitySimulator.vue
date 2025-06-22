@@ -1,3 +1,17 @@
+<!-- ProbabilitySimulator.vue 
+ Component conceptualization:
+Create an interactive probability distributions explorer where users can:
+- Select different distribution types (normal, binomial, poisson, exponential, uniform) with parameter sliders
+- Visualize probability density/mass functions with real-time parameter changes
+- Compare multiple distributions side-by-side with overlay capabilities
+- Demonstrate Central Limit Theorem with sample size and sample count controls
+- Interactive A/B testing simulator with statistical significance calculations
+- Bayes' theorem calculator with visual probability tree diagrams
+- Confidence interval visualization showing coverage probability
+- Monte Carlo simulation tools for complex probability scenarios
+- Generate random samples and analyze their statistical properties
+The component should provide both theoretical curves and empirical demonstrations.
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">

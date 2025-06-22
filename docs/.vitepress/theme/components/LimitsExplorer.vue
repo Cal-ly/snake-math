@@ -1,3 +1,16 @@
+<!--
+Component conceptualization:
+Create an interactive limits and continuity explorer where users can:
+- Input custom functions and explore their limits at different points
+- Visualize function behavior with dynamic zooming around limit points
+- See step-by-step numerical approximation of limits from both sides
+- Compare continuous vs discontinuous functions side-by-side
+- Explore L'Hôpital's rule for indeterminate forms interactively
+- Test different types of discontinuities (removable, jump, infinite)
+- Animate the process of x approaching the limit point
+- Display epsilon-delta proofs visually with adjustable parameters
+The component should provide real-time graphical feedback and numerical tables showing convergence.
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">

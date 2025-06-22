@@ -1,6 +1,35 @@
 export default {
   title: 'Snake Math',
   description: 'Interactive mathematical concepts powered by Python in your browser',
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Group Vue components together
+            'components': [
+              './docs/.vitepress/theme/components/ExponentialCalculator.vue',
+              './docs/.vitepress/theme/components/LinearSystemSolver.vue',
+              './docs/.vitepress/theme/components/StatisticsCalculator.vue',
+              './docs/.vitepress/theme/components/ProbabilitySimulator.vue'
+            ],
+            // Separate heavy math/visualization components
+            'math-viz': [
+              './docs/.vitepress/theme/components/UnitCircleExplorer.vue',
+              './docs/.vitepress/theme/components/FunctionPlotter.vue',
+              './docs/.vitepress/theme/components/MatrixTransformations.vue'
+            ],
+            // Group utility components
+            'utils': [
+              './docs/.vitepress/theme/components/InteractiveSlider.vue',
+              './docs/.vitepress/theme/components/MathDisplay.vue'
+            ]
+          }
+        }
+      },
+      chunkSizeWarningLimit: 600
+    }
+  },
   head: [
     // PyScript 2025.5.1 CSS
     ['link', { 
@@ -64,7 +93,7 @@ export default {
         {
           text: 'Algebra',
           items: [
-            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' },
+            { text: 'Summation Notation (Σ)', link: '/algebra/summation_notation' },
             { text: 'Product Notation (Π)', link: '/algebra/product-notation' },
             { text: 'Linear Equations', link: '/algebra/linear-equations' },
             { text: 'Quadratic Functions', link: '/algebra/quadratics' },

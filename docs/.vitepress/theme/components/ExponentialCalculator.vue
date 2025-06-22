@@ -1,15 +1,50 @@
+<!--  
+Component conceptualization:
+Create an interactive exponential and logarithm explorer where users can:
+- Adjust sliders for base (b), coefficient (a), and input values with real-time function updates
+- Toggle between exponential f(x) = a·b^x and logarithmic f(x) = log_b(x) functions
+- Switch between different bases (2, e, 10, custom) to see how behavior changes
+- Interactive graphing with zoom and pan capabilities showing both functions simultaneously
+- Algorithm complexity visualizer comparing O(1), O(log n), O(n), O(n log n), O(2^n)
+- Real-world scenario templates (compound interest, population growth, radioactive decay)
+- Side-by-side comparison of linear vs exponential vs logarithmic growth patterns
+- Parameter sensitivity analysis showing how small changes affect function behavior
+- Practical calculation tools for doubling time, half-life, and binary search steps
+The component should clearly demonstrate the inverse relationship between exponentials and logarithms while highlighting their practical applications in programming and data science.
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">
       <h3 class="section-title">Exponential & Logarithmic Functions</h3>
       
-      <div class="input-group">
-        <label>Function Type: </label>
-        <select v-model="functionType" @change="updatePlot" class="function-select">
-          <option value="exponential">Exponential: f(x) = a·e^(bx)</option>
-          <option value="logarithmic">Logarithmic: f(x) = a·ln(bx)</option>
-          <option value="compound">Compound Interest</option>
-        </select>
+      <div class="controls-grid">
+        <div class="input-group">
+          <label>Function Type: </label>
+          <select v-model="functionType" @change="updatePlot" class="function-select">
+            <option value="exponential">Exponential: f(x) = a·b^x</option>
+            <option value="logarithmic">Logarithmic: f(x) = log_b(x)</option>
+            <option value="compound">Compound Interest</option>
+            <option value="comparison">Growth Comparison</option>
+          </select>
+        </div>
+        
+        <div class="input-group">
+          <label>Base Type: </label>
+          <select v-model="baseType" @change="updatePlot" class="function-select">
+            <option value="e">e (natural)</option>
+            <option value="2">2 (binary)</option>
+            <option value="10">10 (decimal)</option>
+            <option value="custom">Custom</option>
+          </select>
+          <input v-if="baseType === 'custom'" type="number" v-model="customBase" min="1.1" max="10" step="0.1" @input="updatePlot" class="eval-input">
+        </div>
+        
+        <div class="input-group">
+          <label>
+            <input type="checkbox" v-model="showBothFunctions" @change="updatePlot">
+            Show Both Functions
+          </label>
+        </div>
       </div>
       
       <div v-if="functionType === 'exponential'" class="input-group">
@@ -28,6 +63,19 @@
         <div class="equation-display">
           <span class="equation-text">{{ currentEquation }}</span>
         </div>
+        
+        <div class="btn-group">
+          <button @click="calculateDoublingTime" class="btn-primary">Calculate Doubling Time</button>
+          <button @click="calculateHalfLife" class="btn-primary">Calculate Half-Life</button>
+        </div>
+        
+        <div v-if="doublingTime" class="result-highlight">
+          <strong>Doubling Time:</strong> {{ doublingTime }} time units
+        </div>
+        
+        <div v-if="halfLife" class="result-highlight">
+          <strong>Half-Life:</strong> {{ halfLife }} time units
+        </div>
       </div>
       
       <div v-if="functionType === 'logarithmic'" class="input-group">
@@ -38,12 +86,43 @@
           <span class="result-value">{{ logA }}</span>
         </div>
         <div class="component-inputs">
-          <label>Scale (b):</label>
-          <input type="range" v-model="logB" min="0.1" max="3" step="0.1" @input="updatePlot" class="range-input">
-          <span class="result-value">{{ logB }}</span>
+          <label>Base:</label>
+          <span class="result-value">{{ getCurrentBase() }}</span>
         </div>
         <div class="equation-display">
           <span class="equation-text">{{ currentEquation }}</span>
+        </div>
+      </div>
+      
+      <div v-if="functionType === 'comparison'" class="input-group">
+        <h4 class="input-group-title">Growth Pattern Comparison</h4>
+        <div class="component-inputs">
+          <label>Input size (n):</label>
+          <input type="range" v-model="comparisonN" min="1" max="20" step="1" @input="updateComparison" class="range-input">
+          <span class="result-value">{{ comparisonN }}</span>
+        </div>
+        
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <div class="comparison-label">O(1) - Constant</div>
+            <div class="result-value">{{ comparisonResults.constant }}</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-label">O(log n) - Logarithmic</div>
+            <div class="result-value">{{ comparisonResults.logarithmic }}</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-label">O(n) - Linear</div>
+            <div class="result-value">{{ comparisonResults.linear }}</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-label">O(n log n) - Log-linear</div>
+            <div class="result-value">{{ comparisonResults.logLinear }}</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-label">O(2^n) - Exponential</div>
+            <div class="result-value">{{ comparisonResults.exponential }}</div>
+          </div>
         </div>
       </div>
       
@@ -189,15 +268,41 @@ const evalX = ref(1)
 const evalResult = ref(0)
 const currentApp = ref(null)
 const plotCanvas = ref(null)
+const canvasWidth = 800
+const canvasHeight = 400
+const showBothFunctions = ref(false)
+const baseType = ref('e')
+const customBase = ref(2)
+const doublingTime = ref(null)
+const halfLife = ref(null)
+const comparisonN = ref(10)
+const comparisonResults = ref({
+  constant: 1,
+  logarithmic: 0,
+  linear: 0,
+  logLinear: 0,
+  exponential: 0
+})
 
 const currentEquation = computed(() => {
+  const base = getCurrentBase()
   switch (functionType.value) {
     case 'exponential':
-      return `f(x) = ${expA.value}·e^(${expB.value}x)`
+      if (baseType.value === 'e') {
+        return `f(x) = ${expA.value}·e^(${expB.value}x)`
+      } else {
+        return `f(x) = ${expA.value}·${base}^(${expB.value}x)`
+      }
     case 'logarithmic':
-      return `f(x) = ${logA.value}·ln(${logB.value}x)`
+      if (baseType.value === 'e') {
+        return `f(x) = ${logA.value}·ln(x)`
+      } else {
+        return `f(x) = ${logA.value}·log_${base}(x)`
+      }
     case 'compound':
       return `A(t) = ${principal.value}(1 + ${interestRate.value}/${compoundFreq.value})^(${compoundFreq.value}t)`
+    case 'comparison':
+      return 'Algorithm Complexity Comparison'
     default:
       return ''
   }
@@ -264,17 +369,64 @@ const getCompoundingName = (freq) => {
   return names[freq] || `${freq} times per year`
 }
 
+const getCurrentBase = () => {
+  switch (baseType.value) {
+    case 'e': return Math.E
+    case '2': return 2
+    case '10': return 10
+    case 'custom': return parseFloat(customBase.value)
+    default: return Math.E
+  }
+}
+
+const calculateDoublingTime = () => {
+  if (expB.value > 0) {
+    doublingTime.value = (Math.log(2) / expB.value).toFixed(2)
+  } else {
+    doublingTime.value = null
+  }
+}
+
+const calculateHalfLife = () => {
+  if (expB.value < 0) {
+    halfLife.value = (Math.log(2) / Math.abs(expB.value)).toFixed(2)
+  } else {
+    halfLife.value = null
+  }
+}
+
+const updateComparison = () => {
+  const n = parseInt(comparisonN.value)
+  comparisonResults.value = {
+    constant: 1,
+    logarithmic: Math.log2(n).toFixed(2),
+    linear: n,
+    logLinear: (n * Math.log2(n)).toFixed(2),
+    exponential: Math.pow(2, n) > 1000000 ? '> 1M' : Math.pow(2, n)
+  }
+}
+
 const evaluateFunction = () => {
   const x = parseFloat(evalX.value)
   let result
   
   switch (functionType.value) {
     case 'exponential':
-      result = expA.value * Math.exp(expB.value * x)
+      const base = getCurrentBase()
+      if (baseType.value === 'e') {
+        result = expA.value * Math.exp(expB.value * x)
+      } else {
+        result = expA.value * Math.pow(base, expB.value * x)
+      }
       break
     case 'logarithmic':
-      if (logB.value * x > 0) {
-        result = logA.value * Math.log(logB.value * x)
+      if (x > 0) {
+        const base = getCurrentBase()
+        if (baseType.value === 'e') {
+          result = logA.value * Math.log(x)
+        } else {
+          result = logA.value * (Math.log(x) / Math.log(base))
+        }
       } else {
         result = 'undefined'
       }
@@ -397,11 +549,21 @@ const updatePlot = () => {
     
     switch (functionType.value) {
       case 'exponential':
-        y = expA.value * Math.exp(expB.value * x)
+        const base = getCurrentBase()
+        if (baseType.value === 'e') {
+          y = expA.value * Math.exp(expB.value * x)
+        } else {
+          y = expA.value * Math.pow(base, expB.value * x)
+        }
         break
       case 'logarithmic':
-        if (logB.value * x > 0) {
-          y = logA.value * Math.log(logB.value * x)
+        if (x > 0) {
+          const base = getCurrentBase()
+          if (baseType.value === 'e') {
+            y = logA.value * Math.log(x)
+          } else {
+            y = logA.value * (Math.log(x) / Math.log(base))
+          }
         } else {
           continue
         }
@@ -448,12 +610,17 @@ const updatePlot = () => {
   }
 }
 
-watch([functionType, expA, expB, logA, logB], () => {
+watch([functionType, expA, expB, logA, logB, baseType, customBase, showBothFunctions], () => {
   evaluateFunction()
+})
+
+watch(comparisonN, () => {
+  updateComparison()
 })
 
 onMounted(() => {
   evaluateFunction()
+  updateComparison()
 })
 </script>
 
@@ -466,11 +633,41 @@ onMounted(() => {
 }
 
 .equation-display {
-  margin: 0.2rem;
+  margin: 1rem 0;
   text-align: center;
-  padding: 0.2rem;
+  padding: 1rem;
   background: #f8f9fa;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid #e9ecef;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.equation-text {
+  font-family: 'Times New Roman', serif;
+  color: #2196F3;
+}
+
+@media (max-width: 768px) {
+  .controls-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .component-inputs {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+  }
+  
+  .visualization-canvas {
+    max-width: 100%;
+  }
 }
 </style>

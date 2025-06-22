@@ -1,3 +1,18 @@
+<!-- VectorOperations.vue 
+ Component conceptualization:
+Create an interactive vector operations explorer where users can:
+- Visualize vectors as arrows in 2D/3D coordinate systems
+- Manipulate vector components with sliders and see real-time updates
+- Perform vector addition and see the parallelogram law visually
+- Explore scalar multiplication and its geometric effects
+- Calculate and visualize dot products with angle indicators
+- Demonstrate cross products in 3D with orthogonal result vectors
+- Show vector projections with component breakdowns
+- Interactive physics simulations (velocity, acceleration, forces)
+- Compare manual calculations with NumPy operations side-by-side
+- Unit vector normalization with magnitude preservation
+The component should provide both numerical results and geometric intuition.
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">

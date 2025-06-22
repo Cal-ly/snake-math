@@ -18,7 +18,8 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
---- -->
+--- 
+-->
 
 # Matrix Operations (A, B, A^T, A^{-1})
 
@@ -31,11 +32,15 @@ A **matrix** is a rectangular array of numbers organized in rows and columns. Ju
 The fundamental matrix operations:
 
 $$
-\begin{align}
-\text{Addition: } (A + B)_{ij} &= A_{ij} + B_{ij} \\
-\text{Multiplication: } (AB)_{ij} &= \sum_k A_{ik}B_{kj} \\
-\text{Transpose: } (A^T)_{ij} &= A_{ji}
-\end{align}
+(A + B)_{ij} = A_{ij} + B_{ij}
+$$
+
+$$
+(AB)_{ij} = \sum_k A_{ik} B_{kj}
+$$
+
+$$
+(A^T)_{ij} = A_{ji}
 $$
 
 Think of matrix multiplication like a recipe mixer - each output ingredient combines multiple input ingredients in specific proportions:
@@ -72,21 +77,6 @@ Understanding matrices helps you write more efficient code, work with multidimen
 ## Interactive Exploration
 
 <MatrixTransformations />
-
-```plaintext
-Component conceptualization:
-Create an interactive matrix operations explorer where users can:
-- Build matrices by entering values and see real-time calculations
-- Visualize matrix operations through animated transformations
-- Compare different matrix multiplication orders and see non-commutativity
-- Explore geometric transformations (rotation, scaling, reflection) as matrices
-- See how matrix operations affect 2D/3D coordinate systems visually
-- Interactive eigenvalue/eigenvector visualization with adjustable matrices
-- Step-by-step matrix multiplication with highlighted calculation paths
-- Linear system solving with matrix elimination visualization
-- PCA demonstration with scatter plots and principal component overlays
-The component should provide both numerical results and geometric intuition.
-```
 
 Experiment with different matrices and operations to see how they transform coordinate systems and solve real-world problems.
 
@@ -440,16 +430,16 @@ explain_matrix_multiplication()
 Standard matrix operations and patterns that appear frequently in programming:
 
 - **Identity Matrix:**\
-  \(I_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}\)
+  $I_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$
 
 - **Matrix Inverse:**\
-  \(AA^{-1} = A^{-1}A = I\)
+  $AA^{-1} = A^{-1}A = I$
 
 - **Eigenvalue Equation:**\
-  \(Av = \lambda v\)
+  $Av = \lambda v$
 
 - **Matrix Norm:**\
-  \(\|A\|_F = \sqrt{\sum_{i,j} A_{ij}^2}\) (Frobenius norm)
+  $\|A\|_F = \sqrt{\sum_{i,j} A_{ij}^2}$ (Frobenius norm)
 
 Python implementations demonstrating these patterns:
 

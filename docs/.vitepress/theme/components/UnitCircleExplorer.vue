@@ -1,3 +1,18 @@
+<!-- UnitCircleExplorer.vue 
+ Component conceptualization:
+Create an interactive unit circle and trigonometric functions explorer where users can:
+- Visualize the unit circle with draggable point to explore angle relationships
+- Display real-time sin, cos, and tan values as the angle changes
+- Show animated graphs of sine, cosine, and tangent functions
+- Demonstrate phase relationships between different trigonometric functions
+- Interactive transformation controls (amplitude, frequency, phase shift)
+- Special angle calculator with exact values (30°, 45°, 60°, etc.)
+- Triangle overlay showing right triangle relationships
+- Wave visualization showing how circular motion creates sinusoidal waves
+- Angle conversion between radians and degrees with visual feedback
+- Trigonometric identity verification with dynamic calculations
+The component should provide both geometric intuition and analytical understanding.
+-->
 <template>
   <div class="interactive-component">
     <div class="component-section">

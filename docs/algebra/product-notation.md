@@ -75,21 +75,6 @@ Understanding product notation helps you implement combinatorial algorithms, cal
 
 <ProductNotationVisualizer />
 
-```plaintext
-Component conceptualization:
-Create an interactive product notation explorer where users can:
-- Input custom product expressions with start/end values and factor formulas
-- Visualize step-by-step calculation process with running products
-- Compare different implementation methods (loops, built-ins, NumPy)
-- Performance benchmarking tools showing execution time differences
-- Pattern recognition helper for common product formulas (factorials, combinations)
-- Interactive graphing of partial products to show convergence/divergence behavior
-- Real-world scenario selector (probability calculations, combinatorics problems)
-- Formula builder with drag-and-drop mathematical components
-- Challenge mode with product notation puzzles and optimization problems
-The component should clearly show the relationship between mathematical notation and programming loops while highlighting practical applications.
-```
-
 Experiment with different product expressions to see how mathematical notation translates to computational algorithms and discover optimization opportunities.
 
 

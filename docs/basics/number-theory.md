@@ -60,17 +60,6 @@ Understanding number types helps you write more efficient code, avoid precision 
 
 <NumberTypeExplorer />
 
-```plaintext
-Component conceptualization:
-Create an interactive number type explorer where users can:
-- Input a number and see how it's classified (Natural, Integer, Real)
-- Visualize number sets as nested circles (Venn diagram style)
-- Test type conversions and see potential precision loss
-- Experiment with overflow scenarios in different data types
-- Compare memory usage across different type representations
-The component should provide real-time feedback and highlight edge cases.
-```
-
 Explore how different number inputs are classified and how they behave when converted between data types.
 
 

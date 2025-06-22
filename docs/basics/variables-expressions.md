@@ -60,19 +60,6 @@ Understanding how mathematical expressions translate to code helps you write mor
 
 <VariableExpressionExplorer />
 
-```plaintext
-Component conceptualization:
-Create an interactive variable and expression explorer where users can:
-- Define variables with different values and see how expressions change
-- Build expressions step-by-step and visualize the evaluation process
-- Compare mathematical notation with equivalent programming code
-- Experiment with different variable types (integers, floats, strings)
-- Create functions from expressions and test them with various inputs
-- Visualize how expressions create graphs when plotted over ranges
-- Build compound expressions and see how they decompose into simpler parts
-The component should provide real-time feedback and help users understand the relationship between mathematical variables and programming variables.
-```
-
 Explore how changing variable values affects expression results and learn to translate mathematical notation into code.
 
 
