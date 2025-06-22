@@ -350,7 +350,7 @@ closed_form_summation()
 
 ## Why the Mathematical Formula Works
 
-The formula $ \frac{n(n+1)}{2} $ for summing integers comes from a brilliant insight that you can visualize geometrically:
+The formula $\frac{n(n+1)}{2}$ for summing integers comes from a brilliant insight that you can visualize geometrically:
 
 ```python
 def explain_summation_formula():
