@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Matrix Operations"
 description: "Understanding matrices as rectangular arrays of numbers and their fundamental operations in linear algebra and programming"
 tags: ["mathematics", "linear-algebra", "matrices", "programming", "data-science"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Matrix Operations (A, B, A^T, A^{-1})
 

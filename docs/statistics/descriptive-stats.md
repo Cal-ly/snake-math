@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Descriptive Statistics"
 description: "Understanding how to summarize and describe data using measures of central tendency, variability, and distribution shape"
 tags: ["mathematics", "statistics", "data-analysis", "programming", "data-science"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Descriptive Statistics (x̄, s, σ, Q₁, Q₃)
 

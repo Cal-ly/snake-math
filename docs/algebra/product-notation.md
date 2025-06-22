@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Product Notation"
 description: "Understanding product notation (∏) as mathematical shorthand for multiplying sequences and its applications in combinatorics, probability, and statistics"
 tags: ["mathematics", "notation", "sequences", "combinatorics", "probability"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Product Notation (∏)
 

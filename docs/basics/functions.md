@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Functions" 
 description: "How functions map inputs to outputs and why they are essential in programming and math" 
 tags: ["mathematics", "programming", "algorithms", "data-science"] 
@@ -18,7 +18,7 @@ last\_updated: "2025-06-21"
 author: "" 
 reviewers: [] 
 version: "1.0"
----
+--- -->
 
 # Functions (\$f(x) = y\$)
 

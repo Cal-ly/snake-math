@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Vectors and Operations"
 description: "Understanding vectors as quantities with magnitude and direction and their fundamental operations in mathematics and programming"
 tags: ["mathematics", "linear-algebra", "vectors", "programming", "physics"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Vectors and Operations (→, ⃗v, |v|, ·, ×)
 

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Linear Equations"
 description: "Understanding linear equations and systems for modeling constant-rate relationships in programming, data science, and mathematical analysis"
 tags: ["mathematics", "algebra", "linear-algebra", "systems", "optimization"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Linear Equations (ax + b = 0)
 

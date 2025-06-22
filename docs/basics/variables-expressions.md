@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Variables and Expressions"
 description: "Understanding mathematical variables and expressions and their implementation in programming languages"
 tags: ["mathematics", "programming", "variables", "expressions", "algebra"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Variables and Expressions (x, y, f(x))
 

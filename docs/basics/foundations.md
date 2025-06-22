@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Foundations" 
 description: "Foundations - the bacause everything must have a start" 
 tags: ["mathematics", "programming"] 
@@ -18,7 +18,7 @@ last\_updated: "2025-06-21"
 author: "" 
 reviewers: [] 
 version: "1.0"
----
+--- -->
 
 # Foundations
 

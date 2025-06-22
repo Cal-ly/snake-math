@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Exponentials and Logarithms"
 description: "Understanding exponential and logarithmic functions for modeling growth, decay, and inverse relationships in programming and data science"
 tags: ["mathematics", "functions", "growth", "algorithms", "complexity"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Exponentials and Logarithms (e^x, log(x))
 

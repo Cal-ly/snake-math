@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Number Types and Data Types"
 description: "Understanding mathematical number classifications and their representation as data types in programming"
 tags: ["mathematics", "programming", "data-types", "number-theory"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Number Types and Data Types (ℕ, ℤ, ℝ)
 

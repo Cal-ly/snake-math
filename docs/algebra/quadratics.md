@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Quadratic Functions"
 description: "Understanding quadratic functions and their parabolic graphs, from solving equations to modeling real-world phenomena"
 tags: ["mathematics", "algebra", "functions", "optimization", "physics"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Quadratic Functions (f(x) = ax² + bx + c)
 

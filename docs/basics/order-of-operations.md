@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Order of Operations"
 description: "Understanding mathematical precedence rules and their implementation in programming languages"
 tags: ["mathematics", "programming", "operators", "precedence", "expressions"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Order of Operations (PEMDAS/BODMAS)
 

@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Probability Distributions"
 description: "Understanding how probability distributions model uncertainty and randomness in data and decision-making processes"
 tags: ["mathematics", "statistics", "probability", "data-science", "programming"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Probability Distributions (P(X), f(x), μ, σ)
 

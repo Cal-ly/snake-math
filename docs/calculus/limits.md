@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Limits and Continuity"
 description: "Understanding the fundamental concept of limits and how functions behave as inputs approach specific values"
 tags: ["mathematics", "calculus", "limits", "continuity", "programming"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Limits and Continuity (lim, →)
 

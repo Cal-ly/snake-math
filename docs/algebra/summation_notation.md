@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Summation Notation"
 description: "Understanding summation notation (Σ) as mathematical shorthand for adding sequences and its applications in programming and data analysis"
 tags: ["mathematics", "notation", "sequences", "programming", "algorithms"]
@@ -18,7 +18,7 @@ last_updated: "2024-01-01"
 author: "Snake Math Team"
 reviewers: []
 version: "1.0"
----
+--- -->
 
 # Summation Notation (Σ)
 
