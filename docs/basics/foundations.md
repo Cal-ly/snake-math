@@ -31,133 +31,186 @@ So everything has a start - a foundation. In a simple sense, nearly all math can
 
 And a set of rules on how to apply these in different manners. Oh, I can feel your skepticisme, what about .. eh.. like differential equations. Well, let's look at that then.
 
+### Differential Equations — Broken Down
+
+Let's take a simple differential equation:
+
+$$
+\frac{dy}{dx} = 2x
+$$
+This says: the rate of change of $y$ with respect to $x$ is $2x$.
+
+#### Step 1: Rewrite as a Difference
+
+If we imagine $\frac{dy}{dx}$ as a very small change, we can write:
+
+$$
+\frac{\Delta y}{\Delta x} \approx 2x
+$$
+
+So, for a small step $\Delta x$:
+
+$$
+\Delta y \approx 2x \cdot \Delta x
+$$
+
+#### Step 2: Use Only Basic Operations
+
+To find $y$ at the next step, just add the change:
+
+$$
+y_{\text{next}} = y_{\text{current}} + 2x \cdot \Delta x
+$$
+
+This is just addition and multiplication!
+
+#### Step 3: Example Calculation
+
+Suppose $y = 0$ when $x = 0$, and we use $\Delta x = 1$:
+
+- At $x = 0$: $y = 0$
+- At $x = 1$: $y = 0 + 2 \times 0 \times 1 = 0$
+- At $x = 2$: $y = 0 + 2 \times 1 \times 1 = 2$
+- At $x = 3$: $y = 2 + 2 \times 2 \times 1 = 6$
+- At $x = 4$: $y = 6 + 2 \times 3 \times 1 = 12$
+
+#### Step 4: General Solution
+
+If you keep adding up all those little changes, you get the formula:
+
+$$
+y = x^2 + C
+$$
+
+But as you see, each step only used addition and multiplication!
+
+**Summary:**  
+Even differential equations, at their core, can be solved step-by-step using just addition, subtraction, multiplication, and division.
+
 ## Common Math Symbols — Grouped and Explained
-
-### Arithmetic & Basic Operators
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( + \)     | Plus                         | Addition                            | `+`                          |
-| \( - \)     | Minus                        | Subtraction                         | `-`                          |
-| \( \times \), \( \cdot \), `*` | Multiplication                   | Multiply                          | `*`                          |
-| \( \div \), `/` | Division                     | Divide                              | `/`                          |
-| \( = \)     | Equals                       | Equality                             | `==` (compare), `=` (assign) |
-| \( \neq \)  | Not equal                    | Not equal                            | `!=`                         |
-| \( < \), \( > \) | Less than / Greater than      | Compare values                       | `<`, `>`                     |
-| \( \leq \), \( \geq \) | Less than or equal / Greater than or equal | Compare with equality           | `<=`, `>=`                   |
-
----
-
-### Algebra & Sets
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( \in \)   | Element of                   | "is in" set                         | `in`                         |
-| \( \notin \) | Not element of              | "not in" set                        | `not in`                     |
-| \( \subset \), \( \subseteq \) | Subset / Subset or equal            | Subset                          |                              |
-| \( \cup \)  | Union                        | Combine sets                        | `set.union()`                 |
-| \( \cap \)  | Intersection                 | Common elements between sets        | `set.intersection()`          |
-| \( \emptyset \), \( \varnothing \) | Empty set                       | No elements                      | `set()`                       |
-
----
-
-### Calculus
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( \Sigma \) | Summation                   | Sum over a range                    | `sum()` / for loop            |
-| \( \prod \)  | Product                     | Product over a range                | `math.prod()`                 |
-| \( \int \)   | Integral                    | Continuous sum / area under curve   | accumulate with small steps   |
-| \( \partial \) | Partial derivative        | Derivative with respect to one variable | function sensitivity         |
-| \( \nabla \) | Gradient                    | Vector of derivatives               | `gradient()` in ML            |
-| \( \Delta \) | Change / difference         | \( \Delta x = x_2 - x_1 \)          | diff(x)                       |
-
----
-
-### Logic
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( \land \) | And (logical)                | both true                           | `and`                        |
-| \( \lor \)  | Or (logical)                 | either true                         | `or`                         |
-| \( \lnot \), \( \neg \) | Not (logical)     | invert truth                        | `not`                        |
-| \( \Rightarrow \) | Implies                | if A then B                         | `if A: B`                     |
-| \( \Leftrightarrow \) | If and only if     | logical equivalence                 | A iff B                      |
-
----
-
-### Constants & Special Symbols
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( \pi \)   | Pi                           | Circle constant ≈ 3.14159           | `math.pi`                     |
-| \( e \)     | Euler’s number                | ≈ 2.71828, base of natural log      | `math.e`                      |
-| \( i \)     | Imaginary unit                | \( \sqrt{-1} \)                     | complex numbers               |
-| \( \infty \) | Infinity                     | unbounded value                     | `float('inf')`                |
-| \( \approx \) | Approximately equal         | nearly equal                        | `~=` or `math.isclose()`      |
-
----
-
-### Exponentials & Logarithms
-
-| Symbol      | Name                         | Meaning                            | Programming Analogy           |
-|-------------|------------------------------|------------------------------------|------------------------------|
-| \( \log \), \( \ln \) | Logarithm / Natural logarithm | Solve for exponent               | `math.log()`                  |
-| \( \exp \)   | Exponential function         | \( e^x \), continuous growth        | `math.exp()`                  |
-| \( a^b \)    | Exponentiation               | Raise to power                      | `**`                         |
-
----
-
-### Greek Letters — Commonly used
-
-| Symbol      | Name                         | Typical Use                        |
-|-------------|------------------------------|------------------------------------|
-| \( \alpha \) | alpha                        | angle, learning rate (ML)           |
-| \( \beta \)  | beta                         | regression coefficient              |
-| \( \gamma \) | gamma                        | gamma function, discount in RL      |
-| \( \delta \) | delta                        | change, difference                  |
-| \( \epsilon \) | epsilon                     | small positive number (tolerance)   |
-| \( \zeta \)  | zeta                         | Riemann zeta function                |
-| \( \eta \)   | eta                          | efficiency, learning rate            |
-| \( \theta \) | theta                        | angle, model parameter              |
-| \( \lambda \) | lambda                       | eigenvalues, decay rate, regularization |
-| \( \mu \)    | mu                           | mean of distribution                |
-| \( \nu \)    | nu                           | frequency                           |
-| \( \xi \)    | xi                           | random variable                     |
-| \( \rho \)   | rho                          | correlation coefficient             |
-| \( \sigma \) | sigma                        | standard deviation, sum             |
-| \( \tau \)   | tau                          | time constant, Kendall’s tau        |
-| \( \phi \)   | phi                          | golden ratio, angle                 |
-| \( \omega \) | omega                        | angular frequency                   |
-| \( \Omega \) | big Omega                    | complexity lower bound               |
-
----
-
-### ML & Data Science Symbols
-
-| Symbol      | Name                         | Common Use in ML / DS               |
-|-------------|------------------------------|------------------------------------|
-| \( \theta \) | theta                        | model parameters (linear, logistic regression) |
-| \( w \), \( b \) | weights, bias             | neural networks, linear models      |
-| \( \nabla J(\theta) \) | gradient of loss wrt parameters | gradient descent update            |
-| \( L \), \( \mathcal{L} \) | loss, likelihood | model objective                     |
-| \( y \), \( \hat{y} \) | actual output, predicted output | supervised learning                 |
-| \( p(x) \), \( p(x|y) \) | probability, conditional probability | probabilistic models               |
-| \( \mu \), \( \sigma^2 \) | mean and variance | Gaussian models, distributions      |
-| \( \mathbb{E}[X] \) | expectation of X       | expected value                      |
-| \( KL(P||Q) \) | Kullback-Leibler divergence | measure difference between distributions |
-| \( \mathcal{N}(\mu, \sigma^2) \) | normal distribution | Gaussian probability density       |
-| \( R^2 \) | coefficient of determination    | regression goodness of fit          |
-
-
-With that in mind, most math problems don't seem so scary.
-
-## Symbols
 The dear mathematicians, they do love their weird way of writing things. So think of math as a new programming language, but the inventor of this one, wanted to make it special. The inventor then made most of the keywords (those we know like `if` or `int`) in this the new language to be made of symbols partialy from philosophy, partially made-up and instead of english, to describe it's concepts, a dead language was used*. Now you're stuck some weird symbols, strange words and people insists, that it makes perfect, logical sense.
 
 Here is a list of most of the symbols you'll encounter, their name, functions and what the analog to a programming language could be. 
 
 *On a sidenote, this is basically the story of the programming language APL, and you had to buy the special keyboard to be able to write programs in it [APL on wiki](https://en.wikipedia.org/wiki/APL_(programming_language)).
 
-## Disclaimer
+### Arithmetic & Basic Operators
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| +           | Plus                         | Addition                            | `+`                          |
+| -           | Minus                        | Subtraction                         | `-`                          |
+| ×, ·, *     | Multiplication               | Multiply                          | `*`                          |
+| ÷, /        | Division                     | Divide                              | `/`                          |
+| =           | Equals                       | Equality                             | `==` (compare), `=` (assign) |
+| ≠           | Not equal                    | Not equal                            | `!=`                         |
+| <, >        | Less than / Greater than     | Compare values                       | `<`, `>`                     |
+| ≤, ≥        | Less than or equal / Greater than or equal | Compare with equality           | `<=`, `>=`                   |
+
+### Algebra & Sets
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| ∈           | Element of                   | "is in" set                         | `in`                         |
+| ∉           | Not element of               | "not in" set                        | `not in`                     |
+| ⊂, ⊆        | Subset / Subset or equal     | Subset                          |                              |
+| ∪           | Union                        | Combine sets                        | `set.union()`                 |
+| ∩           | Intersection                 | Common elements between sets        | `set.intersection()`          |
+| ∅, ∅        | Empty set                    | No elements                      | `set()`                       |
+
+
+### Calculus
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| Σ           | Summation                    | Sum over a range                    | `sum()` / for loop            |
+| ∏           | Product                      | Product over a range                | `math.prod()`                 |
+| ∫           | Integral                     | Continuous sum / area under curve   | accumulate with small steps   |
+| ∂           | Partial derivative           | Derivative with respect to one variable | function sensitivity         |
+| ∇           | Gradient                     | Vector of derivatives               | `gradient()` in ML            |
+| Δ           | Change / difference          | Δx = x₂ - x₁                        | diff(x)                       |
+
+### Logic
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| ∧           | And (logical)                | both true                           | `and`                        |
+| ∨           | Or (logical)                 | either true                         | `or`                         |
+| ¬, ¬        | Not (logical)                | invert truth                        | `not`                        |
+| ⇒           | Implies                      | if A then B                         | `if A: B`                     |
+| ⇔           | If and only if               | logical equivalence                 | A iff B                      |
+
+
+### Constants & Special Symbols
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| π           | Pi                           | Circle constant ≈ 3.14159           | `math.pi`                     |
+| e           | Euler's number               | ≈ 2.71828, base of natural log      | `math.e`                      |
+| i           | Imaginary unit               | √(-1)                               | complex numbers               |
+| ∞           | Infinity                     | unbounded value                     | `float('inf')`                |
+| ≈           | Approximately equal          | nearly equal                        | `~=` or `math.isclose()`      |
+
+### Exponentials & Logarithms
+
+| Symbol      | Name                         | Meaning                            | Programming Analogy           |
+|-------------|------------------------------|------------------------------------|------------------------------|
+| log, ln     | Logarithm / Natural logarithm | Solve for exponent               | `math.log()`                  |
+| exp         | Exponential function         | eˣ, continuous growth              | `math.exp()`                  |
+| aᵇ          | Exponentiation               | Raise to power                      | `**`                         |
+
+### Greek Letters — Commonly used
+
+| Name    | Lower | Upper | Common use lower                        | Commen use upper                    |
+| ------- | ----- | ----- | --------------------------------------- | ----------------------------------- |
+| alpha   | α     | Α     | angle, learning rate (ML)               |                                     |
+| beta    | β     | Β     | regression coefficient                  |                                     |
+| gamma   | γ     | Γ     | gamma function, discount in RL          | gamma function, Euler–Mascheroni    |
+| delta   | δ     | Δ     | change, difference                      | discriminant, Laplace operator      |
+| epsilon | ε     | Ε     | small positive number (tolerance)       |                                     |
+| zeta    | ζ     | Ζ     | Riemann zeta function                   |                                     |
+| eta     | η     | Η     | efficiency, learning rate               |                                     |
+| theta   | θ     | Θ     | angle, model parameter                  | asymptotic tight bound (Θ-notation) |
+| iota    | ι     | Ι     | unit vector, index                      |                                     |
+| kappa   | κ     | Κ     | curvature, connectivity                 |                                     |
+| lambda  | λ     | Λ     | eigenvalues, decay rate, regularization | cosmological constant, wavelength   |
+| mu      | μ     | Μ     | mean of distribution                    |                                     |
+| nu      | ν     | Ν     | frequency                               |                                     |
+| xi      | ξ     | Ξ     | random variable                         | random variable, partition function |
+| omicron | ο     | Ο     | rarely used                             | Big O notation (complexity)         |
+| pi      | π     | Π     | circle constant, product operator       | product operator (∏)                |
+| rho     | ρ     | Ρ     | correlation coefficient, density        |                                     |
+| sigma   | σ     | Σ     | standard deviation, sum                 | sum operator (Σ)                    |
+| tau     | τ     | Τ     | time constant, Kendall's tau            |                                     |
+| upsilon | υ     | Υ     | rarely used                             |                                     |
+| phi     | φ (ϕ) | Φ     | golden ratio, angle                     | work function, magnetic flux        |
+| chi     | χ     | Χ     | characteristic function, chi-square     | chi-square distribution             |
+| psi     | ψ     | Ψ     | wave function (quantum mechanics)       | wave function (quantum mechanics)   |
+| omega   | ω     | Ω     | angular frequency                       | complexity lower bound (Ω-notation) |
+
+
+### ML & Data Science Symbols
+
+| Symbol       | Name                                 | Common Use in ML / DS                          |
+|--------------|--------------------------------------|------------------------------------------------|
+| θ            | theta                                | model parameters (linear, logistic regression) |
+| w, b         | weights, bias                        | neural networks, linear models                 |
+| ∇J(θ)        | gradient of loss wrt parameters      | gradient descent update                        |
+| L, ℒ         | loss, likelihood                     | model objective                                |
+| y, ŷ         | actual output, predicted output      | supervised learning                            |
+| p(x), p(x\|y) | probability, conditional probability | probabilistic models                           |
+| μ, σ²        | mean and variance                    | Gaussian models, distributions                 |
+| 𝔼[X]        | expectation of X                     | expected value                                 |
+| KL(P\||Q)    | Kullback-Leibler divergence          | measure difference between distributions       |
+| 𝒩(μ, σ²)    | normal distribution                  | Gaussian probability density                   |
+| R²           | coefficient of determination         | regression goodness of fit                     |
+
+
+
+With that in mind, most math problems don't seem so scary.
+
+
+
+
+## Why not just use Matlab?
 Matlab is an illigitimate programming language and it knows!
