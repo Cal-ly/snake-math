@@ -34,7 +34,7 @@ Restructure Markdown pages and Vue components to:
     → Do not make any changes yet.
 
 4. After approval:
-    - Work one page at a time.
+    - Work one page at a time - have `instructions/concept_page_template.md` in mind.
     - Log progress in `instructions/task-log.md`:
         - What’s done
         - What’s next

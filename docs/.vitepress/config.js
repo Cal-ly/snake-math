@@ -104,7 +104,7 @@ export default {
           text: 'Statistics',
           items: [
             { text: 'Descriptive Statistics', link: '/statistics/descriptive-stats' },
-            { text: 'Probability Distributions', link: '/statistics/probability' }
+            { text: 'Probability Distributions', link: '/statistics/probability/' }
           ]
         },
         {
