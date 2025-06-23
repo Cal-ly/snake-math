@@ -69,11 +69,12 @@ export default {
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Basics', link: '/basics/variables-expressions' },
-      { text: 'Algebra', link: '/algebra/summation-notation/' },
-      { text: 'Statistics', link: '/statistics/descriptive-stats/' },
-      { text: 'Linear Algebra', link: '/linear-algebra/vectors/' },
-      { text: 'Calculus', link: '/calculus/limits/' }
+      { text: 'Basics', link: '/basics/' },
+      { text: 'Algebra', link: '/algebra/' },
+      { text: 'Statistics', link: '/statistics/' },
+      { text: 'Trigonometry', link: '/trigonometry/' },
+      { text: 'Linear Algebra', link: '/linear-algebra/' },
+      { text: 'Calculus', link: '/calculus/' }
     ],
     sidebar: {
       '/': [
@@ -87,13 +88,18 @@ export default {
         {
           text: 'Basics',
           items: [
+            { text: 'Overview', link: '/basics/' },
+            { text: 'Mathematical Foundations', link: '/basics/foundations' },
             { text: 'Variables & Expressions', link: '/basics/variables-expressions' },
-            { text: 'Functions & Plotting', link: '/basics/functions' }
+            { text: 'Functions & Plotting', link: '/basics/functions' },
+            { text: 'Number Theory', link: '/basics/number-theory' },
+            { text: 'Order of Operations', link: '/basics/order-of-operations' }
           ]
         },
         {
           text: 'Algebra',
           items: [
+            { text: 'Overview', link: '/algebra/' },
             { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation/' },
             { text: 'Product Notation (Π)', link: '/algebra/product-notation/' },
             { text: 'Linear Equations', link: '/algebra/linear-equations/' },
@@ -104,6 +110,7 @@ export default {
         {
           text: 'Statistics',
           items: [
+            { text: 'Overview', link: '/statistics/' },
             { text: 'Descriptive Statistics', link: '/statistics/descriptive-stats/' },
             { text: 'Probability Distributions', link: '/statistics/probability/' }
           ]
@@ -111,12 +118,14 @@ export default {
         {
           text: 'Trigonometry',
           items: [
+            { text: 'Overview', link: '/trigonometry/' },
             { text: 'Unit Circle & Trig Functions', link: '/trigonometry/unit-circle/' }
           ]
         },
         {
           text: 'Linear Algebra',
           items: [
+            { text: 'Overview', link: '/linear-algebra/' },
             { text: 'Vectors & Operations', link: '/linear-algebra/vectors/' },
             { text: 'Matrix Operations', link: '/linear-algebra/matrices/' }
           ]
@@ -124,6 +133,7 @@ export default {
         {
           text: 'Calculus',
           items: [
+            { text: 'Overview', link: '/calculus/' },
             { text: 'Limits & Continuity', link: '/calculus/limits/' }
           ]
         }

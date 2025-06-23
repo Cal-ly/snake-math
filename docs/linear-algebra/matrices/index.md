@@ -39,7 +39,7 @@ This section covers matrix operations from basic concepts to real-world applicat
 
 Before diving into matrices, ensure you're comfortable with:
 
-- **[Variables & Expressions](../basics/variables-expressions.md)** - Basic mathematical notation
+- **[Variables & Expressions](../../basics/variables-expressions.md)** - Basic mathematical notation
 - **Arrays and Lists** - Programming data structures
 - **Basic Arithmetic** - Addition, multiplication, powers
 
@@ -47,10 +47,10 @@ Before diving into matrices, ensure you're comfortable with:
 
 Matrix operations connect to many other areas:
 
-- **[Vectors](../linear-algebra/vectors.md)** - One-dimensional matrices
-- **[Linear Equations](../algebra/linear-equations/)** - Systems solved with matrices
-- **[Functions](../basics/functions.md)** - Matrices represent linear transformations
-- **[Summation Notation](../algebra/summation-notation/)** - Matrix operations use sums
+- **[Vectors](../vectors/)** - One-dimensional matrices
+- **[Linear Equations](../../algebra/linear-equations/)** - Systems solved with matrices
+- **[Functions](../../basics/functions.md)** - Matrices represent linear transformations
+- **[Summation Notation](../../algebra/summation-notation/)** - Matrix operations use sums
 
 ## Learning Path
 

@@ -147,9 +147,9 @@ By completing this guide, you'll be able to:
 Summation notation connects to many other mathematical concepts:
 
 - **[Product Notation](../product-notation/)** - Multiplication sequences
-- **[Sequences and Series](../../basics/sequences.md)** - Foundation concepts
+- **[Mathematical Foundations](../../basics/foundations.md)** - Foundation concepts
 - **[Statistics](../../statistics/)** - Data analysis applications
-- **[Algorithm Analysis](../../computer-science/complexity.md)** - Performance evaluation
+- **[Algorithm Analysis](../../basics/functions.md)** - Performance evaluation
 - **[Calculus](../../calculus/)** - Integration as continuous summation
 
 ## 🎉 **Ready to Begin?**

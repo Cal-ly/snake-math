@@ -672,8 +672,8 @@ Build an analyzer that:
 Ready to build on your understanding of descriptive statistics?
 
 - **[Probability Distributions](../probability/index.md)**: Understand theoretical foundations underlying statistical measures
-- **[Inferential Statistics](../../calculus/limits.md)**: Learn how sample statistics relate to population parameters
-- **[Correlation and Regression](../../linear-algebra/vectors.md)**: Analyze relationships between variables
+- **[Inferential Statistics](../../calculus/limits/)**: Learn how sample statistics relate to population parameters
+- **[Correlation and Regression](../../linear-algebra/vectors/)**: Analyze relationships between variables
 - **[Time Series Analysis](../../basics/functions.md)**: Specialized techniques for temporal data
 - **[Experimental Design](../probability/applications.md)**: Apply statistics to controlled studies and A/B testing
 
