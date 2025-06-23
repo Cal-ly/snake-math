@@ -74,9 +74,22 @@ The project follows a standard VitePress structure, clearly separating interacti
 
 ## Content Format
 
-- **Markdown with LaTeX** for math equations (using built-in VitePress MathJax support).
-- **Interactive Elements:** Native HTML accordions and Vue-based components.
-- **PyScript Blocks:** Embedded for in-browser Python experimentation when necessary.
+Content pages follow a standardized template defined in `concept_page_template.md`:
+
+### Page Structure
+- **YAML Frontmatter** with comprehensive metadata including title, description, tags, difficulty level, prerequisites, and related concepts
+- **Progressive Sections:** Understanding → Interactive Exploration → Techniques & Efficiency → Common Patterns → Real-world Applications → Practice Suggestions → Key Takeaways
+- **Markdown with LaTeX** for math equations using `$...$` (inline) and `$$...$$` (block)
+- **CodeFold Components** wrapping all code blocks for collapsible presentation
+- **Interactive Elements:** Vue-based components with descriptive comment blocks explaining intent and functionality
+- **PyScript Blocks:** Embedded for in-browser Python experimentation when necessary
+
+### Template Guidelines
+- Light, witty tone with minimal emojis
+- In-depth but informal explanations relating math to programming concepts
+- Atomic interactive components with clear naming conventions
+- Complexity analysis and efficiency considerations for different methods
+- Real-world applications with practical Python examples
 
 Example interactive slider with PyScript:
 

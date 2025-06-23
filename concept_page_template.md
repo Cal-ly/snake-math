@@ -18,12 +18,32 @@ last_updated: ""
 author: ""
 reviewers: []
 version: "1.0"
-
-#Notes on Concept Page Template for handoff
-#- Don't use the --- dividers other than to denominate the yaml, at the start of the document.
-#- Update and edit the relevant frontmatter, based on the content
-#- Use a light and witty tone where it is natural, but keep the emojis to a minimal
 ---
+
+<!--
+
+Guidelines on Concept Page Template
+
+- For math inline, use single dollar-sign ($)
+- For math blocks, use double dollar-sign ($$)
+- Don't use the --- dividers other than to denominate the yaml, at the start of the document.
+- Update and edit the relevant yaml frontmatter, based on the content
+- Use a light and witty tone where it is natural, keep the emojis to a minimal
+- All codeblocks demarcated top and bottom with three backtics ``` must be enclosed in CodeFold component:
+
+<CodeFold> 
+
+```language
+here = some_code
+```
+
+</CodeFold>
+
+- For interactive components, describe the idea, intent and functionality in a block-comment
+- Keep the interactive components atomic, i.e. divide into seperate independent components
+- For component naming, either keep the naming of the current component or suggest relevant name
+
+-->
 
 # [Concept Name] ([Symbol/Notation])
 
@@ -41,10 +61,14 @@ $$
 
 Follow with an intuitive analogy or metaphor that helps bridge the mathematical concept to a familiar scenario or programming example:
 
+<CodeFold>
+
 ```python
 # Provide a basic Python example demonstrating the concept
 print("Replace this with an illustrative Python snippet")
 ```
+
+</CodeFold>
 
 ## Why [Concept] Matters for Programmers
 
@@ -59,10 +83,8 @@ Include a placeholder for an interactive component (e.g., Vue component, PyScrip
 
 <InteractiveComponent />
 
-```plaintext
 Component conceptualization in a comment block:
-Give ideas and possible descriptions to the functionality, design and intent of the component, preferably in a form, that can be handed to another LLM. 
-```
+Give ideas and possible descriptions to the functionality, design and intent of the component, preferably in a form, that can be handed to another LLM.
 
 Briefly describe what the user can learn or explore through this interactive element.
 
@@ -76,35 +98,49 @@ Provide clear, brief descriptions and Python examples of various methods or appr
 **Pros**: Describe benefits briefly\
 **Complexity**: O(n), O(log n), O(1), etc.
 
+<CodeFold>
+
 ```python
 def method_one_example():
     pass  # Simple illustrative example
 ```
+
+</CodeFold>
 
 ### Method 2: [Another Method Name]
 
 **Pros**: Describe clearly\
 **Complexity**: O(n), O(1), etc.
 
+<CodeFold>
+
 ```python
 def method_two_example():
     pass  # Another clear example
 ```
+
+</CodeFold>
 
 ### Method 3: [Advanced or Efficient Method]
 
 **Pros**: Describe benefits\
 **Complexity**: O(1), O(log n), etc.
 
+<CodeFold>
+
 ```python
 def method_three_example():
     pass  # Highly efficient or clever method
 ```
 
+</CodeFold>
+
 
 ## Why the [Specific Method] Works
 
 Explain a chosen advanced or efficient method intuitively, ideally using visual or step-by-step analogies, accompanied by Python code:
+
+<CodeFold>
 
 ```python
 def explain_advanced_method():
@@ -112,6 +148,8 @@ def explain_advanced_method():
 
 explain_advanced_method()
 ```
+
+</CodeFold>
 
 
 ## Common [Concept] Patterns
@@ -126,6 +164,8 @@ Include patterns, standard formulas, or frequent uses of this concept:
 
 Provide Python implementations clearly demonstrating these patterns:
 
+<CodeFold>
+
 ```python
 def pattern_example_one():
     pass
@@ -134,6 +174,8 @@ def pattern_example_two():
     pass
 ```
 
+</CodeFold>
+
 
 ## Practical Real-world Applications
 
@@ -141,17 +183,25 @@ Highlight practical applications of the concept with brief Python examples relev
 
 ### Application 1: [Real-world Application]
 
+<CodeFold>
+
 ```python
 def practical_application_example():
     pass
 ```
 
+</CodeFold>
+
 ### Application 2: [Another Real-world Application]
+
+<CodeFold>
 
 ```python
 def another_practical_application():
     pass
 ```
+
+</CodeFold>
 
 
 ## Try it Yourself

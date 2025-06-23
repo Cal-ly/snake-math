@@ -160,7 +160,7 @@ The component should make the connection between algebraic manipulation and geom
     </div>
     
     <div class="visualization-container">
-      <canvas ref="plotCanvas" width="700" height="500" class="visualization-canvas"></canvas>
+      <canvas ref="plotCanvas" width="600px" height="500px" class="visualization-canvas"></canvas>
       <div class="plot-legend">
         <div class="legend-item">
           <div class="color-sample" style="background: #2196F3;"></div>

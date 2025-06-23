@@ -60,12 +60,13 @@ Content follows a progressive learning path:
 - `docs/linear-algebra/` - Vectors, matrices, transformations
 - `docs/calculus/` - Limits, continuity, derivatives (planned)
 
-Each content file combines:
-1. Mathematical theory with LaTeX notation. 
-    - This should be in-depth, informal and relate to programming, e.g. "Summation is just a for-loop"
-2. Executable Python code examples (only if applicable and it adds understanding)
-3. Interactive components for hands-on learning
-4. Python Code examples with explanation
+Each content file follows the `concept_page_template.md` structure:
+1. **Mathematical Theory** - In-depth, informal explanations relating to programming (e.g., "Summation is just a for-loop")
+2. **Interactive Components** - Vue-based exploration tools with comment block descriptions
+3. **Code Examples** - Python snippets wrapped in `<CodeFold>` components
+4. **Efficiency Analysis** - Big O complexity comparisons between different methods
+5. **Real-world Applications** - Practical programming scenarios and use cases
+6. **Progressive Learning** - From basic understanding to advanced patterns and applications
 
 ## Development Patterns
 
@@ -80,10 +81,17 @@ Each content file combines:
 - Terminal output is styled with custom CSS
 
 ### Content Format
-- Markdown files with frontmatter for VitePress
+Content pages follow the standardized template in `concept_page_template.md`:
+
+**Required Structure:**
+- YAML frontmatter with title, description, tags, difficulty, prerequisites, related_concepts, applications
+- Progressive sections: Understanding → Interactive Exploration → Techniques & Efficiency → Common Patterns → Real-world Applications → Practice → Key Takeaways
 - LaTeX math expressions using `$...$` (inline) and `$$...$$` (block)
-- Vue components embedded directly in markdown
-- Progressive complexity from basic concepts to advanced topics
+- All code blocks wrapped in `<CodeFold>` components
+- Vue components with descriptive comment blocks explaining functionality
+- Light, witty tone with minimal emojis
+- Complexity analysis (Big O notation) for algorithms and methods
+- Real-world Python examples for practical applications
 
 ## Deployment
 

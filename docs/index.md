@@ -34,7 +34,7 @@ features:
 
 <br>
 
-# What's on this site?
+# *Hrumph!* What's the meaning of all this?
  The inital goal with this site was a perosnal cheatsheet, on how to combine Python with mathematical concepts.
 
  ![Snake Math](https://y.yarn.co/7941ba3a-1abf-423e-aa6f-2292ebd327eb_text.gif)
