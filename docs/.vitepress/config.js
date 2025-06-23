@@ -70,9 +70,10 @@ export default {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Basics', link: '/basics/variables-expressions' },
-      { text: 'Algebra', link: '/algebra/summation-notation' },
-      { text: 'Statistics', link: '/statistics/descriptive-stats' },
-      { text: 'Calculus', link: '/calculus/limits' }
+      { text: 'Algebra', link: '/algebra/summation-notation/' },
+      { text: 'Statistics', link: '/statistics/descriptive-stats/' },
+      { text: 'Linear Algebra', link: '/linear-algebra/vectors/' },
+      { text: 'Calculus', link: '/calculus/limits/' }
     ],
     sidebar: {
       '/': [
@@ -93,37 +94,37 @@ export default {
         {
           text: 'Algebra',
           items: [
-            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' },
-            { text: 'Product Notation (Π)', link: '/algebra/product-notation' },
-            { text: 'Linear Equations', link: '/algebra/linear-equations' },
-            { text: 'Quadratic Functions', link: '/algebra/quadratics' },
-            { text: 'Exponentials & Logarithms', link: '/algebra/exponentials-logarithms' }
+            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation/' },
+            { text: 'Product Notation (Π)', link: '/algebra/product-notation/' },
+            { text: 'Linear Equations', link: '/algebra/linear-equations/' },
+            { text: 'Quadratic Functions', link: '/algebra/quadratics/' },
+            { text: 'Exponentials & Logarithms', link: '/algebra/exponentials-logarithms/' }
           ]
         },
         {
           text: 'Statistics',
           items: [
-            { text: 'Descriptive Statistics', link: '/statistics/descriptive-stats' },
+            { text: 'Descriptive Statistics', link: '/statistics/descriptive-stats/' },
             { text: 'Probability Distributions', link: '/statistics/probability/' }
           ]
         },
         {
           text: 'Trigonometry',
           items: [
-            { text: 'Unit Circle & Trig Functions', link: '/trigonometry/unit-circle' }
+            { text: 'Unit Circle & Trig Functions', link: '/trigonometry/unit-circle/' }
           ]
         },
         {
           text: 'Linear Algebra',
           items: [
-            { text: 'Vectors & Operations', link: '/linear-algebra/vectors' },
-            { text: 'Matrix Operations', link: '/linear-algebra/matrices' }
+            { text: 'Vectors & Operations', link: '/linear-algebra/vectors/' },
+            { text: 'Matrix Operations', link: '/linear-algebra/matrices/' }
           ]
         },
         {
           text: 'Calculus',
           items: [
-            { text: 'Limits & Continuity', link: '/calculus/limits' }
+            { text: 'Limits & Continuity', link: '/calculus/limits/' }
           ]
         }
       ]
