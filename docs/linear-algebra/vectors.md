@@ -41,6 +41,8 @@ $$
 
 Think of vectors like ingredients in a recipe - you can combine them (addition), scale the amounts (scalar multiplication), or measure how similar they are (dot product):
 
+<CodeFold>
+
 ```python
 import numpy as np
 
@@ -61,19 +63,19 @@ direction = velocity / speed
 print(f"Direction: {direction}")  # [0.6, 0.8]
 ```
 
+</CodeFold>
+
 ## Why Vectors Matter for Programmers
 
 Vectors are the foundation of computer graphics, game physics, machine learning, and data analysis. They provide efficient ways to represent positions, velocities, forces, and even abstract data like user preferences or document similarities.
 
 Understanding vectors helps you work with 3D graphics, implement physics simulations, build recommendation systems, and analyze multidimensional data with confidence.
 
-
 ## Interactive Exploration
 
 <VectorOperations />
 
 Experiment with different vectors to see how operations affect magnitude, direction, and relationships between vectors.
-
 
 ## Vector Operations Techniques and Efficiency
 
@@ -83,6 +85,8 @@ Understanding different approaches to vector operations helps optimize performan
 
 **Pros**: Educational value, no dependencies, complete control\
 **Complexity**: O(n) for most operations where n is vector dimension
+
+<CodeFold>
 
 ```python
 def manual_vector_operations():
@@ -153,10 +157,14 @@ def manual_vector_operations():
 manual_vector_operations()
 ```
 
+</CodeFold>
+
 ### Method 2: NumPy Vectorized Operations
 
 **Pros**: Highly optimized, concise syntax, broadcast operations\
 **Complexity**: O(n) but with significant performance improvements
+
+<CodeFold>
 
 ```python
 import time
@@ -226,10 +234,14 @@ def numpy_vector_operations():
 numpy_vector_operations()
 ```
 
+</CodeFold>
+
 ### Method 3: Specialized Vector Libraries
 
 **Pros**: Domain-specific optimizations, additional functionality\
 **Complexity**: Varies by operation, often optimized for specific use cases
+
+<CodeFold>
 
 ```python
 def specialized_vector_operations():
@@ -307,10 +319,13 @@ def specialized_vector_operations():
 specialized_vector_operations()
 ```
 
+</CodeFold>
 
 ## Why Vector Dot Product Works
 
 The dot product measures how much two vectors point in the same direction. Think of it as asking "How much of vector A goes in the direction of vector B?":
+
+<CodeFold>
 
 ```python
 def explain_dot_product():
@@ -442,6 +457,7 @@ def explain_dot_product():
 explain_dot_product()
 ```
 
+</CodeFold>
 
 ## Common Vector Patterns
 
@@ -460,6 +476,8 @@ Standard vector operations and patterns that appear frequently in programming:
   \(\vec{u} \times \vec{v} = (u_2v_3 - u_3v_2, u_3v_1 - u_1v_3, u_1v_2 - u_2v_1)\)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def vector_patterns_library():
@@ -568,7 +586,11 @@ def vector_patterns_library():
 vector_patterns_library()
 ```
 
+</CodeFold>
+
 ### Basic Vector Operations
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -634,7 +656,11 @@ def vector_operations():
 vector_operations()
 ```
 
+</CodeFold>
+
 ### Geometric Applications
+
+<CodeFold>
 
 ```python
 def geometric_applications():
@@ -695,6 +721,8 @@ def geometric_applications():
 geometric_applications()
 ```
 
+</CodeFold>
+
 ## Cross Product and 3D Applications
 
 The VectorOperations component includes 3D vector visualization and cross product demonstrations, showing the geometric meaning and orthogonality properties of the cross product.
@@ -702,6 +730,8 @@ The VectorOperations component includes 3D vector visualization and cross produc
 ## Applications in Physics and Engineering
 
 ### Force and Motion
+
+<CodeFold>
 
 ```python
 def physics_applications():
@@ -779,7 +809,11 @@ def physics_applications():
 physics_applications()
 ```
 
+</CodeFold>
+
 ### Computer Graphics Applications
+
+<CodeFold>
 
 ```python
 def computer_graphics_applications():
@@ -870,7 +904,11 @@ def computer_graphics_applications():
 computer_graphics_applications()
 ```
 
+</CodeFold>
+
 ### Application 3: Machine Learning and Data Analysis
+
+<CodeFold>
 
 ```python
 def machine_learning_applications():
@@ -1010,6 +1048,7 @@ def machine_learning_applications():
 machine_learning_applications()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -1022,7 +1061,6 @@ Ready to master vectors and their applications? Here are some hands-on challenge
 - **Game AI Behaviors:** Implement various steering behaviors (seek, flee, wander, flock) for game characters using vector calculations.
 - **Data Clustering Tool:** Build a k-means clustering algorithm and visualize how data points are grouped based on vector distances.
 
-
 ## Key Takeaways
 
 - Vectors represent quantities with both magnitude and direction, making them essential for describing motion, forces, and transformations.
@@ -1032,7 +1070,6 @@ Ready to master vectors and their applications? Here are some hands-on challenge
 - NumPy provides highly optimized vector operations that outperform manual implementations by orders of magnitude.
 - Understanding geometric interpretation of vector operations helps debug algorithms and design better solutions.
 - Vectors scale from simple 2D/3D graphics to high-dimensional machine learning applications.
-
 
 ## Next Steps & Further Exploration
 

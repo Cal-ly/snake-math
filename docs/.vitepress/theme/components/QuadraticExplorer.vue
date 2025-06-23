@@ -247,7 +247,83 @@ The component should make the connection between algebraic manipulation and geom
       </div>
     </div>
     
-    <div v-if=\"showSteps\" class=\"component-section\">\n      <h4 class=\"input-group-title\">Step-by-Step Quadratic Formula Derivation</h4>\n      <div class=\"step-by-step\">\n        <div v-for=\"(step, index) in solutionSteps\" :key=\"index\" class=\"solution-step\">\n          <div class=\"step-number\">Step {{ index + 1 }}:</div>\n          <div class=\"step-description\">{{ step.description }}</div>\n          <div class=\"step-equation\">{{ step.equation }}</div>\n        </div>\n      </div>\n    </div>\n    \n    <div v-if=\"currentScenario\" class=\"component-section\">\n      <h4 class=\"input-group-title\">Real-World Application: {{ scenarioDetails.title }}</h4>\n      <div class=\"scenario-details\">\n        <p>{{ scenarioDetails.description }}</p>\n        <div class=\"scenario-equation\">\n          <strong>Equation:</strong> {{ scenarioDetails.equation }}\n        </div>\n        <div class=\"scenario-interpretation\">\n          <strong>Interpretation:</strong>\n          <ul>\n            <li v-for=\"point in scenarioDetails.keyPoints\" :key=\"point\">{{ point }}</li>\n          </ul>\n        </div>\n      </div>\n    </div>\n    \n    <div v-if=\"showMultiple\" class=\"component-section\">\n      <h4 class=\"input-group-title\">Multiple Quadratics Comparison</h4>\n      <div class=\"comparison-controls\">\n        <div class=\"input-group\">\n          <label>Add comparison function:</label>\n          <button @click=\"addComparison\" class=\"btn-primary\">Add Function</button>\n          <button @click=\"clearComparisons\" class=\"btn-secondary\">Clear All</button>\n        </div>\n      </div>\n      <div class=\"comparison-list\">\n        <div v-for=\"(comp, index) in comparisons\" :key=\"index\" class=\"comparison-item\">\n          <span class=\"comparison-color\" :style=\"{ background: comp.color }\"></span>\n          <span class=\"comparison-equation\">f{{ index + 2 }}(x) = {{ comp.equation }}</span>\n          <button @click=\"removeComparison(index)\" class=\"remove-btn\">\u00d7</button>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"interactive-card\">\n      <h4 class=\"input-group-title\">Function Calculator</h4>\n      <div class=\"component-inputs\">\n        <label>Evaluate f(x) at x =</label>\n        <input type=\"number\" v-model=\"evalX\" @input=\"evaluateFunction\" step=\"0.1\" class=\"eval-input\">\n        <span class=\"result-value\">f({{ evalX }}) = {{ evalResult }}</span>\n      </div>\n      \n      <div class=\"solver\">\n        <h4 class=\"input-group-title\">Equation Solver</h4>\n        <div class=\"component-inputs\">\n          <label>Solve f(x) =</label>\n          <input type=\"number\" v-model=\"solveY\" @input=\"solveEquation\" step=\"0.1\" class=\"eval-input\">\n          <div class=\"solve-result\">{{ solveResult }}</div>\n        </div>\n      </div>\n      \n      <div class=\"coefficient-comparison\">\n        <h4 class=\"input-group-title\">Coefficient Impact Analysis</h4>\n        <div class=\"impact-analysis\">\n          <div class=\"impact-item\">\n            <strong>Parameter 'a' ({{ a }}):</strong> {{ getAImpact() }}\n          </div>\n          <div class=\"impact-item\">\n            <strong>Parameter 'b' ({{ b }}):</strong> {{ getBImpact() }}\n          </div>\n          <div class=\"impact-item\">\n            <strong>Parameter 'c' ({{ c }}):</strong> {{ getCImpact() }}\n          </div>\n        </div>\n      </div>\n    </div>
+    <div v-if="showSteps" class="component-section">
+      <h4 class="input-group-title">Step-by-Step Quadratic Formula Derivation</h4>
+      <div class="step-by-step">
+        <div v-for="(step, index) in solutionSteps" :key="index" class="solution-step">
+          <div class="step-number">Step {{ index + 1 }}:</div>
+          <div class="step-description">{{ step.description }}</div>
+          <div class="step-equation">{{ step.equation }}</div>
+        </div>
+      </div>
+    </div>
+    
+    <div v-if="currentScenario" class="component-section">
+      <h4 class="input-group-title">Real-World Application: {{ scenarioDetails.title }}</h4>
+      <div class="scenario-details">
+        <p>{{ scenarioDetails.description }}</p>
+        <div class="scenario-equation">
+          <strong>Equation:</strong> {{ scenarioDetails.equation }}
+        </div>
+        <div class="scenario-interpretation">
+          <strong>Interpretation:</strong>
+          <ul>
+            <li v-for="point in scenarioDetails.keyPoints" :key="point">{{ point }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div v-if="showMultiple" class="component-section">
+      <h4 class="input-group-title">Multiple Quadratics Comparison</h4>
+      <div class="comparison-controls">
+        <div class="input-group">
+          <label>Add comparison function:</label>
+          <button @click="addComparison" class="btn-primary">Add Function</button>
+          <button @click="clearComparisons" class="btn-secondary">Clear All</button>
+        </div>
+      </div>
+      <div class="comparison-list">
+        <div v-for="(comp, index) in comparisons" :key="index" class="comparison-item">
+          <span class="comparison-color" :style="{ background: comp.color }"></span>
+          <span class="comparison-equation">f{{ index + 2 }}(x) = {{ comp.equation }}</span>
+          <button @click="removeComparison(index)" class="remove-btn">&times;</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="interactive-card">
+      <h4 class="input-group-title">Function Calculator</h4>
+      <div class="component-inputs">
+        <label>Evaluate f(x) at x =</label>
+        <input type="number" v-model="evalX" @input="evaluateFunction" step="0.1" class="eval-input">
+        <span class="result-value">f({{ evalX }}) = {{ evalResult }}</span>
+      </div>
+      
+      <div class="solver">
+        <h4 class="input-group-title">Equation Solver</h4>
+        <div class="component-inputs">
+          <label>Solve f(x) =</label>
+          <input type="number" v-model="solveY" @input="solveEquation" step="0.1" class="eval-input">
+          <div class="solve-result">{{ solveResult }}</div>
+        </div>
+      </div>
+      
+      <div class="coefficient-comparison">
+        <h4 class="input-group-title">Coefficient Impact Analysis</h4>
+        <div class="impact-analysis">
+          <div class="impact-item">
+            <strong>Parameter 'a' ({{ a }}):</strong> {{ getAImpact() }}
+          </div>
+          <div class="impact-item">
+            <strong>Parameter 'b' ({{ b }}):</strong> {{ getBImpact() }}
+          </div>
+          <div class="impact-item">
+            <strong>Parameter 'c' ({{ c }}):</strong> {{ getCImpact() }}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

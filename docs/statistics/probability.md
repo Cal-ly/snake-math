@@ -39,6 +39,8 @@ $$
 
 Think of probability distributions like different personality types for randomness - the normal distribution is the "balanced" type that likes to stay near the average, while the uniform distribution is the "rebel" that treats all outcomes equally:
 
+<CodeFold>
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -61,19 +63,19 @@ print(f"Uniform distribution: mean={np.mean(uniform_data):.1f}, std={np.std(unif
 print(f"Exponential distribution: mean={np.mean(exponential_data):.1f}, std={np.std(exponential_data):.1f}")
 ```
 
+</CodeFold>
+
 ## Why Probability Distributions Matter for Programmers
 
 Probability distributions are essential for modeling uncertainty in algorithms, building robust machine learning models, conducting A/B tests, estimating confidence intervals, and making data-driven decisions under uncertainty.
 
 Understanding distributions helps you choose appropriate statistical methods, generate realistic test data, model user behavior, assess risks, and build systems that handle uncertainty gracefully.
 
-
 ## Interactive Exploration
 
 <ProbabilitySimulator />
 
 Experiment with different distributions and their parameters to understand how they model various types of uncertainty and randomness.
-
 
 ## Probability Distribution Techniques and Efficiency
 
@@ -83,6 +85,8 @@ Understanding different approaches to working with probability distributions hel
 
 **Pros**: Educational value, complete understanding, no dependencies\
 **Complexity**: Varies by distribution, O(1) for simple PDFs, O(k) for combinatorial calculations
+
+<CodeFold>
 
 ```python
 import math
@@ -172,10 +176,14 @@ def manual_probability_calculations():
 manual_probability_calculations()
 ```
 
+</CodeFold>
+
 ### Method 2: SciPy Statistical Functions
 
 **Pros**: Highly optimized, extensive functionality, numerical stability\
 **Complexity**: O(1) for most operations, optimized implementations
+
+<CodeFold>
 
 ```python
 from scipy import stats
@@ -261,10 +269,14 @@ def scipy_probability_calculations():
 scipy_probability_calculations()
 ```
 
+</CodeFold>
+
 ### Method 3: Monte Carlo Simulation
 
 **Pros**: Handles complex scenarios, intuitive approach, parallelizable\
 **Complexity**: O(n) where n is number of simulations, can be distributed
+
+<CodeFold>
 
 ```python
 def monte_carlo_probability_estimation():
@@ -391,10 +403,13 @@ def monte_carlo_probability_estimation():
 monte_carlo_probability_estimation()
 ```
 
+</CodeFold>
 
 ## Why Bayes' Theorem Works
 
 Bayes' theorem provides a mathematical framework for updating our beliefs when we receive new evidence. It's the foundation of rational decision-making under uncertainty:
+
+<CodeFold>
 
 ```python
 def explain_bayes_theorem():
@@ -555,7 +570,11 @@ def explain_bayes_theorem():
 explain_bayes_theorem()
 ```
 
+</CodeFold>
+
 ### Normal Distribution
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -606,7 +625,11 @@ def normal_distribution_analysis():
 normal_distribution_analysis()
 ```
 
+</CodeFold>
+
 ### Binomial Distribution
+
+<CodeFold>
 
 ```python
 def binomial_distribution_analysis():
@@ -664,6 +687,8 @@ def binomial_distribution_analysis():
 binomial_distribution_analysis()
 ```
 
+</CodeFold>
+
 ### Central Limit Theorem Demonstration
 
 The ProbabilitySimulator component includes an interactive demonstration of the Central Limit Theorem, showing how sample means approach a normal distribution regardless of the original population distribution.
@@ -671,6 +696,8 @@ The ProbabilitySimulator component includes an interactive demonstration of the 
 ## Probability Calculations
 
 ### Bayes' Theorem
+
+<CodeFold>
 
 ```python
 def bayes_theorem_examples():
@@ -725,7 +752,11 @@ def bayes_theorem_examples():
 bayes_theorem_examples()
 ```
 
+</CodeFold>
+
 ### Confidence Intervals
+
+<CodeFold>
 
 ```python
 def confidence_intervals():
@@ -784,6 +815,8 @@ def confidence_intervals():
 
 confidence_intervals()
 ```
+
+</CodeFold>
 
 ## Real-World Applications
 

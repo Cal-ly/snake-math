@@ -38,6 +38,8 @@ This reads as "the limit of f(x) as x approaches a equals L," meaning as x gets 
 
 **Continuity** is the mathematical way of saying "no surprises" - it occurs when the limit equals the actual function value:
 
+<CodeFold>
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -60,12 +62,13 @@ def demonstrate_limit_concept():
 demonstrate_limit_concept()
 ```
 
+</CodeFold>
+
 ## Why Limits Matter for Programmers
 
 Limits are fundamental to numerical analysis, optimization algorithms, and understanding how computational methods behave. They help us predict behavior, handle edge cases, and design robust algorithms that work even when dealing with very large or very small numbers.
 
 Understanding limits also helps you debug numerical issues, implement calculus-based algorithms, and create smooth animations and transitions in graphics programming.
-
 
 ## Interactive Exploration
 
@@ -73,10 +76,17 @@ Understanding limits also helps you debug numerical issues, implement calculus-b
 
 Experiment with different functions and see how they behave as inputs approach specific values, discovering the difference between continuous and discontinuous functions.
 
+## Function Visualization and Analysis
+
+<FunctionsVisualization />
+
+This advanced visualization tool allows you to plot any function and analyze its limits at specific points. Enter your own functions, adjust the limit point, and see real-time analysis of continuity and limit behavior.
 
 ## Limits Techniques and Efficiency
 
 ### Numerical Limit Calculation
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -149,7 +159,11 @@ def numerical_limits():
 numerical_limits()
 ```
 
+</CodeFold>
+
 ### L'Hôpital's Rule
+
+<CodeFold>
 
 ```python
 def lhopital_rule_examples():
@@ -222,7 +236,11 @@ def lhopital_rule_examples():
 lhopital_rule_examples()
 ```
 
+</CodeFold>
+
 ## Continuity Analysis
+
+<CodeFold>
 
 ```python
 def continuity_analysis():
@@ -326,9 +344,13 @@ def continuity_analysis():
 continuity_analysis()
 ```
 
+</CodeFold>
+
 ## Applications
 
 ### Optimization and Root Finding
+
+<CodeFold>
 
 ```python
 def optimization_applications():
@@ -451,6 +473,8 @@ def optimization_applications():
 optimization_applications()
 ```
 
+</CodeFold>
+
 ## Key Takeaways
 
 1. **Limits** describe function behavior near specific points
@@ -482,6 +506,8 @@ Understanding different approaches to evaluating limits helps in both theoretica
 **Pros**: Fastest method when function is continuous at the point\
 **Complexity**: O(1) for evaluation
 
+<CodeFold>
+
 ```python
 def direct_substitution_limit(func, point):
     """Calculate limit by direct substitution when function is continuous"""
@@ -499,10 +525,14 @@ limit_value, status = direct_substitution_limit(f1, 2)
 print(f"lim(x→2) (x² + 3x + 1) = {limit_value}, {status}")
 ```
 
+</CodeFold>
+
 ### Method 2: Factorization and Simplification
 
 **Pros**: Resolves indeterminate forms like 0/0 algebraically\
 **Complexity**: O(1) after algebraic manipulation
+
+<CodeFold>
 
 ```python
 def algebraic_limit_resolution():
@@ -536,10 +566,14 @@ limit_result = algebraic_limit_resolution()
 print(f"\nLimit = {limit_result}")
 ```
 
+</CodeFold>
+
 ### Method 3: L'Hôpital's Rule
 
 **Pros**: Handles indeterminate forms systematically using derivatives\
 **Complexity**: O(1) per derivative evaluation
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -572,10 +606,13 @@ lhopital_result = lhopital_rule_demonstration()
 print(f"\nLimit = {lhopital_result}")
 ```
 
+</CodeFold>
 
 ## Why Numerical Approximation Works
 
 When analytical methods are difficult, numerical approximation provides reliable limit estimation by systematically approaching the target point from both sides:
+
+<CodeFold>
 
 ```python
 def numerical_limit_calculation(func, target, tolerance=1e-12, max_iterations=15):
@@ -628,6 +665,7 @@ numerical_result = numerical_limit_calculation(limit_example, 2)
 print(f"Analytical answer: (x² - 4)/(x - 2) = (x + 2) at x = 2 gives 4")
 ```
 
+</CodeFold>
 
 ## Common Limits Patterns
 
@@ -646,6 +684,8 @@ Standard limit patterns that appear frequently in calculus and programming:
   \(\lim_{x \to 0} x \sin\left(\frac{1}{x}\right) = 0\)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def fundamental_limits_library():
@@ -711,12 +751,15 @@ def fundamental_limits_library():
 fundamental_results = fundamental_limits_library()
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Limits aren't just theoretical - they're essential for computational methods and real-world problem solving:
 
 ### Application 1: Optimization and Root Finding
+
+<CodeFold>
 
 ```python
 def newton_method_optimization():
@@ -765,7 +808,11 @@ def newton_method_optimization():
 newton_method_optimization()
 ```
 
+</CodeFold>
+
 ### Application 2: Numerical Integration
+
+<CodeFold>
 
 ```python
 def riemann_sum_integration():
@@ -795,7 +842,11 @@ def riemann_sum_integration():
 riemann_sum_integration()
 ```
 
+</CodeFold>
+
 ### Application 3: Machine Learning Gradients
+
+<CodeFold>
 
 ```python
 def gradient_approximation():
@@ -839,6 +890,7 @@ def gradient_approximation():
 gradient_approximation()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -850,7 +902,6 @@ Ready to master limits and continuity? Here are some hands-on challenges:
 - **Epsilon-Delta Proofs:** Visualize epsilon-delta definitions of limits with interactive parameters.
 - **Animation Creator:** Build animations showing how functions behave as variables approach limit points.
 
-
 ## Key Takeaways
 
 - Limits describe function behavior near specific points without requiring the function to be defined there.
@@ -860,7 +911,6 @@ Ready to master limits and continuity? Here are some hands-on challenges:
 - Numerical methods provide reliable approximations when analytical solutions are difficult.
 - Limits are fundamental to derivatives, integrals, optimization, and numerical analysis.
 - Understanding limits helps debug numerical issues and implement robust algorithms.
-
 
 ## Next Steps & Further Exploration
 

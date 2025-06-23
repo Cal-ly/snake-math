@@ -45,6 +45,8 @@ $$
 
 Think of matrix multiplication like a recipe mixer - each output ingredient combines multiple input ingredients in specific proportions:
 
+<CodeFold>
+
 ```python
 import numpy as np
 
@@ -67,19 +69,19 @@ final_grades = student_scores @ subject_weights
 print("Final grades:", final_grades.flatten())
 ```
 
+</CodeFold>
+
 ## Why Matrices Matter for Programmers
 
 Matrices are the backbone of modern computing - from graphics transformations to machine learning algorithms. They provide efficient ways to handle large-scale data operations, solve systems of equations, and represent complex transformations in everything from game development to artificial intelligence.
 
 Understanding matrices helps you write more efficient code, work with multidimensional data, and implement algorithms that scale to handle massive datasets.
 
-
 ## Interactive Exploration
 
 <MatrixTransformations />
 
 Experiment with different matrices and operations to see how they transform coordinate systems and solve real-world problems.
-
 
 ## Matrix Operations Techniques and Efficiency
 
@@ -89,6 +91,8 @@ Understanding different approaches to matrix operations helps optimize performan
 
 **Pros**: Complete control, educational value, no dependencies\
 **Complexity**: O(n³) for multiplication, O(n²) for addition
+
+<CodeFold>
 
 ```python
 def manual_matrix_operations():
@@ -158,10 +162,14 @@ def manual_matrix_operations():
 manual_matrix_operations()
 ```
 
+</CodeFold>
+
 ### Method 2: NumPy Operations
 
 **Pros**: Highly optimized, vectorized operations, extensive functionality\
 **Complexity**: O(n³) but with significant constant factor improvements
+
+<CodeFold>
 
 ```python
 def numpy_matrix_operations():
@@ -227,10 +235,14 @@ def numpy_matrix_operations():
 numpy_matrix_operations()
 ```
 
+</CodeFold>
+
 ### Method 3: Sparse Matrix Operations
 
 **Pros**: Memory efficient for sparse data, specialized algorithms\
 **Complexity**: Depends on sparsity, can be much better than O(n³)
+
+<CodeFold>
 
 ```python
 from scipy import sparse
@@ -319,10 +331,13 @@ def sparse_matrix_operations():
 sparse_matrix_operations()
 ```
 
+</CodeFold>
 
 ## Why Matrix Multiplication Works
 
 Matrix multiplication follows the "row-times-column" rule, which represents the composition of linear transformations. Think of it as applying multiple filters to data in sequence:
+
+<CodeFold>
 
 ```python
 def explain_matrix_multiplication():
@@ -424,6 +439,7 @@ def explain_matrix_multiplication():
 explain_matrix_multiplication()
 ```
 
+</CodeFold>
 
 ## Common Matrix Patterns
 
@@ -442,6 +458,8 @@ Standard matrix operations and patterns that appear frequently in programming:
   $\|A\|_F = \sqrt{\sum_{i,j} A_{ij}^2}$ (Frobenius norm)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def matrix_patterns_library():
@@ -539,7 +557,11 @@ def matrix_patterns_library():
 matrix_patterns_library()
 ```
 
+</CodeFold>
+
 ### Basic Matrix Operations
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -610,9 +632,13 @@ def manual_matrix_operations():
 manual_matrix_operations()
 ```
 
+</CodeFold>
+
 ## Solving Linear Systems
 
 ### Matrix Equation Form
+
+<CodeFold>
 
 ```python
 def solve_linear_systems():
@@ -688,9 +714,13 @@ def solve_linear_systems():
 solve_linear_systems()
 ```
 
+</CodeFold>
+
 ## Applications
 
 ### Principal Component Analysis (PCA)
+
+<CodeFold>
 
 ```python
 def pca_demonstration():
@@ -795,7 +825,11 @@ def pca_demonstration():
 pca_demonstration()
 ```
 
+</CodeFold>
+
 ### Markov Chains
+
+<CodeFold>
 
 ```python
 def markov_chain_analysis():
@@ -856,11 +890,15 @@ def markov_chain_analysis():
 markov_chain_analysis()
 ```
 
+</CodeFold>
+
 ## Practical Real-world Applications
 
 Matrices aren't just academic - they're essential for solving real-world computational problems across multiple domains:
 
 ### Application 1: Computer Graphics and Game Development
+
+<CodeFold>
 
 ```python
 def graphics_transformations():
@@ -957,7 +995,11 @@ def graphics_transformations():
 graphics_transformations()
 ```
 
+</CodeFold>
+
 ### Application 2: Principal Component Analysis (PCA) for Data Science
+
+<CodeFold>
 
 ```python
 def pca_data_analysis():
@@ -1064,7 +1106,11 @@ def pca_data_analysis():
 pca_data_analysis()
 ```
 
+</CodeFold>
+
 ### Application 3: Solving Linear Systems in Engineering
+
+<CodeFold>
 
 ```python
 def engineering_linear_systems():
@@ -1163,6 +1209,7 @@ def engineering_linear_systems():
 engineering_linear_systems()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -1175,7 +1222,6 @@ Ready to master matrix operations? Here are some hands-on challenges:
 - **Image Processing:** Use matrices to implement image filters, rotations, and transformations.
 - **Network Analysis:** Represent social networks or web graphs as adjacency matrices and compute important metrics.
 
-
 ## Key Takeaways
 
 - Matrices are rectangular arrays of numbers that represent linear transformations and systems of equations efficiently.
@@ -1185,7 +1231,6 @@ Ready to master matrix operations? Here are some hands-on challenges:
 - Matrix operations are fundamental to computer graphics, data science, machine learning, and engineering applications.
 - Understanding numerical stability (condition numbers) helps avoid computational errors in practical applications.
 - Modern libraries like NumPy provide highly optimized implementations that should be preferred over manual implementations.
-
 
 ## Next Steps & Further Exploration
 

@@ -93,7 +93,7 @@ export default {
         {
           text: 'Algebra',
           items: [
-            { text: 'Summation Notation (Σ)', link: '/algebra/summation_notation' },
+            { text: 'Summation Notation (Σ)', link: '/algebra/summation-notation' },
             { text: 'Product Notation (Π)', link: '/algebra/product-notation' },
             { text: 'Linear Equations', link: '/algebra/linear-equations' },
             { text: 'Quadratic Functions', link: '/algebra/quadratics' },

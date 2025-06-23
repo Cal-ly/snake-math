@@ -36,6 +36,8 @@ $$
 
 Where each symbol represents a progressively larger set of numbers. In programming, we typically work with three main categories:
 
+<CodeFold>
+
 ```python
 # Natural numbers - counting objects
 students_in_class = 25  # Can't have 25.5 students!
@@ -49,19 +51,19 @@ height = 5.75  # Feet and inches
 pi = 3.14159  # Mathematical constant
 ```
 
+</CodeFold>
+
 ## Why Number Types Matter for Programmers
 
 Choosing the right number type isn't just academic - it affects memory usage, calculation accuracy, and program correctness. Using the wrong type can lead to bugs that are harder to find than a typo in your variable names!
 
 Understanding number types helps you write more efficient code, avoid precision errors, and create robust applications that handle edge cases gracefully.
 
-
 ## Interactive Exploration
 
 <NumberTypeExplorer />
 
 Explore how different number inputs are classified and how they behave when converted between data types.
-
 
 ## Number Type Techniques and Efficiency
 
@@ -72,6 +74,8 @@ Understanding how to work with different number types efficiently is crucial for
 **Pros**: Clear intent, type safety, optimal memory usage\
 **Complexity**: O(1) for type checking
 
+<CodeFold>
+
 ```python
 def calculate_age(birth_year: int, current_year: int) -> int:
     """Calculate age using natural numbers"""
@@ -80,10 +84,14 @@ def calculate_age(birth_year: int, current_year: int) -> int:
     return current_year - birth_year
 ```
 
+</CodeFold>
+
 ### Method 2: Type Validation and Conversion
 
 **Pros**: Handles mixed inputs, prevents runtime errors\
 **Complexity**: O(1) for validation, varies for conversion
+
+<CodeFold>
 
 ```python
 def safe_division(a: float, b: float) -> float:
@@ -95,10 +103,14 @@ def safe_division(a: float, b: float) -> float:
     return float(a) / float(b)
 ```
 
+</CodeFold>
+
 ### Method 3: Arbitrary Precision Arithmetic
 
 **Pros**: No overflow, exact calculations for financial data\
 **Complexity**: O(n) where n is the number of digits
+
+<CodeFold>
 
 ```python
 from decimal import Decimal, getcontext
@@ -109,10 +121,13 @@ def precise_calculation(amount: str, rate: str) -> Decimal:
     return Decimal(amount) * Decimal(rate)
 ```
 
+</CodeFold>
 
 ## Why Range Validation Works
 
 Range validation prevents common programming errors and ensures data integrity. Think of it as putting guardrails on a mountain road - it keeps your program from driving off a cliff:
+
+<CodeFold>
 
 ```python
 def validate_and_clamp(value: float, min_val: float, max_val: float) -> float:
@@ -132,6 +147,7 @@ def validate_and_clamp(value: float, min_val: float, max_val: float) -> float:
 temperature = validate_and_clamp(150, -50, 50)  # Clamps to 50
 ```
 
+</CodeFold>
 
 ## Common Number Type Patterns
 
@@ -148,6 +164,8 @@ Standard patterns for working with different number classifications:
 
 Python implementations demonstrating these patterns:
 
+<CodeFold>
+
 ```python
 def is_natural_number(n) -> bool:
     """Check if number is a natural number"""
@@ -162,12 +180,15 @@ def float_equals(a: float, b: float, tolerance: float = 1e-9) -> bool:
     return abs(a - b) < tolerance
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Number types aren't just theoretical - they're the building blocks of real-world programming solutions:
 
 ### Application 1: Financial Calculations
+
+<CodeFold>
 
 ```python
 from decimal import Decimal, ROUND_HALF_UP
@@ -187,7 +208,11 @@ result = calculate_compound_interest(
 )
 ```
 
+</CodeFold>
+
 ### Application 2: Scientific Computing
+
+<CodeFold>
 
 ```python
 import math
@@ -209,7 +234,11 @@ def temperature_converter(celsius: float, target_scale: str) -> float:
     return conversions[target_scale.lower()](celsius)
 ```
 
+</CodeFold>
+
 ### Application 3: Data Validation and Sanitization
+
+<CodeFold>
 
 ```python
 def validate_user_input(value: str, expected_type: str) -> any:
@@ -234,6 +263,7 @@ age = validate_user_input("25", "natural")
 temperature = validate_user_input("-10.5", "float")
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -244,7 +274,6 @@ Ready to master number types? Here are some hands-on challenges:
 - **Financial Precision Challenge:** Implement a banking system that never loses precision when handling monetary calculations.
 - **Temperature Validation:** Create a robust temperature conversion system that validates inputs and handles edge cases.
 
-
 ## Key Takeaways
 
 - Different number types serve different purposes: natural numbers for counting, integers for whole values that can be negative, and real numbers for precise measurements.
@@ -252,7 +281,6 @@ Ready to master number types? Here are some hands-on challenges:
 - Always validate number inputs and handle edge cases like overflow, underflow, and precision loss.
 - Use appropriate libraries (like `Decimal`) for applications requiring exact precision, such as financial calculations.
 - Type hints and validation make your code more robust and self-documenting.
-
 
 ## Next Steps & Further Exploration
 

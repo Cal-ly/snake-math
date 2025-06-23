@@ -42,7 +42,6 @@ features:
 ### ..But wait, you can!
  Whether you're a programmer looking to strengthen your math skills or a math enthusiast wanting to see practical applications, this site tries to bridge the gap between theory and practice.
 
-
 ### Site Structure
 
 - **Basics** - Variables, functions, and data types

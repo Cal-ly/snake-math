@@ -39,6 +39,8 @@ Think of it as a recipe for multiplication:
 
 Just like summation translates to a for-loop with addition, product notation translates to a for-loop with multiplication:
 
+<CodeFold>
+
 ```python
 import math
 from functools import reduce
@@ -64,19 +66,19 @@ result = product_explained(1, 4, lambda i: i)
 result2 = product_explained(1, 3, lambda i: 2*i)
 ```
 
+</CodeFold>
+
 ## Why Product Notation Matters for Programmers
 
 Product notation is fundamental for combinatorics, probability theory, machine learning, statistics, and numerical computing. It provides concise representation for complex multiplicative patterns and appears in algorithms for permutations, likelihood calculations, and optimization.
 
 Understanding product notation helps you implement combinatorial algorithms, calculate probabilities efficiently, work with factorial-based formulas, analyze likelihood functions in ML, and interpret mathematical literature in data science.
 
-
 ## Interactive Exploration
 
 <ProductNotationVisualizer />
 
 Experiment with different product expressions to see how mathematical notation translates to computational algorithms and discover optimization opportunities.
-
 
 ## Product Notation Techniques and Efficiency
 
@@ -86,6 +88,8 @@ Understanding different approaches to calculating products helps optimize perfor
 
 **Pros**: Highly optimized C implementation, simple syntax\
 **Complexity**: O(n) with minimal overhead
+
+<CodeFold>
 
 ```python
 import math
@@ -160,10 +164,14 @@ def builtin_product_methods():
 builtin_product_methods()
 ```
 
+</CodeFold>
+
 ### Method 2: Manual Loop Implementation with Optimizations
 
 **Pros**: Full control, educational value, custom logic integration\
 **Complexity**: O(n) with explicit iteration control
+
+<CodeFold>
 
 ```python
 def manual_product_implementations():
@@ -264,10 +272,14 @@ def manual_product_implementations():
 manual_product_implementations()
 ```
 
+</CodeFold>
+
 ### Method 3: NumPy Vectorized Operations
 
 **Pros**: Handles arrays efficiently, cumulative products, broadcasting\
 **Complexity**: O(n) with highly optimized vectorized operations
+
+<CodeFold>
 
 ```python
 def numpy_product_operations():
@@ -404,10 +416,13 @@ def numpy_product_operations():
 numpy_product_operations()
 ```
 
+</CodeFold>
 
 ## Why Product Notation Works
 
 Product notation aggregates multiplicative operations across sequences, providing a compact way to express complex calculations. It's particularly powerful because multiplication has unique properties that enable elegant mathematical expressions:
+
+<CodeFold>
 
 ```python
 def explain_product_properties():
@@ -536,10 +551,11 @@ def explain_product_properties():
 explain_product_properties()
 ```
 
+</CodeFold>
+
 What is the concept overall?
 
 **Product notation**—denoted by the capital Greek letter Pi (∏)—represents the multiplication of a sequence of factors. It’s the multiplicative counterpart to summation (∑), useful in formulas for factorials, series, probabilities, and more.
-
 
 ## Understanding Product Notation
 
@@ -561,6 +577,8 @@ $$
 
 Programming analogy: think of it as a `for` loop that multiplies values in a list or range.
 
+<CodeFold>
+
 ```python
 def prod(seq):
     result = 1
@@ -571,13 +589,13 @@ def prod(seq):
 print(prod(range(1, 5)))  # 24
 ```
 
+</CodeFold>
 
 ## Why Product Notation Matters for Programmers
 
 * **Concise representation** of repeated multiplication
 * Essential in **combinatorics**, **probability**, **ML (likelihood computation)**, **numerical methods**
 * Symbolic math libraries (e.g., Sympy) use ∏ for compact expression
-
 
 ## Interactive Exploration
 
@@ -590,7 +608,6 @@ Allows users to choose start, end, and formula for a_i (e.g., i, (i+1)/i), then 
 
 Test different products and visualize convergence or behavior interactively!
 
-
 ## Product Notation Techniques and Efficiency
 
 ### Method 1: Built-in math.prod (Python 3.8+)
@@ -598,15 +615,21 @@ Test different products and visualize convergence or behavior interactively!
 **Pros**: Fast, C-optimized
 **Complexity**: O(n)
 
+<CodeFold>
+
 ```python
 import math
 print(math.prod([1, 2, 3, 4]))
 ```
 
+</CodeFold>
+
 ### Method 2: Loop-based implementation
 
 **Pros**: Educational and flexible
 **Complexity**: O(n)
+
+<CodeFold>
 
 ```python
 def product(seq):
@@ -616,10 +639,14 @@ def product(seq):
     return result
 ```
 
+</CodeFold>
+
 ### Method 3: NumPy cumulative product
 
 **Pros**: Vectorized performance, returns intermediary steps
 **Complexity**: O(n)
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -629,6 +656,7 @@ cumprod = np.cumprod(arr)
 print(cumprod)  # [1, 2, 6, 24]
 ```
 
+</CodeFold>
 
 ## Why It Works
 
@@ -637,7 +665,6 @@ Product notation simply aggregates multiplicative operations across a range. It'
 * **Factorials**: $n! = \prod_{i=1}^{n} i$
 * **Binomial coefficients**: $\binom{n}{k} = \frac{\prod_{i=0}^{k-1} (n - i)}{k!}$
 * **Probability mass functions**: e.g., $P(\text{all heads in k flips}) = \prod_{i=1}^{k} \frac{1}{2} = 2^{-k}$
-
 
 ## Common Product Patterns
 
@@ -656,6 +683,8 @@ Standard product formulas and patterns that appear frequently in mathematics and
   \(\prod_{i=0}^{n-1} (x - i) = x^{\underline{n}}\)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def product_patterns_library():
@@ -761,12 +790,15 @@ def product_patterns_library():
 product_patterns_library()
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Product notation isn't just mathematical abstraction - it's essential for solving real-world problems across combinatorics, probability, statistics, and machine learning:
 
 ### Application 1: Combinatorics and Probability Calculations
+
+<CodeFold>
 
 ```python
 def combinatorics_applications():
@@ -937,7 +969,11 @@ def combinatorics_applications():
 combinatorics_applications()
 ```
 
+</CodeFold>
+
 ### Application 2: Machine Learning and Statistics
+
+<CodeFold>
 
 ```python
 def machine_learning_applications():
@@ -1136,7 +1172,11 @@ def machine_learning_applications():
 machine_learning_applications()
 ```
 
+</CodeFold>
+
 ### Application 3: Financial Mathematics and Compound Growth
+
+<CodeFold>
 
 ```python
 def financial_applications():
@@ -1348,6 +1388,7 @@ def financial_applications():
 financial_applications()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -1360,7 +1401,6 @@ Ready to master product notation? Here are some hands-on challenges:
 - **Financial Modeler:** Create a compound interest calculator with variable rates and risk analysis.
 - **Combinatorics Solver:** Develop a tool for permutation and combination calculations using product formulas.
 
-
 ## Key Takeaways
 
 - Product notation (∏) is the multiplicative counterpart to summation, essential for combinatorics and probability.
@@ -1370,7 +1410,6 @@ Ready to master product notation? Here are some hands-on challenges:
 - Product notation appears in factorials, binomial coefficients, likelihood functions, and compound growth calculations.
 - Understanding products enables efficient implementation of combinatorial algorithms and probability calculations.
 - Real applications span machine learning, finance, quality control, and statistical analysis.
-
 
 ## Next Steps & Further Exploration
 

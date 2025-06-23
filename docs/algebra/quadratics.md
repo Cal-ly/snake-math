@@ -39,6 +39,8 @@ Key anatomical features of every parabola:
 
 It's like having a GPS for parabolas - these formulas tell you exactly where the important points are:
 
+<CodeFold>
+
 ```python
 import math
 import matplotlib.pyplot as plt
@@ -80,19 +82,19 @@ def quadratic_anatomy(a, b, c):
 vertex_x, vertex_y, disc = quadratic_anatomy(1, -5, 6)
 ```
 
+</CodeFold>
+
 ## Why Quadratic Functions Matter for Programmers
 
 Quadratic functions are the Swiss Army knife of mathematical modeling! They appear in physics simulations, optimization algorithms, computer graphics, machine learning, and data analysis. Understanding quadratics helps you model acceleration, optimize performance, create smooth animations, and solve complex algorithmic problems.
 
 Mastering quadratics enables you to build realistic physics engines, optimize business processes, create beautiful curves in graphics, analyze algorithm complexity, and solve optimization problems efficiently.
 
-
 ## Interactive Exploration
 
-<!-- <QuadraticExplorer /> -->
+<QuadraticExplorer />
 
 Explore how changing coefficients a, b, and c affects the graph, vertex, and roots of the quadratic function.
-
 
 ## Quadratic Function Techniques and Efficiency
 
@@ -102,6 +104,8 @@ Understanding different approaches to solving and analyzing quadratic functions 
 
 **Pros**: Always works for any quadratic, handles real and complex roots\
 **Complexity**: O(1) constant time
+
+<CodeFold>
 
 ```python
 import math
@@ -154,10 +158,14 @@ quadratic_formula_comprehensive(1, -4, 4)    # One repeated root
 quadratic_formula_comprehensive(1, 0, 1)     # Complex roots
 ```
 
+</CodeFold>
+
 ### Method 2: Completing the Square
 
 **Pros**: Reveals vertex form intuitively, great for optimization problems\
 **Complexity**: O(1) constant time with clear geometric interpretation
+
+<CodeFold>
 
 ```python
 def complete_the_square(a, b, c):
@@ -201,10 +209,14 @@ def complete_the_square(a, b, c):
 h, k = complete_the_square(1, -6, 5)
 ```
 
+</CodeFold>
+
 ### Method 3: Factoring (when possible)
 
 **Pros**: Simple and fast if roots are rational, provides immediate insight\
 **Complexity**: O(1) if factorable, may require trial and error
+
+<CodeFold>
 
 ```python
 def factor_quadratic_comprehensive(a, b, c):
@@ -277,10 +289,13 @@ factor_quadratic_comprehensive(2, -7, 3)   # 2x² - 7x + 3 = (2x-1)(x-3)
 factor_quadratic_comprehensive(1, 0, -4)   # x² - 4 = (x-2)(x+2)
 ```
 
+</CodeFold>
 
 ## Why the Quadratic Formula Works
 
 The quadratic formula is derived from completing the square - it's like having a universal key that unlocks any quadratic equation:
+
+<CodeFold>
 
 ```python
 def derive_quadratic_formula():
@@ -345,6 +360,7 @@ def derive_quadratic_formula():
 derive_quadratic_formula()
 ```
 
+</CodeFold>
 
 ## Common Quadratic Patterns
 
@@ -363,6 +379,8 @@ Standard quadratic forms and transformations that appear frequently in mathemati
   \(f(x) = a\left(x + \frac{b}{2a}\right)^2 - \frac{b^2-4ac}{4a}\)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def quadratic_forms_library():
@@ -449,12 +467,15 @@ def quadratic_forms_library():
 quadratic_forms_library()
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Quadratic functions aren't just academic exercises - they're essential tools for solving real-world problems across physics, business, and engineering:
 
 ### Application 1: Projectile Motion and Physics Simulations
+
+<CodeFold>
 
 ```python
 def projectile_motion_analysis():
@@ -569,7 +590,11 @@ def projectile_motion_analysis():
 projectile_motion_analysis()
 ```
 
+</CodeFold>
+
 ### Application 2: Business Optimization and Revenue Maximization
+
+<CodeFold>
 
 ```python
 def business_optimization():
@@ -690,7 +715,11 @@ def business_optimization():
 business_optimization()
 ```
 
+</CodeFold>
+
 ### Application 3: Computer Graphics and Animation
+
+<CodeFold>
 
 ```python
 def graphics_and_animation():
@@ -869,6 +898,7 @@ def graphics_and_animation():
 graphics_and_animation()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -881,7 +911,6 @@ Ready to master quadratic functions? Here are some hands-on challenges:
 - **Curve Designer:** Build a tool for creating parabolic arches, bridges, or decorative curves for design applications.
 - **Game Physics Engine:** Create a realistic ballistics system for games with gravity, air resistance, and collision detection.
 
-
 ## Key Takeaways
 
 - Quadratic functions create parabolic curves that model acceleration, optimization, and many natural phenomena.
@@ -891,7 +920,6 @@ Ready to master quadratic functions? Here are some hands-on challenges:
 - Real-world applications span physics simulations, business optimization, computer graphics, and game development.
 - Understanding the geometric meaning of coefficients a, b, c helps visualize and predict parabolic behavior.
 - Quadratics bridge algebra and calculus, providing foundation for advanced mathematical modeling.
-
 
 ## Next Steps & Further Exploration
 

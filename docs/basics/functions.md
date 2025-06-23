@@ -42,6 +42,8 @@ $$
 
 Example of a simple linear function:
 
+<CodeFold>
+
 ```python
 # Simple function: f(x) = 2x + 1
 def f(x):
@@ -49,6 +51,8 @@ def f(x):
 
 print(f"f(5) = {f(5)}")
 ```
+
+</CodeFold>
 
 ## Why Functions Matter for Programmers
 
@@ -73,6 +77,8 @@ The user can learn how changing parameters affects the function's shape and beha
 **Pros**: Easy to write and reuse\
 **Complexity**: O(1)
 
+<CodeFold>
+
 ```python
 def linear(x, m=1, b=0):
     return m * x + b
@@ -80,10 +86,14 @@ def linear(x, m=1, b=0):
 print(linear(3, 2, 5))
 ```
 
+</CodeFold>
+
 ### Method 2: Function Composition
 
 **Pros**: Combine behaviors for complex outputs\
 **Complexity**: O(1)
+
+<CodeFold>
 
 ```python
 def f(x):
@@ -97,10 +107,14 @@ print(f(g(3)))  # f(g(x))
 print(g(f(3)))  # g(f(x))
 ```
 
+</CodeFold>
+
 ### Method 3: Inverse Functions
 
 **Pros**: Solve for input when given an output\
 **Complexity**: O(1)
+
+<CodeFold>
 
 ```python
 def find_linear_inverse(m, b):
@@ -111,6 +125,8 @@ def find_linear_inverse(m, b):
 inverse = find_linear_inverse(2, 3)
 print(inverse(13))
 ```
+
+</CodeFold>
 
 ## Why the Inverse Function Works
 
@@ -126,6 +142,8 @@ $$
 x = \frac{y - b}{m}
 $$
 
+<CodeFold>
+
 ```python
 def verify_inverse(f, f_inv, x):
     y = f(x)
@@ -135,6 +153,8 @@ def verify_inverse(f, f_inv, x):
 verify_inverse(lambda x: 2 * x + 3, lambda y: (y - 3) / 2, 5)
 ```
 
+</CodeFold>
+
 ## Common Function Patterns
 
 - **Linear**: \(f(x) = mx + b\)
@@ -142,15 +162,23 @@ verify_inverse(lambda x: 2 * x + 3, lambda y: (y - 3) / 2, 5)
 - **Exponential**: \(f(x) = a \cdot b^x\)
 - **Inverse Linear**: \(f^{-1}(y) = \frac{y - b}{m}\)
 
+Python implementations demonstrating these patterns:
+
+<CodeFold>
+
 ```python
 def linear(x, m, b): return m*x + b
 def quadratic(x, a, b, c): return a*x**2 + b*x + c
 def exponential(x, a, b): return a * (b ** x)
 ```
 
+</CodeFold>
+
 ## Practical Real-world Applications
 
 ### Application 1: Physics - Motion Functions
+
+<CodeFold>
 
 ```python
 def position(t, s0=0, v0=0, a=0):
@@ -160,7 +188,11 @@ def velocity(t, v0=0, a=0):
     return v0 + a*t
 ```
 
+</CodeFold>
+
 ### Application 2: Economics - Cost Functions
+
+<CodeFold>
 
 ```python
 def total_cost(q, fixed=1000, variable=5):
@@ -169,6 +201,8 @@ def total_cost(q, fixed=1000, variable=5):
 def break_even(fixed, variable, price):
     return fixed / (price - variable)
 ```
+
+</CodeFold>
 
 ## Try it Yourself
 

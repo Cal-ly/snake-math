@@ -40,6 +40,8 @@ $$
 
 Think of the unit circle like a clock face where every "time" (angle) has a unique fingerprint given by its (x, y) coordinates. As you walk around this circle, the x-coordinate dances like a horizontal wave while the y-coordinate creates a vertical wave:
 
+<CodeFold>
+
 ```python
 import math
 import numpy as np
@@ -65,19 +67,19 @@ for angle in [math.pi/6, math.pi/4, math.pi/3]:
     print(f"At θ = {angle:.3f}: {identity_check:.6f}")
 ```
 
+</CodeFold>
+
 ## Why Trigonometric Functions Matter for Programmers
 
 Trigonometric functions are essential for computer graphics, game development, signal processing, animation, physics simulations, and machine learning. They help you rotate objects, generate smooth animations, analyze periodic data, and model wave-like phenomena.
 
 Understanding these functions enables you to work with 2D/3D transformations, implement smooth interpolations, analyze audio signals, create realistic physics, and build algorithms that handle periodic or oscillatory behavior.
 
-
 ## Interactive Exploration
 
 <UnitCircleExplorer />
 
 Experiment with different angles to see how trigonometric functions behave and understand their periodic nature and geometric relationships.
-
 
 ## Trigonometric Functions Techniques and Efficiency
 
@@ -87,6 +89,8 @@ Understanding different approaches to calculating and applying trigonometric fun
 
 **Pros**: Highly optimized, accurate, standard library availability\
 **Complexity**: O(1) for individual calculations, optimized algorithms
+
+<CodeFold>
 
 ```python
 import math
@@ -149,10 +153,14 @@ def builtin_trigonometric_functions():
 builtin_trigonometric_functions()
 ```
 
+</CodeFold>
+
 ### Method 2: NumPy Vectorized Operations
 
 **Pros**: Handles arrays efficiently, broadcasting capabilities, optimized for large datasets\
 **Complexity**: O(n) for n elements, highly optimized vectorized operations
+
+<CodeFold>
 
 ```python
 import numpy as np
@@ -286,10 +294,14 @@ def numpy_trigonometric_operations():
 numpy_trigonometric_operations()
 ```
 
+</CodeFold>
+
 ### Method 3: Taylor Series Approximation
 
 **Pros**: Educational value, customizable precision, works without math libraries\
 **Complexity**: O(n) where n is number of terms in series
+
+<CodeFold>
 
 ```python
 def taylor_series_trigonometry():
@@ -450,10 +462,13 @@ def taylor_series_trigonometry():
 taylor_sin, taylor_cos = taylor_series_trigonometry()
 ```
 
+</CodeFold>
 
 ## Why Trigonometric Identities Work
 
 Trigonometric identities are fundamental relationships that arise from the geometric properties of the unit circle and provide powerful tools for simplifying expressions:
+
+<CodeFold>
 
 ```python
 def explain_trigonometric_identities():
@@ -636,6 +651,8 @@ def explain_trigonometric_identities():
 explain_trigonometric_identities()
 ```
 
+</CodeFold>
+
 ## Common Trigonometric Function Patterns
 
 Standard trigonometric patterns and identities that appear frequently in mathematics and programming:
@@ -653,6 +670,8 @@ Standard trigonometric patterns and identities that appear frequently in mathema
   \(\cos(\theta) = \sin(\theta + \frac{\pi}{2})\)
 
 Python implementations demonstrating these patterns:
+
+<CodeFold>
 
 ```python
 def trigonometric_patterns_library():
@@ -824,12 +843,15 @@ def trigonometric_patterns_library():
 trigonometric_patterns_library()
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Trigonometric functions aren't just abstract mathematics - they're the foundation for modeling waves, rotations, and periodic phenomena across multiple domains:
 
 ### Application 1: Wave Analysis and Signal Processing
+
+<CodeFold>
 
 ```python
 def wave_analysis():
@@ -958,7 +980,11 @@ def wave_analysis():
 wave_analysis()
 ```
 
+</CodeFold>
+
 ### Application 2: Computer Graphics and Animation
+
+<CodeFold>
 
 ```python
 def computer_graphics_applications():
@@ -1173,7 +1199,11 @@ def computer_graphics_applications():
 computer_graphics_applications()
 ```
 
+</CodeFold>
+
 ### Application 3: Physics Simulations and Oscillations
+
+<CodeFold>
 
 ```python
 def physics_simulations():
@@ -1437,6 +1467,7 @@ def physics_simulations():
 physics_simulations()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -1449,7 +1480,6 @@ Ready to master trigonometric functions and the unit circle? Here are some hands
 - **Signal Analyzer:** Implement a tool that analyzes periodic signals and identifies their frequency components.
 - **Graphics Transformer:** Create a 2D graphics engine that performs rotations, scaling, and transformations using trigonometry.
 
-
 ## Key Takeaways
 
 - The unit circle provides geometric intuition for trigonometric functions, connecting angles to coordinates.
@@ -1459,7 +1489,6 @@ Ready to master trigonometric functions and the unit circle? Here are some hands
 - These functions are essential for computer graphics, signal processing, physics simulations, and animation.
 - Phase relationships between sin and cos enable complex transformations and smooth interpolations.
 - Understanding both geometric and analytical perspectives deepens comprehension and application ability.
-
 
 ## Next Steps & Further Exploration
 

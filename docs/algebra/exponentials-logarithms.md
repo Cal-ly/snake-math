@@ -48,6 +48,8 @@ $$x = \log_b(y) \iff b^x = y$$
 
 Think of it as the reverse engineering of exponentials:
 
+<CodeFold>
+
 ```python
 import math
 import numpy as np
@@ -201,6 +203,8 @@ def exponential_logarithm_demo():
 exponential_logarithm_demo()
 ```
 
+</CodeFold>
+
 ## Why Exponentials and Logarithms Matter for Programmers
 
 Exponentials and logarithms are fundamental to understanding algorithm complexity, data scaling, machine learning, and cryptography. They appear in binary search (O(log n)), exponential backoff strategies, neural network activation functions, and information theory.
@@ -221,6 +225,8 @@ Understanding different approaches to computing exponentials and logarithms help
 
 **Pros**: Fast, accurate, optimized implementations\
 **Complexity**: O(1) - constant time operations
+
+<CodeFold>
 
 ```python
 import math
@@ -344,10 +350,14 @@ def builtin_math_methods():
 builtin_math_methods()
 ```
 
+</CodeFold>
+
 ### Method 2: Series Approximations (Educational)
 
 **Pros**: Educational value, understanding underlying math\
 **Complexity**: O(n) where n is number of terms
+
+<CodeFold>
 
 ```python
 def series_approximation_methods():
@@ -501,10 +511,14 @@ def series_approximation_methods():
 series_approximation_methods()
 ```
 
+</CodeFold>
+
 ### Method 3: NumPy Vectorized Operations
 
 **Pros**: Efficient for arrays, broadcasting, optimized C implementations\
 **Complexity**: O(1) per element with high throughput
+
+<CodeFold>
 
 ```python
 def numpy_vectorized_methods():
@@ -517,7 +531,7 @@ def numpy_vectorized_methods():
     import time
     
     def basic_vectorized_operations():
-        """Show basic NumPy exponential and logarithm functions"""
+        """Show basic NumPy exponential and logarithmic functions"""
         
         print("Basic Vectorized Operations:")
         
@@ -691,6 +705,8 @@ def numpy_vectorized_methods():
 numpy_vectorized_methods()
 ```
 
+</CodeFold>
+
 ## Why the Logarithm Works
 
 Think of logarithms as the inverse of exponentials - they're mathematical "undoing" functions that solve for the mystery exponent:
@@ -700,6 +716,8 @@ Logarithms ask: "What is x?"\
 Answer: $x = \log_b(y)$
 
 The magic lies in their inverse relationship - they perfectly cancel each other out:
+
+<CodeFold>
 
 ```python
 import math
@@ -895,6 +913,8 @@ def demonstrate_inverse_relationship():
 demonstrate_inverse_relationship()
 ```
 
+</CodeFold>
+
 ## Common Exponentials and Logarithms Patterns
 
 Understanding standard patterns helps recognize and apply these functions effectively across different contexts:
@@ -906,6 +926,8 @@ Understanding standard patterns helps recognize and apply these functions effect
 - **Change of Base:** $\log_b(x) = \frac{\ln(x)}{\ln(b)}$ (convert between bases)
 
 Common application patterns with implementations:
+
+<CodeFold>
 
 ```python
 def exponential_logarithm_patterns():
@@ -1120,3 +1142,6 @@ def exponential_logarithm_patterns():
     print(f"• Data analysis: Log transformations normalize skewed distributions")
     
     return growth_data, transform_data
+```
+
+</CodeFold>

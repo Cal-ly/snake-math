@@ -45,6 +45,8 @@ a_2x + b_2y = c_2
 
 Think of solving a system like finding where multiple straight lines cross on a graph - that intersection point satisfies all equations at once:
 
+<CodeFold>
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -112,19 +114,19 @@ def linear_equation_demo():
 linear_equation_demo()
 ```
 
+</CodeFold>
+
 ## Why Linear Equations Matter for Programmers
 
 Linear equations are the mathematical foundation for machine learning algorithms, computer graphics transformations, optimization problems, and data modeling. They provide efficient, predictable solutions to countless programming challenges.
 
 Understanding linear systems unlocks powerful methods for regression analysis, solving constraint problems, implementing graphics transformations, building recommendation systems, and creating optimization algorithms that scale to massive datasets.
 
-
 ## Interactive Exploration
 
 <LinearSystemSolver />
 
 Visually explore how changes to coefficients affect solutions and see the geometric interpretation of algebraic solutions.
-
 
 ## Linear Equation Techniques and Efficiency
 
@@ -134,6 +136,8 @@ Understanding different approaches to solving linear equations helps optimize pe
 
 **Pros**: Simple, exact, educational value\
 **Complexity**: O(1) for single equations
+
+<CodeFold>
 
 ```python
 import time
@@ -291,10 +295,13 @@ def direct_algebraic_methods():
 direct_algebraic_methods()
 ```
 
+</CodeFold>
+
 ### Method 2: Matrix-Based Solutions (NumPy/SciPy)
 
 **Pros**: Efficient, scalable, handles large systems\
 **Complexity**: O(n³) for general n×n systems
+<CodeFold>
 
 ```python
 def matrix_based_methods():
@@ -463,10 +470,14 @@ def matrix_based_methods():
 matrix_based_methods()
 ```
 
+</CodeFold>
+
 ### Method 3: Specialized Methods (Cramer's Rule, Matrix Decomposition)
 
 **Pros**: Educational value, specific use cases, theoretical understanding\
 **Complexity**: Varies by method
+
+<CodeFold>
 
 ```python
 def specialized_solution_methods():
@@ -694,6 +705,8 @@ def specialized_solution_methods():
 specialized_solution_methods()
 ```
 
+</CodeFold>
+
 ## Common Linear Equation Patterns
 
 Understanding standard patterns that appear frequently in programming and mathematics:
@@ -705,6 +718,8 @@ Understanding standard patterns that appear frequently in programming and mathem
 - **Under-determined Systems:** More unknowns than equations
 
 Common solving scenarios with implementations:
+
+<CodeFold>
 
 ```python
 def linear_equation_patterns_library():
@@ -819,12 +834,15 @@ def linear_equation_patterns_library():
 linear_equation_patterns_library()
 ```
 
+</CodeFold>
 
 ## Practical Real-world Applications
 
 Linear equations are fundamental to modeling real-world problems across economics, engineering, data science, and optimization:
 
 ### Application 1: Data Science and Machine Learning
+
+<CodeFold>
 
 ```python
 def data_science_applications():
@@ -1011,7 +1029,11 @@ def data_science_applications():
 data_science_applications()
 ```
 
+</CodeFold>
+
 ### Application 2: Economics and Business Optimization
+
+<CodeFold>
 
 ```python
 def economics_business_applications():
@@ -1250,7 +1272,11 @@ def economics_business_applications():
 economics_business_applications()
 ```
 
+</CodeFold>
+
 ### Application 3: Engineering and Computer Graphics
+
+<CodeFold>
 
 ```python
 def engineering_graphics_applications():
@@ -1548,6 +1574,7 @@ def engineering_graphics_applications():
 engineering_graphics_applications()
 ```
 
+</CodeFold>
 
 ## Try it Yourself
 
@@ -1560,7 +1587,6 @@ Ready to master linear equations in real applications? Here are some hands-on ch
 - **Market Equilibrium Calculator:** Create an economics tool that finds supply-demand equilibrium and analyzes market changes.
 - **FEA Solver:** Implement a simple finite element solver for 1D heat conduction with different boundary conditions.
 
-
 ## Key Takeaways
 
 - Linear equations model constant-rate relationships fundamental to science, engineering, and data analysis.
@@ -1570,7 +1596,6 @@ Ready to master linear equations in real applications? Here are some hands-on ch
 - Real applications span machine learning (regression), economics (optimization), engineering (FEA), and graphics (transformations).
 - Different solution methods suit different scenarios: direct for small systems, iterative for large sparse systems.
 - Understanding linear systems unlocks advanced topics in optimization, differential equations, and computational methods.
-
 
 ## Next Steps & Further Exploration
 
